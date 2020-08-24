@@ -18,16 +18,15 @@ body {
     position: absolute;
     text-shadow: 5px 3px 5px black;
     animation-name: blinking;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    opacity: 0.3;
+    animation-duration: 2s;
+    opacity: 0.9;
   }
   @keyframes blinking {
     from {
       opacity: 0.3;
     }
     to {
-      opacity: 0.8;
+      opacity: 0.9;
     }
   }
 }
