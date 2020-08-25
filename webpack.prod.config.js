@@ -33,10 +33,17 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
+        test: /\.(jpe?g|png|gif|bmp)$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
+          name: 'static/media/[name].[hash:8].[ext]',
+        },
+      },
+      {
+        exclude: /\.(m?js|css|scss|sass|jpe?g|png|gif|json|html)$/,
+        loader: 'file-loader',
+        options: {
           name: 'static/media/[name].[hash:8].[ext]',
         },
       },
