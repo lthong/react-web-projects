@@ -48,6 +48,10 @@ module.exports = {
         },
       },
       {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
         exclude: /\.(m?js|css|scss|sass|jpe?g|png|gif|json|html)$/,
         loader: 'file-loader',
         options: {
