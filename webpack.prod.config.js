@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'production',
@@ -9,13 +10,14 @@ module.exports = {
   },
   output: {
     filename: 'static/js/[name].[contenthash:8].js',
+    chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
     path: resolve(__dirname, 'build'),
   },
   module: {
     rules: [
       {
         test: /\.(css|scss|sass)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         // https://webpack.docschina.org/loaders/babel-loader/
@@ -59,6 +61,11 @@ module.exports = {
     // https://github.com/jantimon/html-webpack-plugin#options
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
+    }),
+    // https://github.com/webpack-contrib/mini-css-extract-plugin
+    new MiniCssExtractPlugin({
+      filename: 'static/css/[name].[contenthash:8].css',
+      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
   ],
 };
