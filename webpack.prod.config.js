@@ -2,6 +2,7 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -67,5 +68,7 @@ module.exports = {
       filename: 'static/css/[name].[contenthash:8].css',
       chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
+    // https://github.com/NMFR/optimize-css-assets-webpack-plugin
+    new OptimizeCSSAssetsPlugin(),
   ],
 };
