@@ -37,16 +37,15 @@ module.exports = {
         ],
       },
       {
-        // https://webpack.docschina.org/loaders/babel-loader/
         test: /\.m?js$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
-            // https://babeljs.io/docs/en/babel-preset-env
-            // https://babeljs.io/docs/en/babel-preset-react
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            // set the value of cacheDirectory to true, the loader will use the default cache directory in node_modules/.cache/babel-loader.
+            presets: [
+              ['@babel/preset-env', { useBuiltIns: 'usage' }],
+              '@babel/preset-react',
+            ],
             cacheDirectory: true,
           },
         },
@@ -73,7 +72,6 @@ module.exports = {
     ],
   },
   plugins: [
-    // https://github.com/jantimon/html-webpack-plugin#options
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
     }),
