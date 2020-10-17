@@ -78,4 +78,9 @@ module.exports = {
     }),
     new OptimizeCSSAssetsPlugin(),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
 };
