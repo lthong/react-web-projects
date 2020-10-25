@@ -8,7 +8,7 @@ module.exports = {
     main: resolve(__dirname, 'src/index.js'),
   },
   output: {
-    filename: 'static/js/[name].[contenthash:8].js',
+    filename: 'static/js/[name].[hash:8].js',
     path: resolve(__dirname, 'build'),
   },
   devtool: 'eval-source-map',
@@ -17,6 +17,7 @@ module.exports = {
     contentBase: resolve(__dirname, 'public'),
     overlay: true,
     open: true,
+    hot: true,
   },
   module: {
     rules: [
@@ -61,7 +62,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'static/media/[name].[contenthash:8].[ext]',
+          name: 'static/media/[name].[hash:8].[ext]',
         },
       },
       {
@@ -72,7 +73,7 @@ module.exports = {
         exclude: /\.(m?js|css|scss|sass|jpe?g|png|gif|json|html)$/,
         loader: 'file-loader',
         options: {
-          name: 'static/media/[name].[contenthash:8].[ext]',
+          name: 'static/media/[name].[hash:8].[ext]',
         },
       },
     ],
