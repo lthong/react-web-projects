@@ -92,4 +92,9 @@ module.exports = {
       '@': resolve(__dirname, 'src'),
     },
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
