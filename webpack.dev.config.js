@@ -92,5 +92,8 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
     },
+    runtimeChunk: {
+      name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
+    },
   },
 };
