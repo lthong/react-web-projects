@@ -18,6 +18,7 @@ module.exports = {
     overlay: true,
     open: true,
     hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
