@@ -1,6 +1,8 @@
 import React from 'react';
 import '@/stylesheet/app.scss';
 import skyImg from '@/assets/start-sky.jpg';
+// import { asyncFunEx } from '@/utils/helper';
+// asyncFunEx();
 
 const App = () => {
   return (
