@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+//   .BundleAnalyzerPlugin;
 
 module.exports = {
   mode: 'production',
@@ -68,10 +68,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
+      favicon: resolve(__dirname, 'public/favicon.ico'),
     }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash:8].css',
@@ -87,6 +88,7 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
+      name: 'vendors',
     },
     runtimeChunk: {
       name: (entrypoint) => `runtimechunk~${entrypoint.name}`,
