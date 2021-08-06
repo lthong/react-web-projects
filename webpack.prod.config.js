@@ -1,10 +1,14 @@
 const { resolve } = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
+
+// PUBLIC_PATH can be replaced with the pathname of the prod application
+const PUBLIC_PATH = '/react-boilerplate/';
 
 module.exports = {
   mode: 'production',
@@ -15,6 +19,7 @@ module.exports = {
     filename: 'static/js/[name].[contenthash:8].js',
     chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
     path: resolve(__dirname, 'build'),
+    publicPath: PUBLIC_PATH,
   },
   module: {
     rules: [
@@ -73,6 +78,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
       favicon: resolve(__dirname, 'public/favicon.ico'),
+      publicPath: PUBLIC_PATH,
+    }),
+    new webpack.DefinePlugin({
+      'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
     }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash:8].css',

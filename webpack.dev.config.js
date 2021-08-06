@@ -1,6 +1,8 @@
 const { resolve } = require('path');
-
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const PUBLIC_PATH = '/';
 
 module.exports = {
   mode: 'development',
@@ -13,7 +15,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {
-    publicPath: '/',
+    publicPath: PUBLIC_PATH,
     contentBase: resolve(__dirname, 'public'),
     overlay: true,
     open: true,
@@ -75,6 +77,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
       favicon: resolve(__dirname, 'public/favicon.ico'),
+      publicPath: PUBLIC_PATH,
+    }),
+    new webpack.DefinePlugin({
+      'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
     }),
   ],
   resolve: {
