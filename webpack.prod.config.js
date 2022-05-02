@@ -8,7 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 //   .BundleAnalyzerPlugin;
 
 // PUBLIC_PATH can be replaced with the pathname of the prod application
-const PUBLIC_PATH = '/react-boilerplate/';
+const PUBLIC_PATH = '/react-projects/';
 
 module.exports = {
   mode: 'production',
