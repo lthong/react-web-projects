@@ -1,4 +1,4 @@
 export default {
-  ROOT: '/',
-  MUSIC_PLAYER: 'music-player',
+  HOME: '/',
+  MUSIC_PLAYER: '/music-player',
 };

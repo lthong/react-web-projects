@@ -6,10 +6,11 @@ import Menu from '@/components/Menu';
 const App = () => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_PATH}>
-      <Menu />
-      <Route exact path={routerPath.ROOT}>
-        <div className='app'></div>
-      </Route>
+      <div className='app'>
+        <Menu />
+        <Route exact path={routerPath.HOME}></Route>
+        <Route path={routerPath.MUSIC_PLAYER}></Route>
+      </div>
     </BrowserRouter>
   );
 };
