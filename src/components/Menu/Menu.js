@@ -57,7 +57,7 @@ const Menu = () => {
             className='github-icon'
             size={30}
             onClick={() => {
-              location.replace(homepage);
+              window.location.replace(homepage);
             }}
           />
         </div>
