@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-web-projects",
   "version": "1.0.0",
-  "description": "A simple boilerplate for react development",
+  "description": "Some web projects for react development",
   "main": "index.js",
   "author": "Karen Hong",
   "license": "MIT",
