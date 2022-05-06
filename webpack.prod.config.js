@@ -8,7 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 //   .BundleAnalyzerPlugin;
 
 // PUBLIC_PATH can be replaced with the pathname of the prod application
-const PUBLIC_PATH = '/react-projects/';
+const PUBLIC_PATH = '/react-web-projects/';
 
 module.exports = {
   mode: 'production',
@@ -76,6 +76,7 @@ module.exports = {
     // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      title: 'React Web Projects',
       template: resolve(__dirname, 'public/index.html'),
       favicon: resolve(__dirname, 'public/favicon.ico'),
       publicPath: PUBLIC_PATH,
