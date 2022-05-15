@@ -1,10 +1,49 @@
+@import '@/stylesheet/variable';
+
 body {
   margin: 0;
   * {
     box-sizing: border-box;
   }
 }
+
 .app {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  .content {
+    width: 100%;
+    margin-top: $navBarHeight;
+  }
+  .menu {
+    .navs {
+      width: 260px;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    &.navs-open {
+      + .content {
+        width: calc(100% - 300px);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .app {
+    display: block;
+    .menu {
+      .navs {
+        width: 100%;
+        height: 150px;
+      }
+      &.navs-open {
+        + .content {
+          width: 100%;
+          margin: 0;
+        }
+      }
+    }
+  }
 }

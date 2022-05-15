@@ -1,18 +1,21 @@
 import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
-import { AiOutlineGithub } from 'react-icons/ai';
+import { AiOutlineGithub, AiFillHome } from 'react-icons/ai';
 import { BsMusicNoteBeamed } from 'react-icons/bs';
 import routerPath from '@/libraries/routerPath';
 import { homepage } from '../../../package.json';
 
-const navIconEnums = {
-  [routerPath.MUSIC_PLAYER]: BsMusicNoteBeamed,
-};
 const navs = [
+  {
+    path: routerPath.HOME,
+    label: 'Home',
+    Icon: AiFillHome,
+  },
   {
     path: routerPath.MUSIC_PLAYER,
     label: 'Music Player',
+    Icon: BsMusicNoteBeamed,
   },
 ];
 
@@ -27,13 +30,14 @@ const Menu = () => {
 
   const onNavClick = useCallback(
     (path) => {
+      onMenuClick();
       history.push(path);
     },
-    [history]
+    [onMenuClick, history]
   );
 
   return (
-    <div className='menu'>
+    <div className={clsx('menu', { 'navs-open': isMenuOpen })}>
       <div className='bar'>
         <div className='left-items'>
           <div
@@ -64,8 +68,7 @@ const Menu = () => {
       </div>
       {isMenuOpen && (
         <div className='navs'>
-          {navs.map(({ path, label }) => {
-            const IconComp = navIconEnums[path];
+          {navs.map(({ path, label, Icon }) => {
             const active = location.pathname === path;
             return (
               <div
@@ -73,7 +76,7 @@ const Menu = () => {
                 className={clsx('item', { active })}
                 onClick={() => onNavClick(path)}
               >
-                <IconComp size={20} className='nav-icon' />
+                <Icon size={20} className='nav-icon' />
                 {label}
               </div>
             );
