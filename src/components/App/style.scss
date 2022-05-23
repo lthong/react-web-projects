@@ -10,39 +10,45 @@ body {
 .app {
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
   .content {
     width: 100%;
-    margin-top: $navBarHeight;
-  }
-  .menu {
-    .navs {
-      width: 260px;
-      height: 100vh;
-      overflow-y: auto;
-    }
-    &.navs-open {
-      + .content {
-        width: calc(100% - 300px);
-      }
-    }
   }
 }
 
+@media only screen and (min-width: 400px) {
+  .app {
+    .menu {
+      .navs {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 100vh;
+        overflow-y: auto;
+      }
+      &.navs-open::before {
+        content: '';
+        position: fixed;
+        top: $navBarHeight;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+        opacity: 0.8;
+        z-index: 99;
+      }
+    }
+    .content {
+      margin-top: $navBarHeight;
+    }
+  }
+}
 @media only screen and (max-width: 400px) {
   .app {
-    display: block;
     .menu {
       .navs {
         width: 100%;
         height: 150px;
-      }
-      &.navs-open {
-        + .content {
-          width: 100%;
-          margin: 0;
-        }
       }
     }
   }
