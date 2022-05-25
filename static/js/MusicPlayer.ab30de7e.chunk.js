@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{40:function(n,e,c){},42:function(n,e,c){"use strict";c.r(e);var a=c(1),i=c.n(a),s=function(){return i.a.createElement("div",{className:"music-player-block"},"MusicPlayer")};c(40),e.default=s}}]);
