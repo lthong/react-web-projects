@@ -1,14 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import {
-  AiFillFastBackward,
-  AiFillFastForward,
-  AiOutlineCaretRight,
-  AiOutlinePause,
-} from 'react-icons/ai';
+import { AiFillPlayCircle, AiOutlinePause } from 'react-icons/ai';
+import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import assets from './assets';
 
 const songs = Object.values(assets);
+
 const MusicPlayer = () => {
   const audioRef = useRef(null);
   const [currentSong, setCurrentSong] = useState(null);
@@ -80,31 +77,32 @@ const MusicPlayer = () => {
         className='song-audit'
         ref={audioRef}
         src={assets[currentSong]?.song}
+        onEnded={onNextIconClick}
         controls
       />
       <div className='bottom-block'>
         <div className='music-control'>
-          <AiFillFastBackward
+          <BiSkipPrevious
             className='pre-icon'
-            size={40}
+            size={30}
             onClick={onPreIconClick}
           />
           {isPause ? (
-            <AiOutlineCaretRight
+            <AiFillPlayCircle
               className='start-icon'
-              size={40}
+              size={35}
               onClick={onStartIconClick}
             />
           ) : (
             <AiOutlinePause
               className='pause-icon'
-              size={40}
+              size={35}
               onClick={onPauseIconClick}
             />
           )}
-          <AiFillFastForward
+          <BiSkipNext
             className='next-icon'
-            size={40}
+            size={30}
             onClick={onNextIconClick}
           />
         </div>
