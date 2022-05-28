@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import clsx from 'clsx';
 import { BrowserRouter, Route } from 'react-router-dom';
 import * as Loadable from '@/components/App/Loadable';
 import routerPath from '@/libraries/routerPath';
@@ -10,10 +11,12 @@ const Comps = [
 ];
 
 const App = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+
   return (
     <BrowserRouter basename={process.env.PUBLIC_PATH}>
-      <div className='app'>
-        <Menu />
+      <div className={clsx('app', { lite: !isDarkTheme })}>
+        <Menu isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} />
         <div className='content'>
           {Comps.map(({ path, Comp, exact = false }) => (
             <Route key={path} path={path} exact={exact}>

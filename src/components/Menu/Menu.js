@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AiOutlineGithub, AiFillHome } from 'react-icons/ai';
 import { BsMusicNoteBeamed } from 'react-icons/bs';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import routerPath from '@/libraries/routerPath';
 import { homepage } from '../../../package.json';
 
@@ -19,7 +20,7 @@ const navs = [
   },
 ];
 
-const Menu = () => {
+const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
   const history = useHistory();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,9 +58,26 @@ const Menu = () => {
           React Projects
         </div>
         <div className='right-items'>
+          {isDarkTheme ? (
+            <FaSun
+              className='tool-icon'
+              size={25}
+              onClick={() => {
+                setIsDarkTheme(false);
+              }}
+            />
+          ) : (
+            <FaMoon
+              className='tool-icon'
+              size={22}
+              onClick={() => {
+                setIsDarkTheme(true);
+              }}
+            />
+          )}
           <AiOutlineGithub
-            className='github-icon'
-            size={30}
+            className='tool-icon'
+            size={25}
             onClick={() => {
               window.location.replace(homepage);
             }}

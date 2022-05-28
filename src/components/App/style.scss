@@ -1,7 +1,23 @@
 @import '@/stylesheet/variable';
 
+:root {
+  --bg-color: #282c35;
+  --primary-color: #fff;
+  --secondary-color: #ffa7c4;
+  --secondary-lite-color: #fc919ace;
+  --primary-shadow-color: rgb(255 255 255 / 40%);
+}
+.app.lite {
+  --bg-color: #fff;
+  --primary-color: #282c35;
+  --secondary-color: #2e66d6;
+  --secondary-lite-color: #95b8f6f5;
+  --primary-shadow-color: rgb(0 0 0 / 30%);
+}
 body {
   margin: 0;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
   * {
     box-sizing: border-box;
   }
@@ -10,8 +26,15 @@ body {
 .app {
   height: 100vh;
   width: 100vw;
+  * {
+    transition: color 0.3s ease-in;
+    transition: background-color 0.3s ease-in;
+  }
   .content {
     width: 100%;
+    min-height: calc(100% - 50px);
     margin-top: $navBarHeight;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
   }
 }
