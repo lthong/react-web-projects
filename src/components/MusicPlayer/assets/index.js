@@ -27,22 +27,22 @@ const assets = {
     photo: photos.yozoranimautori,
   },
   theEntertainer: {
-    key: 'korobushka',
-    name: 'Korobushka',
-    song: songs.korobushka,
-    photo: photos.korobushka,
-  },
-  turkishMarch: {
     key: 'theEntertainer',
     name: 'The Entertainer',
     song: songs.theEntertainer,
     photo: photos.theEntertainer,
   },
-  korobushka: {
+  turkishMarch: {
     key: 'turkishMarch',
     name: 'Turkish March',
     song: songs.turkishMarch,
     photo: photos.turkishMarch,
+  },
+  korobushka: {
+    key: 'korobushka',
+    name: 'Korobushka',
+    song: songs.korobushka,
+    photo: photos.korobushka,
   },
 };
 
