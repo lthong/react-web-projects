@@ -84,23 +84,21 @@ const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
           />
         </div>
       </div>
-      {isMenuOpen && (
-        <div className='navs'>
-          {navs.map(({ path, label, Icon }) => {
-            const active = location.pathname === path;
-            return (
-              <div
-                key={path}
-                className={clsx('item', { active })}
-                onClick={() => onNavClick(path)}
-              >
-                <Icon size={20} className='nav-icon' />
-                {label}
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <div className='navs'>
+        {navs.map(({ path, label, Icon }) => {
+          const active = location.pathname === path;
+          return (
+            <div
+              key={path}
+              className={clsx('item', { active })}
+              onClick={() => onNavClick(path)}
+            >
+              <Icon size={20} className='nav-icon' />
+              {label}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@
       margin-bottom: 15px;
       display: flex;
       border-radius: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid #aaa;
       height: 60px;
       transition: transform 0.5s;
       box-shadow: 0 2px 8px var(--primary-shadow-color);
@@ -50,7 +50,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    box-shadow: 0px 0 10px var(--primary-shadow-color);
+    border-top: 1px solid var(--primary-shadow-color);
     .music-control {
       padding: 10px;
       display: flex;

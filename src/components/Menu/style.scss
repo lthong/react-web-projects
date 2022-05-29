@@ -15,7 +15,7 @@
     padding: 0 20px;
     font-family: Verdana;
     z-index: 500;
-    box-shadow: 0 2px 5px var(--primary-shadow-color);
+    border-bottom: 1px solid var(--primary-shadow-color);
     .left-items,
     .right-items {
       display: flex;
@@ -72,14 +72,14 @@
   .navs {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100%;
     height: 100vh;
     overflow-y: auto;
     margin-top: $navBarHeight;
     background-color: var(--bg-color);
     padding: 20px 15px;
     z-index: 100;
-    box-shadow: 3px 0px 15px var(--primary-shadow-color);
+    transition: left 0.4s ease-in-out;
     .item {
       display: flex;
       cursor: pointer;
@@ -101,23 +101,37 @@
       }
     }
   }
+  &::before {
+    content: '';
+    position: fixed;
+    top: $navBarHeight;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.4s ease-in-out;
+  }
+  &.navs-open {
+    &::before {
+      width: 100%;
+    }
+    .navs {
+      left: 0;
+    }
+  }
 }
 
 @media only screen and (min-width: 400px) {
   .app {
     .menu {
-      .navs {
-        width: 260px;
-      }
-      &.navs-open::before {
-        content: '';
-        position: fixed;
-        top: $navBarHeight;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 99;
+      &.navs-open {
+        &::before {
+          z-index: 99;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+        .navs {
+          width: 260px;
+        }
       }
     }
   }
@@ -125,8 +139,10 @@
 @media only screen and (max-width: 400px) {
   .app {
     .menu {
-      .navs {
-        width: 100%;
+      &.navs-open {
+        .navs {
+          width: 100%;
+        }
       }
     }
   }
