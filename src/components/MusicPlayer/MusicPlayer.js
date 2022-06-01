@@ -3,13 +3,17 @@ import clsx from 'clsx';
 import { AiFillPlayCircle, AiOutlinePause } from 'react-icons/ai';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import assets from './assets';
+import { getTime } from './utils';
 
 const songs = Object.values(assets);
 
 const MusicPlayer = () => {
-  const audioRef = useRef(null);
   const [currentSong, setCurrentSong] = useState(null);
   const [isPause, setIsPause] = useState(true);
+  const [progressTime, setProgressTime] = useState('');
+  const [durationTime, setDurationTime] = useState('');
+  const [audioAtts, setAudioAtts] = useState({ currentTime: 0, duration: 0 });
+  const audioRef = useRef(new Audio(assets[currentSong]?.song));
 
   const onPreIconClick = useCallback(() => {
     setCurrentSong((preState) => {
@@ -49,6 +53,20 @@ const MusicPlayer = () => {
     }
   }, [currentSong]);
 
+  const onTimeUpdate = useCallback((e) => {
+    const { currentTime, duration } = e.target;
+    const newCurrentTime = getTime(currentTime);
+    const newDurationTime = getTime(duration);
+    setAudioAtts(e.target);
+    setProgressTime(newCurrentTime);
+    setDurationTime(newDurationTime);
+  }, []);
+
+  const onProgressChange = useCallback((e) => {
+    const value = e.target.value;
+    audioRef.current.currentTime = value;
+  }, []);
+
   return (
     <div className='music-player-block'>
       <div className='songs'>
@@ -78,6 +96,7 @@ const MusicPlayer = () => {
         ref={audioRef}
         src={assets[currentSong]?.song}
         onEnded={onNextIconClick}
+        onTimeUpdate={onTimeUpdate}
         controls
       />
       <div className='bottom-block'>
@@ -105,6 +124,20 @@ const MusicPlayer = () => {
             size={30}
             onClick={onNextIconClick}
           />
+        </div>
+        <div className='progress-bar'>
+          <div className='value'>{progressTime}</div>
+          <input
+            className={clsx('progress-time', { disabled: !currentSong })}
+            type='range'
+            value={audioAtts.currentTime}
+            step='1'
+            min='0'
+            max={`${audioAtts.duration}`}
+            onChange={onProgressChange}
+            disabled={!currentSong}
+          />
+          <div className='value'>{durationTime}</div>
         </div>
       </div>
     </div>
