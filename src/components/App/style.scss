@@ -39,7 +39,9 @@ body {
     background-color: var(--bg-color);
     color: var(--primary-color);
     > div {
-      padding: 15px 10px 120px;
+      padding-top: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
 }

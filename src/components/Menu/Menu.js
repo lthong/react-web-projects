@@ -7,6 +7,8 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 import routerPath from '@/libraries/routerPath';
 import { homepage } from '../../../package.json';
 
+const NAVS_ID = 'navs';
+
 const navs = [
   {
     path: routerPath.HOME,
@@ -43,19 +45,30 @@ const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
   );
 
   return (
-    <div className={clsx('menu', { 'navs-open': isMenuOpen })}>
+    <div
+      className={clsx('menu', { 'navs-open': isMenuOpen })}
+      onClick={(e) => {
+        if (isMenuOpen && e.target.id !== NAVS_ID) {
+          onMenuClick();
+        }
+      }}
+    >
       <div className='bar'>
         <div className='left-items'>
           <div
             className={clsx('menu-icon', { active: isMenuOpen })}
-            onClick={onMenuClick}
+            onClick={(e) => {
+              e.stopPropagation();
+              onMenuClick();
+            }}
           >
             <div className='mid'></div>
           </div>
         </div>
         <div
           className='title'
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             onNavClick(routerPath.HOME);
             setIsMenuOpen(false);
           }}
@@ -67,7 +80,8 @@ const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
             <FaSun
               className='tool-icon'
               size={25}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setIsDarkTheme(false);
               }}
             />
@@ -75,7 +89,8 @@ const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
             <FaMoon
               className='tool-icon'
               size={22}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setIsDarkTheme(true);
               }}
             />
@@ -89,14 +104,17 @@ const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
           />
         </div>
       </div>
-      <div className='navs'>
+      <div className='navs' id={NAVS_ID}>
         {navs.map(({ path, label, Icon }) => {
           const active = location.pathname === path;
           return (
             <div
               key={path}
               className={clsx('item', { active })}
-              onClick={() => onNavClick(path)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onNavClick(path);
+              }}
             >
               <Icon size={20} className='nav-icon' />
               {label}
