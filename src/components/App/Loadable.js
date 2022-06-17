@@ -17,3 +17,8 @@ export const MusicPlayer = Loadable({
     import(/* webpackChunkName: 'MusicPlayer' */ '@/components/MusicPlayer'),
   loading: Loading,
 });
+export const VedioBrowser = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'VedioBrowser' */ '@/components/VedioBrowser'),
+  loading: Loading,
+});

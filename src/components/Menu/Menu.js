@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
-import { AiOutlineGithub, AiFillHome } from 'react-icons/ai';
+import { AiOutlineGithub, AiFillHome, AiFillYoutube } from 'react-icons/ai';
 import { BsMusicNoteBeamed } from 'react-icons/bs';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import routerPath from '@/libraries/routerPath';
@@ -17,6 +17,11 @@ const navs = [
     path: routerPath.MUSIC_PLAYER,
     label: 'Music Player',
     Icon: BsMusicNoteBeamed,
+  },
+  {
+    path: routerPath.VEDIO_BROWSER,
+    label: 'Vedio Browser',
+    Icon: AiFillYoutube,
   },
 ];
 

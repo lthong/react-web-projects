@@ -8,6 +8,7 @@ import Menu from '@/components/Menu';
 const Comps = [
   { path: routerPath.HOME, Comp: Loadable.Home, exact: true },
   { path: routerPath.MUSIC_PLAYER, Comp: Loadable.MusicPlayer },
+  { path: routerPath.VEDIO_BROWSER, Comp: Loadable.VedioBrowser },
 ];
 
 const App = () => {
