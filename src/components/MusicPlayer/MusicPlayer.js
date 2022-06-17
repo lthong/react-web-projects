@@ -68,7 +68,7 @@ const MusicPlayer = () => {
   }, []);
 
   return (
-    <div className='music-player-block'>
+    <div className='music-player'>
       <div className='songs'>
         {songs.map((item) => {
           const { key, name, photo } = item;
