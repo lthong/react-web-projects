@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+require('dotenv').config();
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
 
@@ -83,6 +84,9 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
+      'process.env.YOUTUBE_AIP_KEY': JSON.stringify(
+        process.env.YOUTUBE_AIP_KEY
+      ),
     }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash:8].css',

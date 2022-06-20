@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+require('dotenv').config();
 
 const PUBLIC_PATH = '/';
 
@@ -82,6 +83,9 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
+      'process.env.YOUTUBE_AIP_KEY': JSON.stringify(
+        process.env.YOUTUBE_AIP_KEY
+      ),
     }),
   ],
   resolve: {
