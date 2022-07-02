@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import * as Loadable from '@/components/App/Loadable';
 import routerPath from '@/libraries/routerPath';
 import Menu from '@/components/Menu';
+import 'semantic-ui-css/semantic.min.css';
 
 const Comps = [
   { path: routerPath.HOME, Comp: Loadable.Home, exact: true },

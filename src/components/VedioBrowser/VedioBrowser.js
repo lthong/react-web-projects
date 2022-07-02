@@ -5,25 +5,33 @@ import Loader from '@/components/Loader';
 import youtubeAPI from './ajax';
 
 const VedioBrowser = () => {
-  const [loading, setLoading] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [vedioLoading, setVedioLoading] = useState(false);
   const [searchValue, setSearchValue] = useState('SPY x FAMILY');
   const [data, setData] = useState([]);
   const [currentVedio, setCurrentVedio] = useState(null);
 
   const onSearchValueChange = useCallback((e) => {
-    setSearchValue(String(e.target.value)?.trim());
+    const value = String(e.target.value)?.trim() || '';
+    setSearchValue(value);
   }, []);
 
   const submitDisabled = useMemo(
-    () => !searchValue || loading,
-    [searchValue, loading]
+    () => !searchValue || searchLoading,
+    [searchValue, searchLoading]
   );
 
   const onSubmit = useCallback(() => {
     if (!submitDisabled) {
-      setLoading(true);
+      setSearchLoading(true);
       youtubeAPI
-        .get('search', { params: { q: searchValue } })
+        .get('search', {
+          params: {
+            q: searchValue,
+            order: 'viewCount',
+            relevanceLanguage: 'zh-TW',
+          },
+        })
         .then((res) => {
           setData(res?.data);
         })
@@ -31,7 +39,7 @@ const VedioBrowser = () => {
           alert('API failed!');
         })
         .finally(() => {
-          setLoading(false);
+          setSearchLoading(false);
         });
     }
   }, [searchValue, submitDisabled]);
@@ -53,7 +61,7 @@ const VedioBrowser = () => {
           />
           <button
             className={clsx('ui icon button', {
-              loading,
+              searchLoading,
             })}
             onClick={onSubmit}
           >
@@ -62,7 +70,7 @@ const VedioBrowser = () => {
         </div>
       </div>
       <div className='vedio-items'>
-        {loading ? (
+        {searchLoading ? (
           <Loader />
         ) : (
           data?.items?.map((item, index) => (
@@ -71,6 +79,7 @@ const VedioBrowser = () => {
               key={`${item?.id?.videoId}-${index}`}
               onClick={() => {
                 setCurrentVedio(item);
+                setVedioLoading(true);
               }}
             >
               <img
@@ -92,10 +101,16 @@ const VedioBrowser = () => {
           }}
         >
           <div className='vedio-player' id='vedio-player'>
+            {vedioLoading && <Loader />}
             {currentVedio?.id?.videoId && (
               <ReactPlayer
                 width='100%'
+                height='100%'
+                style={{ display: vedioLoading ? 'none' : 'block' }}
                 url={`https://www.youtube.com/embed/${currentVedio?.id?.videoId}`}
+                onReady={() => {
+                  setVedioLoading(false);
+                }}
                 controls
               />
             )}
