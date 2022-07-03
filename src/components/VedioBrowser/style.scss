@@ -5,13 +5,33 @@
   justify-content: center;
   .search-bar {
     width: 80%;
+    .input {
+      .close.icon {
+        left: calc(100% - 85px);
+        cursor: pointer;
+        pointer-events: auto !important;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+    .quick-search {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      .keyword {
+        margin-right: 6px;
+        margin-bottom: 6px;
+      }
+    }
   }
   .vedio-items {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
     .item {
       margin: 10px;
       display: flex;

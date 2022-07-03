@@ -4,10 +4,20 @@ import ReactPlayer from 'react-player/youtube';
 import Loader from '@/components/Loader';
 import youtubeAPI from './ajax';
 
+const quickSearchKeywords = [
+  '流行音樂',
+  '美食介紹',
+  '綜藝節目',
+  '旅遊頻道',
+  '可愛寵物',
+  '居家健身',
+  'switch遊戲',
+];
+
 const VedioBrowser = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [vedioLoading, setVedioLoading] = useState(false);
-  const [searchValue, setSearchValue] = useState('SPY x FAMILY');
+  const [searchValue, setSearchValue] = useState('搖曳露營');
   const [data, setData] = useState([]);
   const [currentVedio, setCurrentVedio] = useState(null);
 
@@ -16,36 +26,61 @@ const VedioBrowser = () => {
     setSearchValue(value);
   }, []);
 
+  const onSearchValueKeyDown = useCallback(
+    (e) => {
+      const isEnter = e.keyCode === 13;
+      if (isEnter) {
+        onSubmit(searchValue);
+      }
+    },
+    [onSubmit, searchValue]
+  );
+
   const submitDisabled = useMemo(
     () => !searchValue || searchLoading,
     [searchValue, searchLoading]
   );
 
-  const onSubmit = useCallback(() => {
-    if (!submitDisabled) {
-      setSearchLoading(true);
-      youtubeAPI
-        .get('search', {
-          params: {
-            q: searchValue,
-            order: 'viewCount',
-            relevanceLanguage: 'zh-TW',
-          },
-        })
-        .then((res) => {
-          setData(res?.data);
-        })
-        .catch(() => {
-          alert('API failed!');
-        })
-        .finally(() => {
-          setSearchLoading(false);
-        });
-    }
-  }, [searchValue, submitDisabled]);
+  const onSubmit = useCallback(
+    (searchValue) => {
+      if (!submitDisabled) {
+        setSearchLoading(true);
+        youtubeAPI
+          .get('search', {
+            params: {
+              q: searchValue,
+              order: 'viewCount',
+              relevanceLanguage: 'zh-TW',
+            },
+          })
+          .then((res) => {
+            setData(res?.data);
+          })
+          .catch(() => {
+            alert('API failed!');
+          })
+          .finally(() => {
+            setSearchLoading(false);
+          });
+      }
+    },
+    [submitDisabled]
+  );
+
+  const onSearchValueDelete = useCallback(() => {
+    setSearchValue('');
+  }, []);
+
+  const onKeywordClick = useCallback(
+    (keyword) => {
+      setSearchValue(keyword);
+      onSubmit(keyword);
+    },
+    [onSubmit]
+  );
 
   useEffect(() => {
-    onSubmit();
+    onSubmit(searchValue);
   }, []);
 
   return (
@@ -58,15 +93,32 @@ const VedioBrowser = () => {
             placeholder='Search...'
             value={searchValue}
             onChange={onSearchValueChange}
+            onKeyDown={onSearchValueKeyDown}
           />
+          <i className='close icon' onClick={onSearchValueDelete} />
           <button
             className={clsx('ui icon button', {
               searchLoading,
             })}
-            onClick={onSubmit}
+            onClick={() => {
+              onSubmit(searchValue);
+            }}
           >
             搜尋
           </button>
+        </div>
+        <div className='quick-search'>
+          {quickSearchKeywords.map((keyword) => (
+            <button
+              key={keyword}
+              className='keyword ui grey tiny button'
+              onClick={() => {
+                onKeywordClick(keyword);
+              }}
+            >
+              {keyword}
+            </button>
+          ))}
         </div>
       </div>
       <div className='vedio-items'>
