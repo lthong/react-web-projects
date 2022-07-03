@@ -95,7 +95,10 @@ const VedioBrowser = () => {
             onChange={onSearchValueChange}
             onKeyDown={onSearchValueKeyDown}
           />
-          <i className='close icon' onClick={onSearchValueDelete} />
+          <i
+            className='times circle outline icon closed'
+            onClick={onSearchValueDelete}
+          />
           <button
             className={clsx('ui icon button', {
               searchLoading,
@@ -153,6 +156,12 @@ const VedioBrowser = () => {
           }}
         >
           <div className='vedio-player' id='vedio-player'>
+            <i
+              className='times circle icon closed'
+              onClick={() => {
+                setCurrentVedio(null);
+              }}
+            />
             {vedioLoading && <Loader />}
             {currentVedio?.id?.videoId && (
               <ReactPlayer
