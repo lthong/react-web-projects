@@ -7,16 +7,18 @@
     width: 80%;
     .input {
       .closed.icon {
-        left: calc(100% - 85px);
+        left: calc(100% - 95px);
         cursor: pointer;
         pointer-events: auto !important;
+        font-size: 18px;
         &:hover {
           opacity: 0.8;
         }
       }
     }
     .quick-search {
-      width: 110%;
+      width: 100%;
+      min-width: 280px;
       display: flex;
       flex-wrap: wrap;
       margin-top: 10px;
