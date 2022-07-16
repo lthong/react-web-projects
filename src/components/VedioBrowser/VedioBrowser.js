@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import ReactPlayer from 'react-player/youtube';
 import Loader from '@/components/Loader';
@@ -15,72 +15,113 @@ const quickSearchKeywords = [
 ];
 
 const VedioBrowser = () => {
+  const timerRef = useRef(null);
+  const moreDataObserverRef = useRef(null);
   const [searchLoading, setSearchLoading] = useState(false);
   const [vedioLoading, setVedioLoading] = useState(false);
+  const [isAPIFailed, setIsAPIFailed] = useState(false);
   const [searchValue, setSearchValue] = useState('搖曳露營');
+  const [dataSearchValue, setDataSearchValue] = useState(searchValue);
   const [data, setData] = useState([]);
+  const [nextPageToken, setNextPageToken] = useState(null);
   const [currentVedio, setCurrentVedio] = useState(null);
 
   const onSearchValueChange = useCallback((e) => {
-    const value = String(e.target.value)?.trim() || '';
-    setSearchValue(value);
+    setSearchValue(e.target.value);
   }, []);
 
-  const onSearchValueKeyDown = useCallback(
-    (e) => {
-      const isEnter = e.keyCode === 13;
-      if (isEnter) {
-        onSubmit(searchValue);
-      }
-    },
-    [onSubmit, searchValue]
-  );
-
-  const submitDisabled = useMemo(
-    () => !searchValue || searchLoading,
-    [searchValue, searchLoading]
-  );
-
   const onSubmit = useCallback(
-    (searchValue) => {
-      if (!submitDisabled) {
+    (query = {}) => {
+      const newDataSearchValue = String(query?.q || '').trim();
+      if (!searchLoading && !!newDataSearchValue) {
         setSearchLoading(true);
+        setDataSearchValue(newDataSearchValue);
         youtubeAPI
           .get('search', {
             params: {
-              q: searchValue,
               order: 'viewCount',
               relevanceLanguage: 'zh-TW',
+              ...query,
             },
           })
           .then((res) => {
-            setData(res?.data);
+            const newData = res?.data?.items || [];
+            if (query?.pageToken) {
+              setData((preData) => [...preData, ...newData]);
+            } else {
+              setData(newData);
+            }
+            setNextPageToken(res?.data?.nextPageToken);
+            setIsAPIFailed(false);
           })
-          .catch(() => {
-            alert('API failed!');
+          .catch((err) => {
+            const errMsg = err.response?.data?.error?.message;
+            alert(`API failed!\n${errMsg}`);
+            setIsAPIFailed(true);
           })
           .finally(() => {
             setSearchLoading(false);
           });
       }
     },
-    [submitDisabled]
+    [searchLoading]
   );
 
   const onSearchValueDelete = useCallback(() => {
-    setSearchValue('');
-  }, []);
+    if (!searchLoading) {
+      setSearchValue('');
+    }
+  }, [searchLoading]);
+
+  const onSearchValueKeyDown = useCallback(
+    (e) => {
+      const isEnter = e.keyCode === 13;
+      if (isEnter) {
+        onSubmit({ q: searchValue });
+      }
+    },
+    [onSubmit, searchValue]
+  );
 
   const onKeywordClick = useCallback(
     (keyword) => {
       setSearchValue(keyword);
-      onSubmit(keyword);
+      onSubmit({ q: keyword });
     },
     [onSubmit]
   );
 
+  const getVedioRef = useCallback(
+    (node) => {
+      if (node) {
+        const isLastVedio =
+          node.getAttribute('data-vedio-index') === String(data.length - 1);
+        if (isLastVedio) {
+          moreDataObserverRef.current?.disconnect();
+          moreDataObserverRef.current = new IntersectionObserver(
+            (entry) => {
+              if (entry[0].isIntersecting && !isAPIFailed) {
+                timerRef.current = setTimeout(() => {
+                  onSubmit({ q: dataSearchValue, pageToken: nextPageToken });
+                }, 600);
+              }
+            },
+            { threshold: 1, rootMargin: '0px 0px -70px 0px' }
+          );
+          moreDataObserverRef.current?.observe(node);
+        }
+      }
+
+      return null;
+    },
+    [data, onSubmit, dataSearchValue, nextPageToken, isAPIFailed]
+  );
+
   useEffect(() => {
-    onSubmit(searchValue);
+    onSubmit({ q: searchValue });
+    return () => {
+      clearTimeout(timerRef.current);
+    };
   }, []);
 
   return (
@@ -101,10 +142,11 @@ const VedioBrowser = () => {
           />
           <button
             className={clsx('ui icon button', {
-              searchLoading,
+              loading: searchLoading,
+              disabled: searchLoading,
             })}
             onClick={() => {
-              onSubmit(searchValue);
+              onSubmit({ q: searchValue });
             }}
           >
             搜尋
@@ -125,27 +167,27 @@ const VedioBrowser = () => {
         </div>
       </div>
       <div className='vedio-items'>
-        {searchLoading ? (
-          <Loader />
-        ) : (
-          data?.items?.map((item, index) => (
-            <div
-              className='item'
-              key={`${item?.id?.videoId}-${index}`}
-              onClick={() => {
-                setCurrentVedio(item);
-                setVedioLoading(true);
-              }}
-            >
-              <img
-                src={item?.snippet?.thumbnails?.medium?.url}
-                alt={item?.snippet?.title}
-              />
-              <div className='title'>{item?.snippet?.title}</div>
-            </div>
-          ))
-        )}
+        {data?.map((item, index) => (
+          <div
+            ref={getVedioRef}
+            data-vedio-index={index}
+            className='item'
+            key={`vedio-${index}`}
+            onClick={() => {
+              setCurrentVedio(item);
+              setVedioLoading(true);
+            }}
+          >
+            <img
+              src={item?.snippet?.thumbnails?.medium?.url}
+              alt={item?.snippet?.title}
+            />
+            <div className='title'>{item?.snippet?.title}</div>
+            <div className='tooltip'>{item?.snippet?.title}</div>
+          </div>
+        ))}
       </div>
+      <Loader />
       {currentVedio && (
         <div
           className='vedio-modal'

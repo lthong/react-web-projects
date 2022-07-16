@@ -46,7 +46,6 @@
       min-width: 230px;
       cursor: pointer;
       &:hover {
-        opacity: 0.8;
         > .tooltip {
           visibility: visible;
         }
@@ -69,14 +68,18 @@
         visibility: hidden;
         position: absolute;
         font-size: 14px;
-        color: var(--bg-color);
-        background-color: var(--primary-color);
-        text-align: center;
-        border-radius: 6px;
-        padding: 6px;
+        background-color: #8a8a8a;
+        color: white;
+        border-radius: 0 0 5px 5px;
+        padding: 6px 10px;
         z-index: 10;
-        bottom: -3%;
+        bottom: 0;
         width: 100%;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: justify;
       }
     }
   }
