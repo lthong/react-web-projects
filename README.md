@@ -12,11 +12,11 @@ This project is a web demo with some React applications.
 #### 🎸 Musci Player 音樂播放器
   * Features
     - 選曲播放
-      - 暫停播放
-      - 上下首換曲
-      - 自動換曲
-      - 曲目時間顯示
-      - 音軌拖拉播放
+    - 暫停播放
+    - 上下首換曲
+    - 自動換曲
+    - 曲目時間顯示
+    - 音軌拖拉播放
   * Resource
       - [React Hooks](https://zh-hant.reactjs.org/docs/hooks-intro.html)
       - [Html Audio](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
