@@ -16,6 +16,7 @@ const quickSearchKeywords = [
 
 const VedioBrowser = () => {
   const timerRef = useRef(null);
+  const searchRef = useRef(null);
   const moreDataObserverRef = useRef(null);
   const [searchLoading, setSearchLoading] = useState(false);
   const [vedioLoading, setVedioLoading] = useState(false);
@@ -70,6 +71,7 @@ const VedioBrowser = () => {
   const onSearchValueDelete = useCallback(() => {
     if (!searchLoading) {
       setSearchValue('');
+      searchRef.current.focus();
     }
   }, [searchLoading]);
 
@@ -130,11 +132,13 @@ const VedioBrowser = () => {
         <div className='ui action input left icon fluid'>
           <i className='search icon' />
           <input
+            ref={searchRef}
             type='text'
             placeholder='Search...'
             value={searchValue}
             onChange={onSearchValueChange}
             onKeyDown={onSearchValueKeyDown}
+            autoFocus
           />
           <i
             className='times circle outline icon closed'
