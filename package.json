@@ -63,7 +63,8 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.config",
     "build": "webpack --config webpack.prod.config",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "deployGH": "yarn build && yarn deploy"
   },
   "browserslist": {
     "production": [
