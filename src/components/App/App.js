@@ -10,6 +10,7 @@ const Comps = [
   { path: routerPath.HOME, Comp: Loadable.Home, exact: true },
   { path: routerPath.MUSIC_PLAYER, Comp: Loadable.MusicPlayer },
   { path: routerPath.VEDIO_BROWSER, Comp: Loadable.VedioBrowser },
+  { path: routerPath.IG_FILTER, Comp: Loadable.IGFilter },
 ];
 
 const App = () => {

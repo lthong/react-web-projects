@@ -24,3 +24,8 @@ export const VedioBrowser = Loadable({
     import(/* webpackChunkName: 'VedioBrowser' */ '@/components/VedioBrowser'),
   loading: Loading,
 });
+export const IGFilter = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'IGFilter' */ '@/components/IGFilter'),
+  loading: Loading,
+});

@@ -1,0 +1,63 @@
+@import './ig.css';
+
+.ig-filter {
+  padding: 10px;
+  > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .photo-block {
+    min-width: 80%;
+    .main-photo {
+      max-width: 450px;
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+      border: 5px solid white;
+      box-shadow: 3px 3px 10px rgba(120, 120, 120, 0.8);
+    }
+  }
+  .filter-block {
+    padding: 0 20px;
+    .item {
+      width: 100%;
+      position: relative;
+      &:hover {
+        opacity: 0.8;
+      }
+      figure {
+        width: 100%;
+        cursor: pointer;
+        img {
+          width: 100%;
+        }
+      }
+      .name {
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        color: white;
+        padding: 5px;
+        background-color: rgba(20, 20, 20, 0.8);
+        font-size: 1.3em;
+        border-radius: 6px;
+      }
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: var(--secondary-color);
+      cursor: pointer;
+    }
+  }
+  .action-block {
+    margin-bottom: 10px;
+    .tool-icon {
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

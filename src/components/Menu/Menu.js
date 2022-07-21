@@ -2,8 +2,9 @@ import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AiOutlineGithub, AiFillHome, AiFillYoutube } from 'react-icons/ai';
-import { BsMusicNoteBeamed } from 'react-icons/bs';
+import { BsMusicNoteBeamed, BsFillCameraFill } from 'react-icons/bs';
 import { FaSun, FaMoon } from 'react-icons/fa';
+// import { SiNintendo3Ds } from 'react-icons/si';
 import routerPath from '@/libraries/routerPath';
 import { homepage } from '../../../package.json';
 
@@ -24,6 +25,11 @@ const navs = [
     path: routerPath.VEDIO_BROWSER,
     label: 'Vedio Browser',
     Icon: AiFillYoutube,
+  },
+  {
+    path: routerPath.IG_FILTER,
+    label: 'IG Filter',
+    Icon: BsFillCameraFill,
   },
 ];
 
