@@ -1,14 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-import { bg1 } from './assets';
+import { bg1, bg2 } from './assets';
 import { filterEnums, filterNames } from './enums';
-import { FiDownload } from 'react-icons/fi';
+import { FiDownload, FiUpload } from 'react-icons/fi';
 import 'swiper/swiper-bundle.min.css';
-const slidesPerView = window.innerWidth < 500 ? 2 : 4;
+import clsx from 'clsx';
+const slidesPerView = window.innerWidth < 500 ? 2 : 6;
 
 const IGFilter = () => {
   const [currentFilter, setCurrentFilter] = useState('normal');
+  const [currentPhoto, setCurrentPhoto] = useState(bg1);
 
   const onDownload = useCallback(() => {
     const link = document.createElement('a');
@@ -27,12 +29,59 @@ const IGFilter = () => {
     link.click();
   }, []);
 
+  const onUpload = useCallback((e) => {
+    const file = e.target.files[0];
+    const isTypeValid = ['png', 'jpeg'].includes(file.type?.split('/')[1]);
+    if (isTypeValid) {
+      // https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL
+      const imgSrc = URL.createObjectURL(file);
+      setCurrentPhoto(imgSrc);
+    } else {
+      alert('File type error! It accepts the type of .png and .jpeg');
+    }
+  }, []);
+
   return (
     <div className='ig-filter'>
       <div className='photo-block'>
-        <figure className={filterEnums[currentFilter]} id='filter-style'>
-          <img className='main-photo' id='main-photo' src={bg1} alt='bg1' />
+        <figure
+          className={`main-photo ${filterEnums[currentFilter]}`}
+          id='filter-style'
+        >
+          <img id='main-photo' src={currentPhoto} alt='main-photo' />
         </figure>
+        <div className='photo-select'>
+          <div>
+            <img
+              src={bg1}
+              alt='bg1'
+              onClick={() => {
+                setCurrentPhoto(bg1);
+              }}
+            />
+          </div>
+          <div>
+            <img
+              src={bg2}
+              alt='bg2'
+              onClick={() => {
+                setCurrentPhoto(bg2);
+              }}
+            />
+          </div>
+          <div className='upload'>
+            <label htmlFor='file-upload' className='upload-btn'>
+              <FiUpload className='upload-icon' size={30} accept='image/*' />
+              <span>Upload</span>
+            </label>
+            <input
+              id='file-upload'
+              type='file'
+              className='file-input'
+              onChange={onUpload}
+            />
+          </div>
+        </div>
       </div>
       <div className='filter-block'>
         <Swiper
@@ -49,18 +98,29 @@ const IGFilter = () => {
                 setCurrentFilter(filterName);
               }}
             >
-              <div className='item'>
+              <div
+                className={clsx('item', {
+                  active: filterName === currentFilter,
+                })}
+              >
                 <figure className={filterEnums[filterName]}>
-                  <img src={bg1} alt='bg1' />
+                  <img src={currentPhoto} alt={filterName} />
+                  <figcaption className='name'>{filterName}</figcaption>
                 </figure>
-                <div className='name'>{filterName}</div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
       <div className='action-block'>
-        <FiDownload className='tool-icon' size={30} onClick={onDownload} />
+        <div className='download-btn'>
+          <FiDownload
+            className='download-icon'
+            size={30}
+            onClick={onDownload}
+          />
+          <span>Download</span>
+        </div>
       </div>
     </div>
   );
