@@ -6,7 +6,7 @@ import { filterEnums, filterNames } from './enums';
 import { FiDownload, FiUpload } from 'react-icons/fi';
 import 'swiper/swiper-bundle.min.css';
 import clsx from 'clsx';
-const slidesPerView = window.innerWidth < 500 ? 2 : 6;
+const slidesPerView = window.innerWidth < 530 ? 2 : 6;
 
 const IGFilter = () => {
   const [currentFilter, setCurrentFilter] = useState('normal');
