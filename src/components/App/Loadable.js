@@ -29,3 +29,8 @@ export const IGFilter = Loadable({
     import(/* webpackChunkName: 'IGFilter' */ '@/components/IGFilter'),
   loading: Loading,
 });
+export const SnakeGame = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'SnakeGame' */ '@/components/SnakeGame'),
+  loading: Loading,
+});
