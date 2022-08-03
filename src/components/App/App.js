@@ -11,6 +11,7 @@ const Comps = [
   { path: routerPath.MUSIC_PLAYER, Comp: Loadable.MusicPlayer },
   { path: routerPath.VEDIO_BROWSER, Comp: Loadable.VedioBrowser },
   { path: routerPath.IG_FILTER, Comp: Loadable.IGFilter },
+  { path: routerPath.SNAKE_GAME, Comp: Loadable.SnakeGame },
 ];
 
 const App = () => {
