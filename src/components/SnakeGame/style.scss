@@ -1,0 +1,26 @@
+.snake-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  position: relative;
+  .map-block {
+    margin-bottom: 20px;
+  }
+  .info-block {
+    position: absolute;
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Press Start 2P';
+    top: 150px;
+  }
+  @media screen {
+  }
+  .btns {
+    display: flex;
+    justify-content: center;
+    button {
+      margin: 0 5px;
+    }
+  }
+}
