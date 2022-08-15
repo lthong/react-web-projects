@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import useInterval from '@/hooks/useInterval';
 
 const canvasSize = window.innerWidth < 530 ? 320 : 400;
 const sankeSize = 20;
@@ -11,6 +12,7 @@ const directionEnums = {
   ArrowLeft: { x: -sankeSize, y: 0 },
   ArrowRight: { x: +sankeSize, y: 0 },
 };
+const initSnakeDirection = 'ArrowUp';
 const directionKeys = Object.keys(directionEnums);
 const gameStatusEnums = {
   INIT: 'INIT',
@@ -19,14 +21,13 @@ const gameStatusEnums = {
   END: 'END',
 };
 
-let preTimestamp = null;
-
 const SnakeGame = () => {
   const canvasRef = useRef(null);
   const intervalRef = useRef(null);
-  const [snake, setSnake] = useState(initSnake);
+  const snake = useRef(initSnake);
+  const snakeDirection = useRef(initSnakeDirection);
+
   const [snakeLength, setSnakeLength] = useState(initSnakeLength);
-  const [snakeDirection, setSnakeDirection] = useState(directionEnums.ArrowUp);
   const [score, setScore] = useState(initScore);
   const [gameStatus, setGameStatus] = useState(gameStatusEnums.INIT);
 
@@ -37,53 +38,48 @@ const SnakeGame = () => {
     ctx.fillRect(0, 0, canvasEl.width, canvasEl.height);
   }, []);
 
-  const drawSnake = useCallback((newSnake) => {
+  const drawSnake = useCallback(() => {
     const canvasEl = canvasRef.current;
     const ctx = canvasEl.getContext('2d');
     ctx.fillStyle = 'lime';
-    newSnake.forEach(({ x, y }) => {
+    snake.current.forEach(({ x, y }) => {
       ctx.fillRect(x, y, sankeSize, sankeSize);
     });
   }, []);
 
-  const checkCollide = useCallback((newSnake) => {
-    const isHitTheWall = Object.values(newSnake[0] || {}).some(
+  const checkCollide = useCallback(() => {
+    const isHitTheWall = Object.values(snake.current[0] || {}).some(
       (item) => item <= 10 || item >= canvasSize - 10
     );
 
     if (isHitTheWall) {
       setGameStatus(gameStatusEnums.END);
-      clearInterval(intervalRef.current);
     }
   }, []);
 
-  const getNewSnake = useCallback(
-    (preSanke) => {
-      const firstBlock = {
-        x: preSanke[0].x + snakeDirection.x,
-        y: preSanke[0].y + snakeDirection.y,
-      };
-      const restBlock = preSanke.filter(
-        (_, index) => index !== preSanke.length - 1
-      );
-      return [firstBlock, ...restBlock];
-    },
-    [snakeDirection]
-  );
+  const setSnake = useCallback(() => {
+    const preSnake = snake.current || [];
+    const firstBlock = {
+      x: preSnake[0].x + directionEnums[snakeDirection.current].x,
+      y: preSnake[0].y + directionEnums[snakeDirection.current].y,
+    };
+    const restBlock = preSnake.filter(
+      (_, index) => index !== preSnake.length - 1
+    );
+    snake.current = [firstBlock, ...restBlock];
+  }, []);
 
   const refreshCanvas = useCallback(() => {
-    setSnake((preSnake) => {
-      const newSnake = getNewSnake(preSnake);
-      drawSnake(newSnake);
-      checkCollide(newSnake);
-      return newSnake;
-    });
-  }, [getNewSnake, drawSnake, checkCollide]);
+    resetCanvas();
+    setSnake();
+    drawSnake();
+    checkCollide();
+  }, [resetCanvas, setSnake, drawSnake, checkCollide]);
 
-  const resetInterval = useCallback(() => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(refreshCanvas, 200);
-  }, [refreshCanvas]);
+  useInterval({
+    update: refreshCanvas,
+    isStartInterval: gameStatus === gameStatusEnums.START,
+  });
 
   const onKeyDown = useCallback(
     (e) => {
@@ -92,11 +88,10 @@ const SnakeGame = () => {
         directionKeys.includes(keyName) &&
         gameStatus === gameStatusEnums.START
       ) {
-        setSnakeDirection(directionEnums[keyName]);
-        resetInterval();
+        snakeDirection.current = keyName;
       }
     },
-    [resetInterval, gameStatus]
+    [gameStatus]
   );
 
   useEffect(() => {
@@ -108,29 +103,23 @@ const SnakeGame = () => {
 
   const onGameStart = useCallback(() => {
     setGameStatus(gameStatusEnums.START);
-    resetInterval();
-  }, [resetInterval]);
+  }, []);
 
   const onGamePause = useCallback(() => {
     setGameStatus(gameStatusEnums.PAUSE);
-    clearInterval(intervalRef.current);
   }, []);
 
   const onGameReset = useCallback(() => {
     setGameStatus(gameStatusEnums.INIT);
-    clearInterval(intervalRef.current);
     resetCanvas();
-    setSnake(initSnake);
+    snake.current = initSnake;
+    snakeDirection.current = initSnakeDirection;
     setSnakeLength(initSnakeLength);
-    setSnakeDirection(directionEnums.ArrowUp);
     setScore(initScore);
   }, [resetCanvas]);
 
   useEffect(() => {
     resetCanvas();
-    return () => {
-      clearInterval(intervalRef.current);
-    };
   }, []);
 
   return (
