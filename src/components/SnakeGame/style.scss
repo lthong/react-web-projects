@@ -4,8 +4,14 @@
   align-items: center;
   padding: 20px 10px;
   position: relative;
+  .score {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
   .map-block {
     margin-bottom: 20px;
+    display: flex;
   }
   .info-block {
     position: absolute;
@@ -13,8 +19,6 @@
     font-weight: 600;
     font-family: 'Press Start 2P';
     top: 150px;
-  }
-  @media screen {
   }
   .btns {
     display: flex;
