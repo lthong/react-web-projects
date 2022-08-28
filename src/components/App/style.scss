@@ -42,4 +42,7 @@ body {
     background-color: var(--bg-color);
     color: var(--primary-color);
   }
+  &.path-snake-game {
+    overflow-y: hidden;
+  }
 }
