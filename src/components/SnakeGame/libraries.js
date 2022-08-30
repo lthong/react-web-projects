@@ -1,5 +1,5 @@
 // 畫布長寬
-export const canvasSize = window.innerWidth < 530 ? 320 : 400;
+export const canvasSize = window.innerWidth < 530 ? 300 : 360;
 
 // 畫布元件長寬
 export const boxSize = 19;
@@ -7,6 +7,12 @@ export const boxSize = 19;
 // 蛇長寬＋含邊界
 const sankeBoxSize = boxSize + 1;
 
+// 地圖邊界
+const mapLimit = canvasSize - sankeBoxSize;
+
+export const getIsHitTheWall = ({ x, y }) => {
+  return x <= 0 || y <= 0 || x >= mapLimit || y >= mapLimit;
+};
 // 分數初始值
 export const initScore = 0;
 
@@ -40,7 +46,7 @@ export const initSnake = Array(3)
     const direction = directionEnums[initSnakeDirection];
     return {
       x: initSnakePosition + direction.x * i,
-      y: initSnakePosition + direction.y * i,
+      y: initSnakePosition - direction.y * i,
     };
   });
 
@@ -51,9 +57,11 @@ const getRandomPosition = () =>
 // 蘋果產生器
 export const getNewApple = (snake) => {
   const apple = { x: getRandomPosition(), y: getRandomPosition() };
-  const isColide = snake.some(({ x, y }) => x === apple.x && y === apple.y);
+  const isOnTheEdge = [apple.x, apple.y].some((v) => [0, mapLimit].includes(v));
+  const isColide =
+    isOnTheEdge || snake?.some(({ x, y }) => x === apple.x && y === apple.y);
   if (isColide) {
-    getNewApple();
+    return getNewApple(snake);
   } else {
     return apple;
   }
