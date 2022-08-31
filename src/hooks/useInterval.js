@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const useInterval = ({ update = () => {}, delay = 200, isStartInterval }) => {
+const useInterval = ({ update = () => {}, delay = 100, isStartInterval }) => {
   const intervalCb = useRef(update);
   const intervalId = useRef();
 
