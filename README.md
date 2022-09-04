@@ -15,11 +15,13 @@ This project is a web demo of some React applications. Every page support the vi
     - Musci Player
     - Vedio Browser
     - IG Filter
+    - Snake Game
   * Resource
     - React Hooks
     - React Router
     - Webpack
     - Axios
+    - Canvas
     - Scss
 
 ---
@@ -58,3 +60,18 @@ This project is a web demo of some React applications. Every page support the vi
       - [Window.getComputedStyle()](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/getComputedStyle)
       - [CanvasRenderingContext2D.filter](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
       - [URL.createObjectURL](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL)
+---
+#### 📷 Snake Game 貪食蛇
+  * Features
+      - 邊界碰撞偵測
+      - 蛇身碰撞偵測
+      - 蘋果碰撞偵測
+      - 蘋果隨機產生
+      - 遊戲狀態控制
+      - 鍵盤操作
+      - 分數計算
+  * Resource
+      - [useInterval](https://www.30secondsofcode.org/articles/s/react-use-interval-explained)
+      - [useEffect update point](https://zh-hant.reactjs.org/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)
+      - [Canvas](https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial)
+      <!-- - [requestAnimationFrame](https://developer.mozilla.org/zh-TW/docs/Web/API/window/requestAnimationFrame) -->
