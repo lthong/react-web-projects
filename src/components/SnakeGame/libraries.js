@@ -11,7 +11,7 @@ const sankeBoxSize = boxSize + 1;
 const mapLimit = canvasSize - sankeBoxSize;
 
 export const getIsHitTheWall = ({ x, y }) => {
-  return x <= 0 || y <= 0 || x >= mapLimit || y >= mapLimit;
+  return x < 0 || y < 0 || x > mapLimit || y > mapLimit;
 };
 // 分數初始值
 export const initScore = 0;
