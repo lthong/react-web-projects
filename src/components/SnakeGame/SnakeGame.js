@@ -24,6 +24,7 @@ import {
   AiOutlineArrowRight,
   AiOutlineArrowUp,
 } from 'react-icons/ai';
+import { ImArrowDown } from 'react-icons/im';
 
 const SnakeGame = () => {
   const canvasRef = useRef(null);
@@ -188,6 +189,9 @@ const SnakeGame = () => {
     <div className='snake-game'>
       <div className='map-block'>
         <div className='top-info'>
+          {gameStatus === gameStatusEnums.START && (
+            <div>鍵盤方向鍵控制移動</div>
+          )}
           <div className='score'>Score {score}</div>
         </div>
         <canvas ref={canvasRef} width={canvasSize} height={canvasSize} />
@@ -198,7 +202,7 @@ const SnakeGame = () => {
                 Pause
               </button>
             ) : (
-              <button className='ui green button' onClick={onGameStart}>
+              <button className='ui green button start' onClick={onGameStart}>
                 Start
               </button>
             ))}
@@ -224,7 +228,11 @@ const SnakeGame = () => {
         </div>
       </div>
       {gameStatus === gameStatusEnums.INIT && (
-        <div className='status-info'>Press Start</div>
+        <div className='status-info init'>
+          <ImArrowDown className='icon' />
+          Press Start
+          <ImArrowDown className='icon' />
+        </div>
       )}
       {gameStatus === gameStatusEnums.END && (
         <div className='status-info'>Game Over</div>
