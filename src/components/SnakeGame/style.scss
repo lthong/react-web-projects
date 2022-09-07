@@ -29,6 +29,9 @@
         width: 80px;
         margin: 0 7px;
       }
+      .start {
+        animation: start-btn-anima 0.7s infinite ease-in-out;
+      }
     }
     .direction-btns {
       position: absolute;
@@ -57,9 +60,42 @@
   }
   .status-info {
     position: absolute;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 600;
     top: 150px;
     color: white;
+    &.init {
+      animation: init-status-info-anima 0.7s infinite ease-in-out;
+      display: flex;
+      align-items: center;
+      .icon {
+        font-size: 18px;
+        margin: 0 7px;
+      }
+    }
+  }
+}
+
+@keyframes init-status-info-anima {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes start-btn-anima {
+  0% {
+    box-shadow: 1px 1px 5px rgb(248 177 44);
+  }
+  50% {
+    box-shadow: 1px 1px 20px rgb(248 177 44);
+  }
+  100% {
+    box-shadow: 1px 1px 5px rgb(248 177 44);
   }
 }
