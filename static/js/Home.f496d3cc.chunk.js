@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{103:function(n,e,o){"use strict";o.r(e);var c=o(1),t=o.n(c),a=function(){return t.a.createElement("div",{className:"home-block"},"Home")};o(94),e.default=a},94:function(n,e,o){}}]);
