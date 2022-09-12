@@ -42,17 +42,17 @@
         position: absolute;
         width: 35px;
         &.down {
-          left: 75px;
+          left: 95px;
           top: 0;
         }
         &.left {
-          left: 35px;
+          left: 55px;
         }
         &.right {
-          left: 115px;
+          left: 135px;
         }
         &.up {
-          left: 75px;
+          left: 95px;
           top: -40px;
         }
       }
@@ -60,7 +60,7 @@
   }
   .status-info {
     position: absolute;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     top: 150px;
     color: white;
