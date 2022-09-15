@@ -1,2 +1,26 @@
 .home-block {
+  padding: 20px 0;
+  .column {
+    display: flex !important;
+    justify-content: center;
+    .card {
+      .content {
+        .header {
+          display: flex !important;
+          align-items: center;
+          .label {
+            margin-left: 5px;
+          }
+        }
+      }
+      &.small-size {
+        height: 200px;
+        img {
+          overflow-y: hidden;
+          object-fit: cover;
+          object-position: 0 0;
+        }
+      }
+    }
+  }
 }
