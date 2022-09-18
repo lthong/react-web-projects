@@ -1,5 +1,7 @@
+import { isMobile } from '@/libraries/variable';
+
 // 畫布長寬
-export const canvasSize = window.innerWidth < 530 ? 300 : 360;
+export const canvasSize = isMobile ? 280 : 360;
 
 // 畫布元件長寬
 export const boxSize = 19;
