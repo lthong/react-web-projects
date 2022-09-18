@@ -1,42 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
-import { AiOutlineGithub, AiFillHome, AiFillYoutube } from 'react-icons/ai';
-import { BsMusicNoteBeamed, BsFillCameraFill } from 'react-icons/bs';
+import { AiOutlineGithub } from 'react-icons/ai';
 import { FaSun, FaMoon } from 'react-icons/fa';
-import { GiSnakeSpiral } from 'react-icons/gi';
-import routerPath from '@/libraries/routerPath';
+import pages, { navs } from '@/libraries/routerPath';
 import { homepage } from '../../../package.json';
 
 const NAVS_ID = 'navs';
-
-const navs = [
-  {
-    path: routerPath.HOME,
-    label: 'Home',
-    Icon: AiFillHome,
-  },
-  {
-    path: routerPath.MUSIC_PLAYER,
-    label: 'Music Player',
-    Icon: BsMusicNoteBeamed,
-  },
-  {
-    path: routerPath.VEDIO_BROWSER,
-    label: 'Vedio Browser',
-    Icon: AiFillYoutube,
-  },
-  {
-    path: routerPath.IG_FILTER,
-    label: 'IG Filter',
-    Icon: BsFillCameraFill,
-  },
-  {
-    path: routerPath.SNAKE_GAME,
-    label: 'Snake Game',
-    Icon: GiSnakeSpiral,
-  },
-];
 
 const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
   const history = useHistory();
@@ -80,7 +50,7 @@ const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
           className='title'
           onClick={(e) => {
             e.stopPropagation();
-            onNavClick(routerPath.HOME);
+            onNavClick(pages.HOME);
             setIsMenuOpen(false);
           }}
         >
