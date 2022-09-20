@@ -1,0 +1,57 @@
+.jigsaw-game {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .change-bg-icon {
+    font-size: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .main-block {
+    display: flex;
+    .jigsaw-block {
+      margin: 0 10px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 400px;
+      .box {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        overflow: hidden;
+        .piece,
+        .target {
+          width: 200px;
+          height: 200px;
+          background-size: 400px;
+          cursor: pointer;
+        }
+        .piece {
+          &:hover {
+            opacity: 0.8;
+          }
+          &.order-1 {
+            background-position: left top;
+          }
+          &.order-2 {
+            background-position: right top;
+          }
+          &.order-3 {
+            background-position: left bottom;
+          }
+          &.order-4 {
+            background-position: right bottom;
+          }
+        }
+      }
+      .target {
+        background-color: papayawhip;
+      }
+    }
+  }
+}
