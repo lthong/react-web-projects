@@ -1,6 +1,6 @@
 import { AiFillHome, AiFillYoutube } from 'react-icons/ai';
 import { BsMusicNoteBeamed, BsFillCameraFill } from 'react-icons/bs';
-import { GiSnakeSpiral } from 'react-icons/gi';
+import { GiSnakeSpiral, GiJigsawPiece } from 'react-icons/gi';
 
 const pages = {
   HOME: '/',
@@ -8,6 +8,7 @@ const pages = {
   VEDIO_BROWSER: '/vedio-browser',
   IG_FILTER: '/ig-filter',
   SNAKE_GAME: '/snake-game',
+  JIGSAW_GAME: '/jigsaw-game',
 };
 
 export default pages;
@@ -37,6 +38,11 @@ export const navs = [
     path: pages.SNAKE_GAME,
     label: 'Snake Game',
     Icon: GiSnakeSpiral,
+  },
+  {
+    path: pages.JIGSAW_GAME,
+    label: 'Jigsaw Game',
+    Icon: GiJigsawPiece,
   },
 ];
 

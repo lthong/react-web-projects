@@ -12,6 +12,7 @@ const Comps = [
   { path: routerPath.VEDIO_BROWSER, Comp: Loadable.VedioBrowser },
   { path: routerPath.IG_FILTER, Comp: Loadable.IGFilter },
   { path: routerPath.SNAKE_GAME, Comp: Loadable.SnakeGame },
+  { path: routerPath.JIGSAW_GAME, Comp: Loadable.JigsawGame },
 ];
 
 const App = () => {

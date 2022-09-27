@@ -34,3 +34,8 @@ export const SnakeGame = Loadable({
     import(/* webpackChunkName: 'SnakeGame' */ '@/components/SnakeGame'),
   loading: Loading,
 });
+export const JigsawGame = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'JigsawGame' */ '@/components/JigsawGame'),
+  loading: Loading,
+});
