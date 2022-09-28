@@ -151,7 +151,7 @@ const JigsawGame = () => {
         </div>
       </div>
       <div className='actions'>
-        <button className='ui teal button' onClick={onHintOpenChange}>
+        <button className='ui orange button' onClick={onHintOpenChange}>
           提示
         </button>
         <button className='ui green button' onClick={changeJigsaw}>
