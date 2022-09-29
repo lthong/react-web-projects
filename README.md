@@ -61,7 +61,7 @@ This project is a web demo of some React applications. Every page support the vi
       - [CanvasRenderingContext2D.filter](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
       - [URL.createObjectURL](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL)
 ---
-#### 📷 Snake Game 貪食蛇
+#### 🐍 Snake Game 貪食蛇
   * Features
       - 邊界碰撞偵測
       - 蛇身碰撞偵測
@@ -75,3 +75,15 @@ This project is a web demo of some React applications. Every page support the vi
       - [useEffect update point](https://zh-hant.reactjs.org/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)
       - [Canvas](https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial)
       <!-- - [requestAnimationFrame](https://developer.mozilla.org/zh-TW/docs/Web/API/window/requestAnimationFrame) -->
+---
+#### 🧩 Jigsaw Game 拼圖
+  * Features
+      - 一張圖片建立題目
+      - 題目響應裝置尺寸
+      - 拼圖隨機排列
+      - 拼圖拖拉擺放
+      - 完成結果檢查
+  * Resource
+      - [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
+      - [aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio)
+      - [DnD](https://pjchender.dev/html/html-drag-and-drop/)
