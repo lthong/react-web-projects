@@ -1,14 +1,17 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import jigsawImgs from './assets/imgs';
 import { pieces, getRandomOriginPiece } from './utils';
 
 const JigsawGame = () => {
+  const targetBlockRef = useRef(null);
   const [originPiece, setOriginPiece] = useState(getRandomOriginPiece());
   const [targetPiece, setTargetPiece] = useState({});
   const [currentDragPieceData, setCurrentDragPieceData] = useState({});
   const [jigsawIndex, setJigsawIndex] = useState(0);
   const [isHintOpen, setIsHintOpen] = useState(false);
-
+  const [currentTouchMovePieceData, setCurrentTouchMovePieceData] = useState(
+    {}
+  );
   const changeJigsaw = useCallback(() => {
     setJigsawIndex((preState) =>
       preState + 1 >= jigsawImgs.length ? 0 : preState + 1
@@ -40,65 +43,156 @@ const JigsawGame = () => {
       <div className='main-block'>
         {/* 此區塊為題目區塊 */}
         <div className='jigsaw-block'>
-          {pieces.map((_, index) => (
-            // box為放置拼圖的框框
-            <div
-              key={`originPiece-${index}`}
-              className='box'
-              onDragOver={(e) => {
-                e.preventDefault();
-              }}
-              onDrop={(e) => {
-                e.preventDefault();
-                // box為空拼圖才能被放置
-                if (!originPiece[index]) {
-                  if (currentDragPieceData.type !== 'target') {
-                    // 移除來源位置的拼圖 (piece from origin block)
-                    setOriginPiece((preState) => ({
-                      ...preState,
-                      [currentDragPieceData.boxIndex]: null,
-                    }));
-                  } else {
-                    // 移除來源位置的拼圖 (piece from target block)
-                    setTargetPiece((preState) => ({
-                      ...preState,
-                      [currentDragPieceData.boxIndex]: null,
-                    }));
-                  }
-
-                  // 放置新的拼圖
-                  setOriginPiece((preState) => ({
-                    ...preState,
-                    [index]: currentDragPieceData.pieceIndex,
-                  }));
-                }
-              }}
-            >
-              {originPiece[index] && (
-                // 拼圖圖層可拖曳
+          {pieces.map((_, index) => {
+            const isBoxTouchMoveing =
+              currentTouchMovePieceData.isTouchMove &&
+              currentTouchMovePieceData.boxIndex === index;
+            return (
+              // box為放置拼圖的框框
+              <React.Fragment key={`originPiece-${index}`}>
                 <div
-                  className={`piece order-${originPiece[index]}`}
-                  style={{ backgroundImage: `url(${jigsawImgs[jigsawIndex]})` }}
-                  onDrag={(e) => {
+                  className='box'
+                  style={
+                    isBoxTouchMoveing
+                      ? {
+                          zIndex: 2,
+                          position: 'absolute',
+                          // https://developer.mozilla.org/zh-CN/docs/Web/API/Touch/clientX
+                          // 返回觸點相對於可見視區 (visual viewport) 左邊沿的的 X 坐標
+                          left: currentTouchMovePieceData.clientX,
+                          top: currentTouchMovePieceData.clientY,
+                        }
+                      : {}
+                  }
+                  onDragOver={(e) => {
                     e.preventDefault();
-                    setCurrentDragPieceData({
-                      boxIndex: index,
-                      pieceIndex: originPiece[index],
-                      type: 'origin',
-                    });
                   }}
-                  // onMouseMove={(e) => {
-                  // const touchLocation = e.targetTouches[0];
-                  // console.log(touchLocation);
-                  // }}
-                  draggable
-                />
-              )}
-            </div>
-          ))}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    // box為空拼圖才能被放置
+                    if (!originPiece[index]) {
+                      if (currentDragPieceData.type !== 'target') {
+                        // 移除來源位置的拼圖 (piece from origin block)
+                        setOriginPiece((preState) => ({
+                          ...preState,
+                          [currentDragPieceData.boxIndex]: null,
+                        }));
+                      } else {
+                        // 移除來源位置的拼圖 (piece from target block)
+                        setTargetPiece((preState) => ({
+                          ...preState,
+                          [currentDragPieceData.boxIndex]: null,
+                        }));
+                      }
+
+                      // 放置新的拼圖
+                      setOriginPiece((preState) => ({
+                        ...preState,
+                        [index]: currentDragPieceData.pieceIndex,
+                      }));
+                    }
+                  }}
+                >
+                  {originPiece[index] && (
+                    // 拼圖圖層可拖曳
+                    <div
+                      className={`piece order-${originPiece[index]}`}
+                      style={{
+                        backgroundImage: `url(${jigsawImgs[jigsawIndex]})`,
+                      }}
+                      onDrag={(e) => {
+                        e.preventDefault();
+                        setCurrentDragPieceData({
+                          boxIndex: index,
+                          pieceIndex: originPiece[index],
+                          type: 'origin',
+                        });
+                      }}
+                      onTouchMove={(e) => {
+                        // https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events
+                        // https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/targetTouches
+                        // https://developer.mozilla.org/zh-CN/docs/Web/API/Touch
+                        e.preventDefault();
+                        const touchLocation = e.targetTouches[0];
+                        const { width, height } =
+                          touchLocation.target.getBoundingClientRect();
+                        setCurrentTouchMovePieceData({
+                          isTouchMove: true,
+                          clientX: touchLocation.clientX - width / 2,
+                          clientY: touchLocation.clientY - height - 30,
+                          boxIndex: index,
+                          pieceIndex: originPiece[index],
+                          // type: 'origin',
+                        });
+                      }}
+                      onTouchEnd={(e) => {
+                        e.preventDefault();
+                        setCurrentTouchMovePieceData({
+                          isTouchMove: false,
+                        });
+                        // https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect
+                        // https://zh.javascript.info/size-and-scroll
+                        const {
+                          left: dragElL,
+                          right: dragElR,
+                          top: dragElT,
+                          bottom: dragElB,
+                        } = e.target.getBoundingClientRect();
+                        const {
+                          left: dropElL,
+                          right: dropElR,
+                          top: dropElT,
+                          bottom: dropElB,
+                          width: dropElW,
+                          height: dropElH,
+                        } = targetBlockRef.current.getBoundingClientRect();
+                        //  目標區塊中心水平高度
+                        const hValue = dropElH / 2 + dropElL;
+                        //  目標區塊中心垂直高度
+                        const vValue = dropElW / 2 + dropElT;
+                        // dorp in the target block
+                        // +-10 to reduce the difficulty
+                        const isDropOnTheTargetBlock =
+                          dragElT >= dropElT - 10 &&
+                          dragElB <= dropElB + 10 &&
+                          dragElL >= dropElL - 10 &&
+                          dragElR <= dropElR + 10;
+                        if (isDropOnTheTargetBlock) {
+                          if (
+                            dragElB <= vValue + 10 &&
+                            dragElR <= hValue + 10
+                          ) {
+                            console.log(1);
+                          } else if (
+                            dragElB < vValue + 10 &&
+                            dragElL > hValue - 10
+                          ) {
+                            console.log(2);
+                          } else if (
+                            dragElT >= vValue + 10 &&
+                            dragElR <= hValue - 10
+                          ) {
+                            console.log(3);
+                          } else if (
+                            dragElT > vValue - 10 &&
+                            dragElL > hValue - 10
+                          ) {
+                            console.log(4);
+                          }
+                        }
+                      }}
+                      draggable
+                    />
+                  )}
+                </div>
+                {/* the div is a placeholder to prevent the board broken */}
+                {isBoxTouchMoveing && <div className='box' />}
+              </React.Fragment>
+            );
+          })}
         </div>
         {/* 此區塊為答案區塊 */}
-        <div className='jigsaw-block'>
+        <div className='jigsaw-block' ref={targetBlockRef}>
           {pieces.map((_, index) => (
             <div
               key={`targetPiece-${index}`}
