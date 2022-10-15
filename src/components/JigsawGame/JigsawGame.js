@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import jigsawImgs from './assets/imgs';
 import { pieces, getRandomOriginPiece } from './utils';
-import Button from '@/components/Button';
 
 const JigsawGame = () => {
   const targetBlockRef = useRef(null);
@@ -269,18 +268,18 @@ const JigsawGame = () => {
         </div>
       </div>
       <div className='actions'>
-        <Button bgColor='orange' onClick={onHintOpenChange}>
+        <button className='ui orange button' onClick={onHintOpenChange}>
           提示
-        </Button>
-        <Button bgColor='blue' onClick={onReset}>
+        </button>
+        <button className='ui primary button' onClick={onReset}>
           重來
-        </Button>
-        <Button bgColor='green' onClick={changeJigsaw}>
+        </button>
+        <button className='ui green button' onClick={changeJigsaw}>
           換題
-        </Button>
-        <Button bgColor='teal' onClick={onFinish}>
+        </button>
+        <button className='ui teal button' onClick={onFinish}>
           完成
-        </Button>
+        </button>
       </div>
       {isHintOpen && (
         <div

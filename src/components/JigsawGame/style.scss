@@ -1,6 +1,22 @@
 // 為了支援不同裝置尺寸，拼圖 width 會根據裝置寬度響應，height 則使用 aspect-ratio 得到和 width 等比例的長度
 // https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 
+// https://stackoverflow.com/questions/68886003/css-aspect-ratio-not-working-in-safari-browser
+@mixin safari-aspect-ratio-way {
+  @supports not (aspect-ratio: 1 / 1) {
+    &::before {
+      float: left;
+      padding-top: 100%;
+      content: '';
+    }
+    &::after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+}
+
 .jigsaw-game {
   padding-top: 20px;
   display: flex;
@@ -16,7 +32,7 @@
     margin-top: 15px;
     box-shadow: 1px 1px 10px rgb(248 177 44);
     button {
-      margin: 0 8px;
+      margin: 0 5px;
     }
   }
   .main-block {
@@ -39,12 +55,14 @@
         border: 1px solid #ccc;
         box-sizing: border-box;
         overflow: hidden;
+        @include safari-aspect-ratio-way;
         .piece,
         .target {
           width: 100%;
           aspect-ratio: 1 / 1;
           background-size: 200%;
           cursor: pointer;
+          @include safari-aspect-ratio-way;
           &:hover {
             opacity: 0.8;
           }
