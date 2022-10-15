@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import jigsawImgs from './assets/imgs';
 import { pieces, getRandomOriginPiece } from './utils';
+import Button from '@/components/Button';
 
 const JigsawGame = () => {
   const targetBlockRef = useRef(null);
@@ -12,13 +13,18 @@ const JigsawGame = () => {
   const [currentTouchMovePieceData, setCurrentTouchMovePieceData] = useState(
     {}
   );
+
+  const onReset = useCallback(() => {
+    setOriginPiece(getRandomOriginPiece());
+    setTargetPiece({});
+  }, []);
+
   const changeJigsaw = useCallback(() => {
     setJigsawIndex((preState) =>
       preState + 1 >= jigsawImgs.length ? 0 : preState + 1
     );
-    setOriginPiece(getRandomOriginPiece());
-    setTargetPiece({});
-  }, []);
+    onReset();
+  }, [onReset]);
 
   const onFinish = useCallback(() => {
     const targetPieceValues = Object.values(targetPiece);
@@ -100,6 +106,7 @@ const JigsawGame = () => {
                       style={{
                         backgroundImage: `url(${jigsawImgs[jigsawIndex]})`,
                       }}
+                      // 桌機拖拉事件
                       onDrag={(e) => {
                         e.preventDefault();
                         setCurrentDragPieceData({
@@ -108,6 +115,7 @@ const JigsawGame = () => {
                           type: 'origin',
                         });
                       }}
+                      // 手機拖拉事件
                       onTouchMove={(e) => {
                         // https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events
                         // https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/targetTouches
@@ -122,14 +130,12 @@ const JigsawGame = () => {
                           clientY: touchLocation.clientY - height - 30,
                           boxIndex: index,
                           pieceIndex: originPiece[index],
-                          // type: 'origin',
+                          type: 'origin',
                         });
                       }}
+                      // 手機拖拉事件
                       onTouchEnd={(e) => {
                         e.preventDefault();
-                        setCurrentTouchMovePieceData({
-                          isTouchMove: false,
-                        });
                         // https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect
                         // https://zh.javascript.info/size-and-scroll
                         const {
@@ -158,28 +164,46 @@ const JigsawGame = () => {
                           dragElL >= dropElL - 10 &&
                           dragElR <= dropElR + 10;
                         if (isDropOnTheTargetBlock) {
+                          const { boxIndex, pieceIndex } =
+                            currentTouchMovePieceData;
+                          let dropBoxIndex = null;
                           if (
                             dragElB <= vValue + 10 &&
                             dragElR <= hValue + 10
                           ) {
-                            console.log(1);
+                            dropBoxIndex = 0;
                           } else if (
                             dragElB < vValue + 10 &&
                             dragElL > hValue - 10
                           ) {
-                            console.log(2);
+                            dropBoxIndex = 1;
                           } else if (
-                            dragElT >= vValue + 10 &&
-                            dragElR <= hValue - 10
+                            dragElT >= vValue - 10 &&
+                            dragElR <= hValue + 10
                           ) {
-                            console.log(3);
+                            dropBoxIndex = 2;
                           } else if (
                             dragElT > vValue - 10 &&
                             dragElL > hValue - 10
                           ) {
-                            console.log(4);
+                            dropBoxIndex = 3;
+                          }
+                          if (typeof dropBoxIndex === 'number') {
+                            setOriginPiece((preState) => {
+                              const buffer = { ...preState };
+                              delete buffer[boxIndex];
+                              return buffer;
+                            });
+                            setTargetPiece((preState) =>
+                              preState[dropBoxIndex]
+                                ? preState
+                                : { ...preState, [dropBoxIndex]: pieceIndex }
+                            );
                           }
                         }
+                        setCurrentTouchMovePieceData({
+                          isTouchMove: false,
+                        });
                       }}
                       draggable
                     />
@@ -245,15 +269,18 @@ const JigsawGame = () => {
         </div>
       </div>
       <div className='actions'>
-        <button className='ui orange button' onClick={onHintOpenChange}>
+        <Button bgColor='orange' onClick={onHintOpenChange}>
           提示
-        </button>
-        <button className='ui green button' onClick={changeJigsaw}>
-          下一題
-        </button>
-        <button className='ui teal button' onClick={onFinish}>
-          送出答案
-        </button>
+        </Button>
+        <Button bgColor='blue' onClick={onReset}>
+          重來
+        </Button>
+        <Button bgColor='green' onClick={changeJigsaw}>
+          換題
+        </Button>
+        <Button bgColor='teal' onClick={onFinish}>
+          完成
+        </Button>
       </div>
       {isHintOpen && (
         <div
