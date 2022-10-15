@@ -7,25 +7,16 @@ This project is a web demo of some React applications. Every page support the vi
 本專案將實作許多 React Application，各頁面均支援 PC & H5 模式，另有黑白兩色系可作切換，詳細的介紹如下：
 
 [Live Demo](https://lthong.github.io/react-web-projects) 😊
-
-#### Project Introduction
-  * Features
-    - PC / H5 View
-    - Dark / Lite Theme
-    - Musci Player
-    - Vedio Browser
-    - IG Filter
-    - Snake Game
-  * Resource
-    - React Hooks
-    - React Router
-    - Webpack
-    - Axios
-    - Canvas
-    - Scss
-
+|#| Projects  |      Preview     |
+|-:|:---------|:-------------:|
+|01|[Musci Player](#01) |![d1](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/d1.jpg)|
+|02|[Vedio Browser](#02) |![d2](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/d2.jpg)|
+|03|[IG Filter](#03) |![d3](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/d3.jpg)|
+|04|[Snake Game](#04) |![d4](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/d4.jpg) |
+|05|[Jigsaw Game](#05) |![d5](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/d5.jpg)|
+  
 ---
-#### 🎸 Musci Player 音樂播放器
+#### 🎸 Musci Player 音樂播放器 <a id="01"></a>
   * Features
     - 選曲播放
     - 暫停播放
@@ -36,7 +27,7 @@ This project is a web demo of some React applications. Every page support the vi
   * Resource
     - [Html Audio](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
 ---
-#### 📺 Vedio Browser 影片瀏覽
+#### 📺 Vedio Browser 影片瀏覽<a id="02"></a>
   * Features
       - 關鍵字搜尋
       - Enter鍵搜尋
@@ -48,7 +39,7 @@ This project is a web demo of some React applications. Every page support the vi
       - [React Player](https://github.com/CookPete/react-player)
       - [semantic-ui-css](https://semantic-ui.com/)
 ---
-#### 📷 IG Filter IG濾鏡
+#### 📷 IG Filter IG濾鏡<a id="03"></a>
   * Features
       - 濾鏡效果瀏覽
       - 圖片上傳
@@ -61,7 +52,7 @@ This project is a web demo of some React applications. Every page support the vi
       - [CanvasRenderingContext2D.filter](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
       - [URL.createObjectURL](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL)
 ---
-#### 🐍 Snake Game 貪食蛇
+#### 🐍 Snake Game 貪食蛇<a id="04"></a>
   * Features
       - 邊界碰撞偵測
       - 蛇身碰撞偵測
@@ -76,14 +67,18 @@ This project is a web demo of some React applications. Every page support the vi
       - [Canvas](https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial)
       <!-- - [requestAnimationFrame](https://developer.mozilla.org/zh-TW/docs/Web/API/window/requestAnimationFrame) -->
 ---
-#### 🧩 Jigsaw Game 拼圖
+#### 🧩 Jigsaw Game 拼圖遊戲<a id="05"></a>
   * Features
-      - 一張圖片建立題目
-      - 題目響應裝置尺寸
-      - 拼圖隨機排列
-      - 拼圖拖拉擺放
-      - 完成結果檢查
+      - 題目隨機生成
+      - 支援更換題目
+      - 響應裝置大小
+      - 支援桌機拖拉
+      - 支援手機拖拉
+      - 可查看提示
+      - 最終答案檢查
   * Resource
       - [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
       - [aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio)
       - [DnD](https://pjchender.dev/html/html-drag-and-drop/)
+      - [touch-event](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events)
+      - [getBoundingClientRect](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
