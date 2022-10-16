@@ -42,7 +42,8 @@ body {
     background-color: var(--bg-color);
     color: var(--primary-color);
   }
-  &.path-snake-game {
+  &.path-snake-game,
+  &.path-jigsaw-game {
     overflow-y: hidden;
   }
 }
