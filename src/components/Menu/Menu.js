@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AiOutlineGithub } from 'react-icons/ai';
@@ -8,7 +8,7 @@ import { homepage } from '../../../package.json';
 
 const NAVS_ID = 'navs';
 
-const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
+const Menu = ({ isDarkTheme, setIsDarkTheme, isScrollDown }) => {
   const history = useHistory();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +34,11 @@ const Menu = ({ isDarkTheme, setIsDarkTheme }) => {
         }
       }}
     >
-      <div className='bar'>
+      <div
+        className={clsx('bar', {
+          active: isScrollDown,
+        })}
+      >
         <div className='left-items'>
           <div
             className={clsx('menu-icon', { active: isMenuOpen })}
