@@ -1,0 +1,52 @@
+.dino-game {
+  width: 100%;
+  position: relative;
+  .ground-wrapper {
+    display: flex;
+    .ground {
+      width: 100%;
+      top: 120px;
+      position: absolute;
+      &:nth-child(1) {
+        left: 0;
+        animation: ground1-anima 6s infinite linear;
+      }
+      &:nth-child(2) {
+        left: 100%;
+        animation: ground2-anima 6s infinite linear;
+      }
+    }
+  }
+  .cactus {
+    z-index: 2;
+    top: 70px;
+    left: 120%;
+    position: absolute;
+    animation: cactus-anima 7.8s infinite linear;
+  }
+}
+
+@keyframes ground1-anima {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+@keyframes ground2-anima {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+@keyframes cactus-anima {
+  0% {
+    left: 120%;
+  }
+  100% {
+    left: -10%;
+  }
+}
