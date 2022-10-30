@@ -1,28 +1,63 @@
 .dino-game {
   width: 100%;
-  position: relative;
-  .ground-wrapper {
-    display: flex;
-    .ground {
-      width: 100%;
-      top: 120px;
-      position: absolute;
-      &:nth-child(1) {
-        left: 0;
-        animation: ground1-anima 6s infinite linear;
-      }
-      &:nth-child(2) {
-        left: 100%;
-        animation: ground2-anima 6s infinite linear;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  .container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .ground-wrapper {
+      display: flex;
+      .ground {
+        width: 100%;
+        bottom: 30px;
+        position: absolute;
+        &:nth-child(1) {
+          left: 0;
+          animation: ground1-anima 6s infinite linear;
+        }
+        &:nth-child(2) {
+          left: 100%;
+          animation: ground2-anima 6s infinite linear;
+        }
       }
     }
-  }
-  .cactus {
-    z-index: 2;
-    top: 70px;
-    left: 120%;
-    position: absolute;
-    animation: cactus-anima 7.8s infinite linear;
+    .object {
+      background-image: url('./assets/img/sprite-1x.png');
+      background-repeat: no-repeat;
+      position: absolute;
+      &.cactus-small {
+        width: 50px;
+        height: 35px;
+        bottom: 30px;
+        background-position: -228px -2px;
+      }
+      &.cactus-large {
+        width: 25px;
+        height: 50px;
+        bottom: 20px;
+        background-position: -332px -2px;
+      }
+      &.cactus-small,
+      &.cactus-large {
+        display: none;
+        &.anima {
+          display: block;
+          animation: cactus-anima 7.8s infinite linear;
+        }
+        &.a {
+          display: block;
+          animation: cactus-anima-a 9.8s infinite linear;
+        }
+        &.b {
+          display: block;
+          animation: cactus-anima-b 8.5s infinite linear;
+        }
+      }
+    }
   }
 }
 
@@ -45,6 +80,22 @@
 @keyframes cactus-anima {
   0% {
     left: 120%;
+  }
+  100% {
+    left: -10%;
+  }
+}
+@keyframes cactus-anima-a {
+  0% {
+    left: 150%;
+  }
+  100% {
+    left: -10%;
+  }
+}
+@keyframes cactus-anima-b {
+  0% {
+    left: 130%;
   }
   100% {
     left: -10%;
