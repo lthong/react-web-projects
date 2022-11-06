@@ -2,6 +2,12 @@ import * as songs from './music';
 import * as photos from './img';
 
 const assets = {
+  heisarenai: {
+    key: 'heisarenai',
+    name: '閉鎖愛情',
+    song: songs.heisarenai,
+    photo: photos.heisarenai,
+  },
   fjordnosundakaze: {
     key: 'fjordnosundakaze',
     name: '峽灣的清風',

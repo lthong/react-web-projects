@@ -5,6 +5,7 @@ import fjordnosundakaze from './fjordnosundakaze.mp3';
 import futatsunoviolin from './futatsunoviolin.mp3';
 import hotarumausora from './hotarumausora.mp3';
 import yozoranimautori from './yozoranimautori.mp3';
+import heisarenai from './heisarenai.mp3';
 
 export {
   korobushka,
@@ -14,4 +15,5 @@ export {
   futatsunoviolin,
   hotarumausora,
   yozoranimautori,
+  heisarenai,
 };

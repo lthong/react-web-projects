@@ -5,6 +5,7 @@ import fjordnosundakaze from './fjordnosundakaze.jpg';
 import futatsunoviolin from './futatsunoviolin.jpg';
 import hotarumausora from './hotarumausora.jpg';
 import yozoranimautori from './yozoranimautori.jpg';
+import heisarenai from './heisarenai.jpg';
 
 export {
   korobushka,
@@ -14,4 +15,5 @@ export {
   futatsunoviolin,
   hotarumausora,
   yozoranimautori,
+  heisarenai,
 };
