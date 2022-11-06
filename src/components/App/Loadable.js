@@ -39,3 +39,8 @@ export const JigsawGame = Loadable({
     import(/* webpackChunkName: 'JigsawGame' */ '@/components/JigsawGame'),
   loading: Loading,
 });
+export const DinoGame = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'DinoGame' */ '@/components/DinoGame'),
+  loading: Loading,
+});

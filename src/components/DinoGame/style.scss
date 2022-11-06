@@ -1,14 +1,72 @@
+$animaBaseTime: 3s;
+$mAnimaBaseTime: 1.5s;
+$sCactusPosition: 172;
+$lCactusPosition: 119;
+$obstacleLeftEndPosition: -5;
+$dinoJumpingSecond: 0.5;
+
 .dino-game {
   width: 100%;
-  background-color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 150px;
+  flex-direction: column;
+  height: auto;
+  overflow: hidden;
   .container {
+    font-family: 'Press Start 2P';
     width: 100%;
-    height: 100%;
+    height: 250px;
+    background-color: whitesmoke;
     position: relative;
+    color: #282c35;
+    .info {
+      width: 100%;
+      z-index: 2;
+      position: absolute;
+      top: 100px;
+      font-size: 1.1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .space {
+        margin: 0 8px;
+        cursor: initial;
+        box-shadow: 0 0 0 1.2px #282c35 inset !important;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+      .info-icon {
+        font-size: 1.8em;
+        margin: 0 8px;
+      }
+      .end-text {
+        font-size: 1.2em;
+        letter-spacing: 5px;
+        color: lighten(#282c35, 25%);
+      }
+    }
+    .score {
+      position: absolute;
+      right: 20px;
+      top: 25px;
+      font-size: 16px;
+      white-space: 1.2px;
+    }
+    &.pause {
+      * {
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state
+        animation-play-state: paused !important;
+      }
+    }
+    &.reset {
+      * {
+        animation: none !important;
+      }
+      .obstacle {
+        display: none;
+      }
+    }
     .ground-wrapper {
       display: flex;
       .ground {
@@ -17,44 +75,191 @@
         position: absolute;
         &:nth-child(1) {
           left: 0;
-          animation: ground1-anima 6s infinite linear;
+          animation: ground1-anima $animaBaseTime infinite linear;
         }
         &:nth-child(2) {
           left: 100%;
-          animation: ground2-anima 6s infinite linear;
+          animation: ground2-anima $animaBaseTime infinite linear;
         }
       }
     }
-    .object {
+    .cloud {
+      width: 50px;
+      height: 20px;
+      bottom: 123px;
+      background-position: -86px -2px;
+      background-image: url('./assets/img/sprite-1x.png');
+      background-repeat: no-repeat;
+      position: absolute;
+      &.type-1 {
+        bottom: 123px;
+        left: 100%;
+        animation: cloud-1-anima
+          (((100 - $obstacleLeftEndPosition) / 100) * $animaBaseTime) infinite
+          linear;
+      }
+      &.type-2 {
+        bottom: 138px;
+        left: 115%;
+        animation: cloud-2-anima
+          (((115 - $obstacleLeftEndPosition) / 100) * $animaBaseTime) infinite
+          linear;
+      }
+      &.type-3 {
+        bottom: 118px;
+        left: 140%;
+        animation: cloud-3-anima
+          (((140- $obstacleLeftEndPosition) / 100) * $animaBaseTime) infinite
+          linear;
+      }
+    }
+    .obstacle {
       background-image: url('./assets/img/sprite-1x.png');
       background-repeat: no-repeat;
       position: absolute;
       &.cactus-small {
         width: 50px;
         height: 35px;
-        bottom: 30px;
+        bottom: 27px;
         background-position: -228px -2px;
+        @each $position in $sCactusPosition {
+          &.position-#{$position} {
+            animation: cactus-anima-#{$position}
+              // ($position - $obstacleLeftEndPosition) 可以得出總長度，
+              // 100% 的賽道長度共要走 $animaBaseTime 秒，此公式可計算出不同賽道長度所需的相對秒數
+              ((($position - $obstacleLeftEndPosition) / 100) * $animaBaseTime)
+              infinite
+              linear;
+          }
+        }
       }
       &.cactus-large {
         width: 25px;
         height: 50px;
-        bottom: 20px;
+        bottom: 25px;
         background-position: -332px -2px;
+        @each $position in $lCactusPosition {
+          &.position-#{$position} {
+            animation: cactus-anima-#{$position}
+              // ($position - $obstacleLeftEndPosition) 可以得出總長度，
+              // 100% 的賽道長度共要走 $animaBaseTime，此公式可計算出不同賽道長度所需的相對秒數
+              ((($position - $obstacleLeftEndPosition) / 100) * $animaBaseTime)
+              infinite
+              linear;
+          }
+        }
       }
-      &.cactus-small,
-      &.cactus-large {
+    }
+    .dino {
+      position: absolute;
+      left: 30px;
+      bottom: 26px;
+      width: 60px;
+      &.jump-upper {
+        animation: dino-jumping $dinoJumpingSecond + s ease-in;
+      }
+    }
+  }
+  .action-controls {
+    display: flex;
+    margin-top: 20px;
+    > button {
+      margin: 0 10px;
+    }
+    .bgm-control {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .bgm-audit {
         display: none;
-        &.anima {
-          display: block;
-          animation: cactus-anima 7.8s infinite linear;
+      }
+      .bgm-switch {
+        display: flex;
+        cursor: pointer;
+        .voice-icon {
+          font-size: 20px;
         }
-        &.a {
-          display: block;
-          animation: cactus-anima-a 9.8s infinite linear;
+        .bgm-btn {
+          position: relative;
+          width: 40px;
+          height: 20px;
+          border-radius: 20px;
+          background-color: #888;
+          display: flex;
+          align-items: center;
+          margin-right: 20px;
+          transition: 0.3s;
+          .switch {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            background-color: white;
+            transition: 0.3s;
+            right: 22px;
+          }
+          &.open {
+            .switch {
+              background-color: #90caf9;
+              right: 3.5px;
+            }
+          }
+          &:hover {
+            background-color: #999;
+          }
         }
-        &.b {
-          display: block;
-          animation: cactus-anima-b 8.5s infinite linear;
+      }
+    }
+  }
+  &.m-platform {
+    .ground {
+      &:nth-child(1) {
+        animation: ground1-anima $mAnimaBaseTime infinite linear;
+      }
+      &:nth-child(2) {
+        animation: ground2-anima $mAnimaBaseTime infinite linear;
+      }
+    }
+    .cloud {
+      &.type-1 {
+        animation: cloud-1-anima
+          (((100 - $obstacleLeftEndPosition) / 100) * $mAnimaBaseTime) infinite
+          linear;
+      }
+      &.type-2 {
+        animation: cloud-2-anima
+          (((115 - $obstacleLeftEndPosition) / 100) * $mAnimaBaseTime) infinite
+          linear;
+      }
+      &.type-3 {
+        animation: cloud-3-anima
+          (((140- $obstacleLeftEndPosition) / 100) * $mAnimaBaseTime) infinite
+          linear;
+      }
+    }
+    .obstacle {
+      &.cactus-small {
+        @each $position in $sCactusPosition {
+          &.position-#{$position} {
+            animation: cactus-anima-#{$position}
+              // ($position - $obstacleLeftEndPosition) 可以得出總長度，
+              // 100% 的賽道長度共要走 $mAnimaBaseTime 秒，此公式可計算出不同賽道長度所需的相對秒數
+              ((($position - $obstacleLeftEndPosition) / 100) * $mAnimaBaseTime)
+              infinite
+              linear;
+          }
+        }
+      }
+      &.cactus-large {
+        @each $position in $lCactusPosition {
+          &.position-#{$position} {
+            animation: cactus-anima-#{$position}
+              // ($position - $obstacleLeftEndPosition) 可以得出總長度，
+              // 100% 的賽道長度共要走 $mAnimaBaseTime，此公式可計算出不同賽道長度所需的相對秒數
+              ((($position - $obstacleLeftEndPosition) / 100) * $mAnimaBaseTime)
+              infinite
+              linear;
+          }
         }
       }
     }
@@ -69,6 +274,7 @@
     left: -100%;
   }
 }
+
 @keyframes ground2-anima {
   0% {
     left: 100%;
@@ -77,27 +283,99 @@
     left: 0;
   }
 }
-@keyframes cactus-anima {
+
+@keyframes cloud-1-anima {
   0% {
-    left: 120%;
+    left: 100%;
   }
   100% {
-    left: -10%;
+    left: -5%;
   }
 }
-@keyframes cactus-anima-a {
+@keyframes cloud-2-anima {
   0% {
-    left: 150%;
+    left: 115%;
   }
   100% {
-    left: -10%;
+    left: -5%;
   }
 }
-@keyframes cactus-anima-b {
+@keyframes cloud-3-anima {
   0% {
-    left: 130%;
+    left: 140%;
   }
   100% {
-    left: -10%;
+    left: -5%;
   }
 }
+
+@each $position in $sCactusPosition {
+  @keyframes cactus-anima-#{$position} {
+    0% {
+      left: $position * 1%;
+    }
+    100% {
+      left: $obstacleLeftEndPosition * 1%;
+    }
+  }
+}
+
+@each $position in $lCactusPosition {
+  @keyframes cactus-anima-#{$position} {
+    0% {
+      left: $position * 1%;
+    }
+    100% {
+      left: $obstacleLeftEndPosition * 1%;
+    }
+  }
+}
+
+@keyframes dino-jumping {
+  0% {
+    bottom: 30px;
+  }
+  10% {
+    bottom: 90px;
+  }
+  20% {
+    bottom: 110px;
+  }
+  30% {
+    bottom: 135px;
+  }
+  40% {
+    bottom: 150px;
+  }
+  50% {
+    bottom: 150px;
+  }
+  60% {
+    bottom: 150px;
+  }
+  70% {
+    bottom: 135px;
+  }
+  80% {
+    bottom: 100px;
+  }
+  90% {
+    bottom: 60px;
+  }
+  92% {
+    bottom: 50px;
+  }
+  95% {
+    bottom: 35px;
+  }
+  100% {
+    bottom: 26px;
+  }
+}
+
+// https://css-tricks.com/getting-javascript-to-talk-to-css-and-sass/
+// :export {
+//   sCactusPosition: $sCactusPosition;
+//   lCactusPosition: $lCactusPosition;
+//   dinoJumpingSecond: $dinoJumpingSecond;
+// }
