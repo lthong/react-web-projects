@@ -21,7 +21,10 @@ const App = () => {
   const [isScrollDown, setIsScrollDown] = useState(false);
 
   const { pathname } = useLocation();
-  const pathClassname = useMemo(() => `path-${pathname.substr(1)}`, [pathname]);
+  const pathClassname = useMemo(
+    () => `path-${pathname.substr(1) || 'home'}`,
+    [pathname]
+  );
 
   const onScrollDown = useCallback((isDown) => {
     setIsScrollDown(isDown);
