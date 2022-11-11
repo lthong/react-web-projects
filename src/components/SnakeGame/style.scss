@@ -28,6 +28,7 @@
       button {
         width: 80px;
         margin: 0 7px;
+        text-transform: uppercase;
       }
       .start {
         animation: start-btn-anima 0.7s infinite ease-in-out;
@@ -64,6 +65,7 @@
     font-weight: 600;
     top: 150px;
     color: white;
+    letter-spacing: 3px;
     &.init {
       animation: init-status-info-anima 0.7s infinite ease-in-out;
       display: flex;

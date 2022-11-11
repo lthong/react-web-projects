@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { bg1, bg2 } from './assets';
@@ -6,11 +6,13 @@ import { filterEnums, filterNames } from './enums';
 import { FiDownload, FiUpload } from 'react-icons/fi';
 import 'swiper/swiper-bundle.min.css';
 import clsx from 'clsx';
-const slidesPerView = window.innerWidth < 530 ? 2 : 6;
+import useDevice from '@/hooks/useDevice';
 
 const IGFilter = () => {
   const [currentFilter, setCurrentFilter] = useState('normal');
   const [currentPhoto, setCurrentPhoto] = useState(bg1);
+  const { isMobile } = useDevice();
+  const slidesPerView = useMemo(() => (isMobile ? 2 : 6), [isMobile]);
 
   const onDownload = useCallback(() => {
     const link = document.createElement('a');
