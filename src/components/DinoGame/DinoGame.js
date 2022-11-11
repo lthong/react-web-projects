@@ -11,7 +11,7 @@ import { cssVars, dinoImgEnums, gameStatusEnums } from './libraries';
 import bgm from './assets/music/bgm.mp3';
 import { MdMusicNote, MdMusicOff } from 'react-icons/md';
 import { BsArrowUpSquare } from 'react-icons/bs';
-import { isMobile } from '@/libraries/variable';
+import useDevice from '@/hooks/useDevice';
 
 const DinoGame = () => {
   const dinoRunTimerId = useRef(null);
@@ -24,6 +24,7 @@ const DinoGame = () => {
   const [isReset, setIsReset] = useState(false);
   const [isBgmOpen, setIsBgmOpen] = useState(false);
   const [score, setScore] = useState(0);
+  const { isMobile } = useDevice();
 
   const clearTimer = useCallback(() => {
     clearInterval(dinoRunTimerId.current);
