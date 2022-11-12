@@ -28,7 +28,7 @@ const JigsawGame = () => {
   const onFinish = useCallback(() => {
     const targetPieceValues = Object.values(targetPiece);
     const isValid =
-      targetPieceValues.length > 0 &&
+      targetPieceValues.length === 4 &&
       targetPieceValues.every(
         (pieceIndex, blockIndex) => pieceIndex === Number(blockIndex) + 1
       );
