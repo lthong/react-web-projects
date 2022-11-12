@@ -1,8 +1,8 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AiOutlineGithub } from 'react-icons/ai';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaSun, FaMoon, FaReact } from 'react-icons/fa';
 import pages, { navs } from '@/libraries/routerPath';
 import { homepage } from '../../../package.json';
 
@@ -58,7 +58,8 @@ const Menu = ({ isDarkTheme, setIsDarkTheme, isScrollDown }) => {
             setIsMenuOpen(false);
           }}
         >
-          React Projects
+          <FaReact size={26} className='react-icon' />
+          <span>DEMO</span>
         </div>
         <div className='right-items'>
           {isDarkTheme ? (
