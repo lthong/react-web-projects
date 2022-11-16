@@ -22,7 +22,6 @@
       display: flex;
       flex-wrap: wrap;
       margin-top: 10px;
-      max-height: 80px;
       overflow-y: auto;
       .keyword {
         margin-right: 6px;
@@ -129,5 +128,10 @@
         }
       }
     }
+  }
+}
+@media only screen and (max-width: 530px) {
+  .vedio-browser .search-bar {
+    width: 100%;
   }
 }
