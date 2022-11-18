@@ -5,7 +5,9 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import clsx from 'clsx';
 import useInterval from '@/hooks/useInterval';
+import useDevice from '@/hooks/useDevice';
 import {
   canvasSize,
   boxSize,
@@ -33,6 +35,7 @@ const SnakeGame = () => {
   const apple = useRef(getNewApple(initSnake));
   const [score, setScore] = useState(initScore);
   const [gameStatus, setGameStatus] = useState(gameStatusEnums.INIT);
+  const { isMobile } = useDevice();
 
   // 重置畫布
   const resetCanvas = useCallback(() => {
@@ -195,7 +198,7 @@ const SnakeGame = () => {
           <div className='score'>Score {score}</div>
         </div>
         <canvas ref={canvasRef} width={canvasSize} height={canvasSize} />
-        <div className='status-btns'>
+        <div className={clsx('status-btns', { 'm-platform': isMobile })}>
           {gameStatus !== gameStatusEnums.END &&
             (gameStatus === gameStatusEnums.START ? (
               <button className='ui red button' onClick={onGamePause}>

@@ -33,6 +33,13 @@
       .start {
         animation: start-btn-anima 0.7s infinite ease-in-out;
       }
+      &.m-platform {
+        display: flex;
+        flex-direction: column;
+        > button:first-child {
+          margin-bottom: 10px;
+        }
+      }
     }
     .direction-btns {
       position: absolute;
