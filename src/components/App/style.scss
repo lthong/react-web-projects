@@ -7,7 +7,7 @@
   --bg-color-4: #121212;
   --primary-color: #f9f9f9;
   --secondary-color: #90caf9;
-  --secondary-lite-color: rgba(144, 202, 249, 0.1);
+  --secondary-lite-color: rgba(144, 202, 249, 0.2);
   --primary-shadow-color: rgb(255 255 255 / 40%);
   --nav-bar-height: 55px;
 }
@@ -18,7 +18,7 @@
   --bg-color-4: #f4f5f7;
   --primary-color: #424242;
   --secondary-color: #1976d2;
-  --secondary-lite-color: rgba(25, 118, 210, 0.1);
+  --secondary-lite-color: rgba(120, 153, 237, 0.3);
   --primary-shadow-color: rgb(0 0 0 / 30%);
 }
 html {
@@ -38,6 +38,11 @@ html {
     }
   }
 }
+@media only screen and (max-width: 530px) {
+  html {
+    font-size: 12px;
+  }
+}
 
 .app {
   width: 100vw;
@@ -50,8 +55,10 @@ html {
     color: var(--primary-color);
   }
   &.path-snake-game,
+  &.path-dino-game,
   &.path-jigsaw-game {
     overflow-y: hidden;
+    touch-action: pan-x;
   }
   &.path-home {
     > .content {
