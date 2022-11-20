@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { AiFillPlayCircle, AiOutlinePause } from 'react-icons/ai';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
+import Loader from '@/components/Loader';
 import assets from './assets';
 import { getTime } from './utils';
 
@@ -13,6 +14,7 @@ const MusicPlayer = () => {
   const [progressTime, setProgressTime] = useState('');
   const [durationTime, setDurationTime] = useState('');
   const [audioAtts, setAudioAtts] = useState({ currentTime: 0, duration: 0 });
+  const [loading, setLoading] = useState(false);
   const audioRef = useRef(new Audio(assets[currentSong]?.song));
 
   const onPreIconClick = useCallback(() => {
@@ -48,6 +50,7 @@ const MusicPlayer = () => {
 
   useEffect(() => {
     if (currentSong) {
+      setLoading(true);
       audioRef.current.play();
       setIsPause((preState) => (preState ? false : preState));
     }
@@ -97,48 +100,60 @@ const MusicPlayer = () => {
         src={assets[currentSong]?.song}
         onEnded={onNextIconClick}
         onTimeUpdate={onTimeUpdate}
+        preLoad='auto'
+        onCanPlay={() => {
+          setLoading(false);
+        }}
         controls
       />
       <div className='bottom-block'>
-        <div className='music-control'>
-          <BiSkipPrevious
-            className='pre-icon'
-            size={30}
-            onClick={onPreIconClick}
-          />
-          {isPause ? (
-            <AiFillPlayCircle
-              className='start-icon'
-              size={35}
-              onClick={onStartIconClick}
-            />
-          ) : (
-            <AiOutlinePause
-              className='pause-icon'
-              size={35}
-              onClick={onPauseIconClick}
-            />
-          )}
-          <BiSkipNext
-            className='next-icon'
-            size={30}
-            onClick={onNextIconClick}
-          />
-        </div>
-        <div className='progress-bar'>
-          <div className='value'>{progressTime}</div>
-          <input
-            className={clsx('progress-time', { disabled: !currentSong })}
-            type='range'
-            value={audioAtts.currentTime}
-            step='1'
-            min='0'
-            max={`${audioAtts.duration}`}
-            onChange={onProgressChange}
-            disabled={!currentSong}
-          />
-          <div className='value'>{durationTime}</div>
-        </div>
+        {loading ? (
+          <div className='loading-block'>
+            <Loader />
+          </div>
+        ) : (
+          <>
+            <div className='music-control'>
+              <BiSkipPrevious
+                className='pre-icon'
+                size={30}
+                onClick={onPreIconClick}
+              />
+              {isPause ? (
+                <AiFillPlayCircle
+                  className='start-icon'
+                  size={35}
+                  onClick={onStartIconClick}
+                />
+              ) : (
+                <AiOutlinePause
+                  className='pause-icon'
+                  size={35}
+                  onClick={onPauseIconClick}
+                />
+              )}
+              <BiSkipNext
+                className='next-icon'
+                size={30}
+                onClick={onNextIconClick}
+              />
+            </div>
+            <div className='progress-bar'>
+              <div className='value'>{progressTime}</div>
+              <input
+                className={clsx('progress-time', { disabled: !currentSong })}
+                type='range'
+                value={audioAtts.currentTime}
+                step='1'
+                min='0'
+                max={`${audioAtts.duration}`}
+                onChange={onProgressChange}
+                disabled={!currentSong}
+              />
+              <div className='value'>{durationTime}</div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
