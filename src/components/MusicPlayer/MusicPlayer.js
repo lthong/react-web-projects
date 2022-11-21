@@ -100,7 +100,7 @@ const MusicPlayer = () => {
         src={assets[currentSong]?.song}
         onEnded={onNextIconClick}
         onTimeUpdate={onTimeUpdate}
-        preLoad='auto'
+        preload='auto'
         onCanPlay={() => {
           setLoading(false);
         }}

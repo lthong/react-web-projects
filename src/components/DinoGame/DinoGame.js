@@ -238,7 +238,7 @@ const DinoGame = () => {
               src={bgm}
               muted={!isBgmOpen}
               autoPlay={false}
-              preLoad='auto'
+              preload='auto'
               loop
               controls
             />
