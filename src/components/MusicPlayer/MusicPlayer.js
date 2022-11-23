@@ -1,23 +1,33 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { AiFillPlayCircle, AiOutlinePause } from 'react-icons/ai';
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import Loader from '@/components/Loader';
 import assets from './assets';
-import { getTime } from './utils';
+import { getTimeFormat } from './utils';
 
 const songs = Object.values(assets);
 
 const MusicPlayer = () => {
-  const [currentSong, setCurrentSong] = useState(null);
+  const [currentSong, setCurrentSong] = useState(songs[0].key);
   const [isPause, setIsPause] = useState(true);
-  const [progressTime, setProgressTime] = useState('');
-  const [durationTime, setDurationTime] = useState('');
-  const [audioAtts, setAudioAtts] = useState({ currentTime: 0, duration: 0 });
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [loading, setLoading] = useState(false);
   const audioRef = useRef(new Audio(assets[currentSong]?.song));
 
+  const onStartIconClick = useCallback(() => {
+    setIsPause(false);
+    audioRef.current.play();
+  }, []);
+
+  const onPauseIconClick = useCallback(() => {
+    setIsPause(true);
+    audioRef.current.pause();
+  }, []);
+
   const onPreIconClick = useCallback(() => {
+    setLoading(true);
     setCurrentSong((preState) => {
       const currentIndex = songs.findIndex((item) => item.key === preState);
       const newIndex =
@@ -26,21 +36,8 @@ const MusicPlayer = () => {
     });
   }, []);
 
-  const onStartIconClick = useCallback(() => {
-    if (!currentSong) {
-      setCurrentSong(songs[0].key);
-    } else {
-      setIsPause(false);
-      audioRef.current.play();
-    }
-  }, [currentSong]);
-
-  const onPauseIconClick = useCallback(() => {
-    setIsPause(true);
-    audioRef.current.pause();
-  }, []);
-
   const onNextIconClick = useCallback(() => {
+    setLoading(true);
     setCurrentSong((preState) => {
       const currentIndex = songs.findIndex((item) => item.key === preState);
       const newIndex = currentIndex + 1 >= songs.length ? 0 : currentIndex + 1;
@@ -48,41 +45,55 @@ const MusicPlayer = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (currentSong) {
-      setLoading(true);
-      audioRef.current.play();
-      setIsPause((preState) => (preState ? false : preState));
-    }
-  }, [currentSong]);
-
   const onTimeUpdate = useCallback((e) => {
-    const { currentTime, duration } = e.target;
-    const newCurrentTime = getTime(currentTime);
-    const newDurationTime = getTime(duration);
-    setAudioAtts(e.target);
-    setProgressTime(newCurrentTime);
-    setDurationTime(newDurationTime);
+    const { currentTime } = e.target;
+    setCurrentTime(currentTime);
+  }, []);
+
+  const onDurationChange = useCallback((e) => {
+    const { duration } = e.target;
+    setDuration(duration);
   }, []);
 
   const onProgressChange = useCallback((e) => {
     const value = e.target.value;
     audioRef.current.currentTime = value;
+    setCurrentTime(value);
   }, []);
+
+  // onCanPlay will be trigger after user chagnes a song
+  const onCanPlay = useCallback(() => {
+    setLoading(false);
+    if (!isPause) {
+      audioRef.current.play();
+    }
+  }, [isPause]);
+
+  const onSongChagne = useCallback(
+    (key) => () => {
+      setIsPause(false);
+      if (currentSong !== key) {
+        // select the other song
+        setCurrentSong(key);
+        setLoading(true);
+      } else {
+        audioRef.current.play();
+      }
+    },
+    [currentSong]
+  );
 
   return (
     <div className='music-player'>
       <div className='songs'>
         {songs.map((item) => {
           const { key, name, photo } = item;
-          const active = currentSong === key;
+          const active = !isPause && currentSong === key;
           return (
             <div
               key={key}
               className={clsx('box', { active })}
-              onClick={() => {
-                setCurrentSong(key);
-              }}
+              onClick={onSongChagne(key)}
             >
               <div className='photo'>
                 <img src={photo} alt={name} />
@@ -98,12 +109,12 @@ const MusicPlayer = () => {
         className='song-audit'
         ref={audioRef}
         src={assets[currentSong]?.song}
-        onEnded={onNextIconClick}
+        onCanPlay={onCanPlay}
         onTimeUpdate={onTimeUpdate}
+        onDurationChange={onDurationChange}
+        onEnded={onNextIconClick}
         preload='auto'
-        onCanPlay={() => {
-          setLoading(false);
-        }}
+        muted={false}
         controls
       />
       <div className='bottom-block'>
@@ -139,18 +150,20 @@ const MusicPlayer = () => {
               />
             </div>
             <div className='progress-bar'>
-              <div className='value'>{progressTime}</div>
+              <div className='value'>{getTimeFormat(currentTime)}</div>
               <input
-                className={clsx('progress-time', { disabled: !currentSong })}
+                className={clsx('progress-time', {
+                  disabled: loading || !currentSong,
+                })}
                 type='range'
-                value={audioAtts.currentTime}
+                value={currentTime}
                 step='1'
                 min='0'
-                max={`${audioAtts.duration}`}
+                max={duration}
                 onChange={onProgressChange}
                 disabled={!currentSong}
               />
-              <div className='value'>{durationTime}</div>
+              <div className='value'>{getTimeFormat(duration)}</div>
             </div>
           </>
         )}

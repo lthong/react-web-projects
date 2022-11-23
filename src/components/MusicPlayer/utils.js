@@ -1,7 +1,7 @@
 import decimal from 'decimal.js';
 
-export const getTime = (value) => {
-  if (decimal(value).isNaN()) {
+export const getTimeFormat = (value) => {
+  if (!value || decimal(value).isNaN()) {
     return '';
   }
   const min = decimal.div(value, 60).floor();
