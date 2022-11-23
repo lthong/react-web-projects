@@ -17,9 +17,12 @@ const MusicPlayer = () => {
   const audioRef = useRef(new Audio(assets[currentSong]?.song));
 
   const onStartIconClick = useCallback(() => {
+    if (!audioRef.current.src) {
+      audioRef.current.src = assets[currentSong]?.song;
+    }
     setIsPause(false);
     audioRef.current.play();
-  }, []);
+  }, [currentSong]);
 
   const onPauseIconClick = useCallback(() => {
     setIsPause(true);
@@ -28,20 +31,30 @@ const MusicPlayer = () => {
 
   const onPreIconClick = useCallback(() => {
     setLoading(true);
+    setIsPause(false);
+    setCurrentTime(0);
     setCurrentSong((preState) => {
       const currentIndex = songs.findIndex((item) => item.key === preState);
       const newIndex =
         currentIndex - 1 < 0 ? songs.length - 1 : currentIndex - 1;
-      return songs[newIndex].key;
+      const result = songs[newIndex].key;
+      audioRef.current.src = assets[result]?.song;
+      audioRef.current.play();
+      return result;
     });
   }, []);
 
   const onNextIconClick = useCallback(() => {
     setLoading(true);
+    setIsPause(false);
+    setCurrentTime(0);
     setCurrentSong((preState) => {
       const currentIndex = songs.findIndex((item) => item.key === preState);
       const newIndex = currentIndex + 1 >= songs.length ? 0 : currentIndex + 1;
-      return songs[newIndex].key;
+      const result = songs[newIndex].key;
+      audioRef.current.src = assets[result]?.song;
+      audioRef.current.play();
+      return result;
     });
   }, []);
 
@@ -61,24 +74,22 @@ const MusicPlayer = () => {
     setCurrentTime(value);
   }, []);
 
-  // onCanPlay will be trigger after user chagnes a song
-  const onCanPlay = useCallback(() => {
+  // onCanPlayThrough will be trigger after user chagnes a song
+  const onCanPlayThrough = useCallback(() => {
     setLoading(false);
-    if (!isPause) {
-      audioRef.current.play();
-    }
-  }, [isPause]);
+  }, []);
 
   const onSongChagne = useCallback(
     (key) => () => {
-      setIsPause(false);
       if (currentSong !== key) {
         // select the other song
-        setCurrentSong(key);
         setLoading(true);
-      } else {
-        audioRef.current.play();
       }
+      setIsPause(false);
+      setCurrentTime(0);
+      setCurrentSong(key);
+      audioRef.current.src = assets[key]?.song;
+      audioRef.current.play();
     },
     [currentSong]
   );
@@ -108,8 +119,10 @@ const MusicPlayer = () => {
       <audio
         className='song-audit'
         ref={audioRef}
-        src={assets[currentSong]?.song}
-        onCanPlay={onCanPlay}
+        // the " audioRef.current.play() " has some error with ios browser when selecting another song,
+        // we will replace below syntax with " audioRef.current.src='xxx' " to resolve this issue
+        // src={assets[currentSong]?.song}
+        onCanPlayThrough={onCanPlayThrough}
         onTimeUpdate={onTimeUpdate}
         onDurationChange={onDurationChange}
         onEnded={onNextIconClick}
