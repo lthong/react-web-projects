@@ -81,15 +81,15 @@ const MusicPlayer = () => {
 
   const onSongChagne = useCallback(
     (key) => () => {
+      setIsPause(false);
       if (currentSong !== key) {
         // select the other song
         setLoading(true);
+        setCurrentTime(0);
+        setCurrentSong(key);
+        audioRef.current.src = assets[key]?.song;
+        audioRef.current.play();
       }
-      setIsPause(false);
-      setCurrentTime(0);
-      setCurrentSong(key);
-      audioRef.current.src = assets[key]?.song;
-      audioRef.current.play();
     },
     [currentSong]
   );
