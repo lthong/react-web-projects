@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
+import clsx from 'clsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
@@ -9,13 +10,11 @@ import useDevice from '@/hooks/useDevice';
 import { FaStar, FaFolderPlus, FaTools } from 'react-icons/fa';
 import { RiGameFill } from 'react-icons/ri';
 
-const blockConfig = [
-  { type: 'all feature', Icon: FaStar },
+const blockItemConfig = [
   { type: 'service', Icon: FaFolderPlus },
   { type: 'game', Icon: RiGameFill },
   { type: 'tool', Icon: FaTools },
 ];
-
 const bannerTextStrs = [
   'Welcome',
   'Hello World',
@@ -25,8 +24,8 @@ const bannerTextStrs = [
 
 const getCardWidthRatio = () => {
   const widthValue = window.innerWidth;
-  if (widthValue < 700) {
-    if (widthValue < 570) {
+  if (widthValue < 810) {
+    if (widthValue < 640) {
       if (widthValue < 520) {
         return 2;
       }
@@ -40,18 +39,18 @@ const getCardWidthRatio = () => {
 const Block = ({ Icon, title, children }) => {
   return (
     <div className='block'>
-      <h3 className='ui header'>
-        <div className='icon-warpper'>
-          <Icon size={24} />
-        </div>
-        <div className='content'>{title}</div>
-      </h3>
+      {title && (
+        <h3 className='ui header'>
+          <div className='icon-warpper'>{Icon && <Icon size={24} />}</div>
+          <div className='content'>{title}</div>
+        </h3>
+      )}
       {children}
     </div>
   );
 };
 
-const Card = ({ imgIndex, label, path }) => {
+const Card = ({ imgName, label, path }) => {
   const history = useHistory();
 
   return (
@@ -61,7 +60,7 @@ const Card = ({ imgIndex, label, path }) => {
         history.push(path);
       }}
     >
-      <img src={pageImgs[imgIndex]} alt='page-img' />
+      <img src={pageImgs[imgName]} alt='page-img' />
       <div className='label'>
         <span>{label}</span>
       </div>
@@ -75,11 +74,12 @@ const Home = ({ onScrollDown }) => {
   const bannerTextStartTimer = useRef(null);
   const bannerTextPauseTimer = useRef(null);
   const bannerTextData = useRef({ index: 0, isAdd: false });
+  const history = useHistory();
 
   const resizeCallback = useCallback(() => {
     setSlidesPerView(getCardWidthRatio());
   }, []);
-  useDevice({ resizeCallback });
+  const { isMobile } = useDevice({ resizeCallback });
 
   useEffect(() => {
     const onScroll = () => {
@@ -121,11 +121,11 @@ const Home = ({ onScrollDown }) => {
             isAdd: false,
           };
           if (!bannerTextPauseTimer.current) {
-            // run the banner text after 3 seconds
+            // run the next banner text after 1 seconds
             bannerTextPauseTimer.current = setTimeout(() => {
               clearTimeout(bannerTextPauseTimer.current);
               bannerTextPauseTimer.current = null;
-            }, 2000);
+            }, 1000);
           }
           return preState;
         }
@@ -151,7 +151,7 @@ const Home = ({ onScrollDown }) => {
       clearTimeout(bannerTextPauseTimer.current);
       bannerTextPauseTimer.current = null;
       bannerTextStartTimer.current = setInterval(runTheBannerText, 120);
-    }, 3000);
+    }, 2000);
     return () => {
       clearInterval(bannerTextStartTimer.current);
       clearTimeout(bannerTextPauseTimer.current);
@@ -167,30 +167,52 @@ const Home = ({ onScrollDown }) => {
         </div>
       </div>
       <div className='main'>
-        {blockConfig.map(({ Icon, type }) => {
-          const isShowAll = type === 'all feature';
-          const cards = isShowAll ? pageConfig : pageGroups[type];
-          return (
-            <Block key={type} Icon={Icon} title={type}>
-              <Swiper
-                key={type}
-                className='swipers'
-                slidesPerView={slidesPerView}
-                spaceBetween={15}
-                navigation={false}
-                loop={isShowAll}
-                modules={isShowAll ? [Autoplay] : []}
-                autoplay={{ delay: 1600, disableOnInteraction: false }}
-              >
-                {cards?.map(({ path, label, imgName }) => (
-                  <SwiperSlide key={path}>
-                    <Card imgIndex={imgName} label={label} path={path} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+        <div className={clsx('center', { 's-size': isMobile })}>
+          <Block Icon={FaStar} title='all feature'>
+            <Swiper
+              className='swipers'
+              slidesPerView={slidesPerView}
+              spaceBetween={15}
+              navigation={false}
+              loop={true}
+              modules={[Autoplay]}
+              autoplay={{ delay: 2000, disableOnInteraction: false }}
+            >
+              {pageConfig?.map(({ path, label, imgName }, i) => (
+                <SwiperSlide key={path}>
+                  <Card imgName={imgName} label={label} path={path} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Block>
+          {blockItemConfig.map(({ type, Icon }) => (
+            <Block key={type} title={type} Icon={Icon}>
+              {pageGroups[type]?.map(({ path, label, imgName, intro }) => (
+                <div
+                  key={path}
+                  className={clsx('item-box', { 's-size': isMobile })}
+                  onClick={() => {
+                    history.push(path);
+                  }}
+                >
+                  <div className='left'>
+                    <div
+                      className='pic'
+                      style={{ backgroundImage: `url(${pageImgs[imgName]})` }}
+                    />
+                  </div>
+                  <div className='right'>
+                    <div className='title'>{label}</div>
+                    <div className='intro'>{intro}</div>
+                  </div>
+                </div>
+              ))}
             </Block>
-          );
-        })}
+          ))}
+        </div>
+      </div>
+      <div className='copyright'>
+        Copyright © 2022 Karen Hong. All rights reserved.
       </div>
     </div>
   );
