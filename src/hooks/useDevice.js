@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 // const parser = bowser.getParser(window.navigator.userAgent);
 // const platform = parser.getPlatform();
 
-const widthThreshold = 530;
+const defaultWidthThreshold = 530;
 
 const useDevice = (props = {}) => {
-  const { resizeCallback = () => {} } = props;
+  const { resizeCallback = () => {}, widthThreshold = defaultWidthThreshold } =
+    props;
   const [isMobile, setIsMobile] = useState(window.innerWidth < widthThreshold);
 
   useEffect(() => {

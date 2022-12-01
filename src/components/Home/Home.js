@@ -7,8 +7,8 @@ import { useHistory } from 'react-router-dom';
 import pageImgs from './assets/imgs';
 import { pageConfig, pageGroups } from '@/libraries/routerPath';
 import useDevice from '@/hooks/useDevice';
-import { FaStar, FaFolderPlus, FaTools } from 'react-icons/fa';
-import { RiGameFill } from 'react-icons/ri';
+import { FaStar, FaFolderPlus, FaTools, FaCalendar } from 'react-icons/fa';
+import { RiGameFill, RiArrowDownSLine } from 'react-icons/ri';
 
 const blockItemConfig = [
   { type: 'service', Icon: FaFolderPlus },
@@ -79,7 +79,7 @@ const Home = ({ onScrollDown }) => {
   const resizeCallback = useCallback(() => {
     setSlidesPerView(getCardWidthRatio());
   }, []);
-  const { isMobile } = useDevice({ resizeCallback });
+  const { isMobile } = useDevice({ resizeCallback, widthThreshold: 600 });
 
   useEffect(() => {
     const onScroll = () => {
@@ -165,8 +165,13 @@ const Home = ({ onScrollDown }) => {
           {bannerText}
           <span className='cursor-text'>_</span>
         </div>
+        <div className='down-bar'>
+          <a href='#main'>
+            <RiArrowDownSLine size={55} />
+          </a>
+        </div>
       </div>
-      <div className='main'>
+      <div className='main' id='main'>
         <div className={clsx('center', { 's-size': isMobile })}>
           <Block Icon={FaStar} title='all feature'>
             <Swiper
@@ -187,26 +192,38 @@ const Home = ({ onScrollDown }) => {
           </Block>
           {blockItemConfig.map(({ type, Icon }) => (
             <Block key={type} title={type} Icon={Icon}>
-              {pageGroups[type]?.map(({ path, label, imgName, intro }) => (
-                <div
-                  key={path}
-                  className={clsx('item-box', { 's-size': isMobile })}
-                  onClick={() => {
-                    history.push(path);
-                  }}
-                >
-                  <div className='left'>
-                    <div
-                      className='pic'
-                      style={{ backgroundImage: `url(${pageImgs[imgName]})` }}
-                    />
+              {pageGroups[type]?.map(
+                ({ path, label, imgName, intro, date }) => (
+                  <div
+                    key={path}
+                    className={clsx('item-box', { 's-size': isMobile })}
+                    onClick={() => {
+                      history.push(path);
+                    }}
+                  >
+                    <div className='left'>
+                      <div
+                        className='pic'
+                        style={{ backgroundImage: `url(${pageImgs[imgName]})` }}
+                      />
+                    </div>
+                    <div className='right'>
+                      <div className='title'>{label}</div>
+                      <div className='intro'>{intro}</div>
+                      <div className='tags'>
+                        <span className='date'>
+                          <FaCalendar />
+                          {date}
+                        </span>
+                        <span className='type'>
+                          <Icon />
+                          {type}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div className='right'>
-                    <div className='title'>{label}</div>
-                    <div className='intro'>{intro}</div>
-                  </div>
-                </div>
-              ))}
+                )
+              )}
             </Block>
           ))}
         </div>
