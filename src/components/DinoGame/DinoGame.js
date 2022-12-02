@@ -12,6 +12,7 @@ import bgm from './assets/music/bgm.mp3';
 import { MdMusicNote, MdMusicOff } from 'react-icons/md';
 import { BsArrowUpSquare } from 'react-icons/bs';
 import useDevice from '@/hooks/useDevice';
+import Switch from '@/components/Common/Switch';
 
 const DinoGame = () => {
   const dinoRunTimerId = useRef(null);
@@ -243,14 +244,13 @@ const DinoGame = () => {
               controls
             />
             {gameStatus === gameStatusEnums.START && (
-              <div className='bgm-switch' onClick={onBgmStatusChange}>
-                <div className='voice-icon'>
-                  {isBgmOpen ? <MdMusicNote /> : <MdMusicOff />}
-                </div>
-                <div className={clsx('bgm-btn', { open: isBgmOpen })}>
-                  <div className='switch' />
-                </div>
-              </div>
+              <Switch
+                isOpen={isBgmOpen}
+                onChange={onBgmStatusChange}
+                OpenIcon={MdMusicNote}
+                ClosedIcon={MdMusicOff}
+                iconSize={20}
+              />
             )}
           </div>
         </>

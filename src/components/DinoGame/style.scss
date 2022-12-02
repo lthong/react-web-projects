@@ -174,41 +174,6 @@ $dinoJumpingSecond: 0.5;
       .bgm-audit {
         display: none;
       }
-      .bgm-switch {
-        display: flex;
-        cursor: pointer;
-        .voice-icon {
-          font-size: 20px;
-        }
-        .bgm-btn {
-          position: relative;
-          width: 40px;
-          height: 20px;
-          border-radius: 20px;
-          background-color: #888;
-          display: flex;
-          align-items: center;
-          margin-right: 20px;
-          .switch {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border-radius: 100%;
-            background-color: white;
-            transition: right 0.3s ease;
-            right: 22px;
-          }
-          &.open {
-            .switch {
-              background-color: #90caf9;
-              right: 3.5px;
-            }
-          }
-          &:hover {
-            background-color: #999;
-          }
-        }
-      }
     }
   }
   &.m-platform {
