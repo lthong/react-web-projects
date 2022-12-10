@@ -7,7 +7,12 @@ import { useHistory } from 'react-router-dom';
 import pageImgs from './assets/imgs';
 import { pageConfig, pageGroups } from '@/libraries/routerPath';
 import useDevice from '@/hooks/useDevice';
-import { FaStar, FaFolderPlus, FaTools, FaCalendar } from 'react-icons/fa';
+import {
+  FaStar,
+  FaFolderPlus,
+  FaTools,
+  FaRegCalendarAlt,
+} from 'react-icons/fa';
 import { RiGameFill, RiArrowDownSLine } from 'react-icons/ri';
 
 const blockItemConfig = [
@@ -212,7 +217,7 @@ const Home = ({ onScrollDown }) => {
                       <div className='intro'>{intro}</div>
                       <div className='tags'>
                         <span className='date'>
-                          <FaCalendar />
+                          <FaRegCalendarAlt />
                           {date}
                         </span>
                         <span className='type'>
