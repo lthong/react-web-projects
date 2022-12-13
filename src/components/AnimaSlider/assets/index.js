@@ -34,7 +34,7 @@ import campBanner from './camp/banner.jpg';
 import tadakoiBanner from './tadakoi/banner.jpg';
 import silverSpoonBanner from './silverSpoon/banner.jpg';
 const spy = [spy1, spy2, spy3, spy4, spy5, spy6];
-const hime = [hime1, hime2, hime3, hime4, hime5, hime6];
+const hime = [hime1, hime4, hime3, hime2, hime5, hime6];
 const camp = [camp1, camp2, camp3, camp4, camp5, camp6];
 const tadakoi = [tadakoi1, tadakoi2, tadakoi3, tadakoi4, tadakoi5, tadakoi6];
 const silverSpoon = [
