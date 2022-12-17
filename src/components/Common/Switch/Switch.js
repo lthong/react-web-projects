@@ -8,18 +8,24 @@ const Switch = ({
   OpenIcon,
   iconSize = 20,
   ClosedIcon,
+  disabled = false,
 }) => {
   const onSwitchClick = useCallback(
     (e) => {
       e.stopPropagation();
-      onChange && onChange();
+      if (!disabled) {
+        onChange && onChange();
+      }
     },
-    [onChange]
+    [onChange, disabled]
   );
 
   return (
     <div
-      className={clsx('common-switch', { [className]: !!className })}
+      className={clsx('common-switch', {
+        [className]: !!className,
+        disabled,
+      })}
       onClick={onSwitchClick}
     >
       <div className='icon'>

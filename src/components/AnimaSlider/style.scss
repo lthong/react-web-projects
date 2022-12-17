@@ -1,0 +1,301 @@
+:root {
+  --anima-slider-banner-container-translate-x: 0%;
+}
+.anima-slider {
+  background-image: linear-gradient(
+    0deg,
+    rgba(247, 247, 247, 1) 23.8%,
+    rgba(252, 221, 221, 1) 92%
+  );
+  &.spyFamily {
+    background-image: linear-gradient(
+      0deg,
+      rgba(247, 247, 247, 1) 23.8%,
+      rgb(252, 232, 221) 92%
+    );
+  }
+  &.camp {
+    background-image: linear-gradient(
+      0deg,
+      rgba(247, 247, 247, 1) 23.8%,
+      rgb(252, 245, 221) 92%
+    );
+  }
+  &.tadakoi {
+    background-image: linear-gradient(
+      0deg,
+      rgba(247, 247, 247, 1) 23.8%,
+      rgba(252, 221, 221, 1) 92%
+    );
+  }
+  &.hime {
+    background-image: linear-gradient(
+      0deg,
+      rgba(247, 247, 247, 1) 23.8%,
+      rgb(252, 234, 221) 92%
+    );
+  }
+  &.silverSpoon {
+    background-image: linear-gradient(
+      0deg,
+      rgba(247, 247, 247, 1) 23.8%,
+      rgb(221, 239, 252) 92%
+    );
+  }
+  color: #454545;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 20px 0;
+  width: 100%;
+  overflow-x: hidden;
+  .action-btns {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .action {
+      border-radius: 8px;
+      padding: 12px;
+      margin-right: 8px;
+      background-color: #f6f0f0c9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 2px 15px rgb(182, 182, 182);
+      .carousel-open-switch {
+        font-size: 1.1rem;
+        font-weight: 500;
+        .icon {
+          margin-left: 5px;
+          order: 1;
+        }
+      }
+    }
+  }
+  .banner-block {
+    position: relative;
+    .change-pic-icon {
+      position: absolute;
+      top: 45%;
+      color: #454545;
+      cursor: pointer;
+      z-index: 10;
+      padding: 8px;
+      background-color: #ffffffc1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      &.pre {
+        left: 20px;
+      }
+      &.next {
+        right: 20px;
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+    .banner-container {
+      margin-bottom: 20px;
+      position: relative;
+      width: 100%;
+      display: flex;
+      transition: transform 0.4s;
+      transform: translateX(var(--anima-slider-banner-container-translate-x));
+      .banner {
+        padding: 0 10px;
+        width: 25%;
+        height: calc(25vw * 1.3);
+        box-sizing: border-box;
+        flex-shrink: 0;
+        overflow: hidden;
+        .img {
+          cursor: pointer;
+          box-shadow: 2px 2px 6px rgba(165, 165, 163, 0.7);
+          border: 5px solid #f9f9f9;
+          width: 100%;
+          height: 100%;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          transition: filter 0.3s ease, transform 0.3s ease;
+          &:hover {
+            transform: scale(1.1);
+            animation: banner-hover-anima 0.7s linear 0s;
+          }
+        }
+        &.active .img {
+          filter: contrast(1.1);
+        }
+      }
+    }
+  }
+  .block {
+    width: 100%;
+    margin: 20px 0 15px;
+    padding: 0 30px;
+    > div {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+      &.fade-in {
+        opacity: 0;
+      }
+    }
+    .title {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      border-bottom: rgba(228, 195, 138, 1) 3px dotted;
+      color: rgba(89, 87, 87, 1);
+      margin-bottom: 15px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    .intro {
+      width: 100%;
+      height: auto;
+      font-size: 1.3rem;
+      line-height: 2rem;
+      text-align: justify;
+    }
+    .gallery {
+      width: 100%;
+      padding: 0;
+      .current-pic-container {
+        width: 100%;
+        height: 450px;
+        position: relative;
+        .current-pic {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 1.2s ease 0s;
+          &.show {
+            opacity: 1;
+          }
+          img {
+            height: 100%;
+            border: 5px solid white;
+          }
+        }
+      }
+      .pics {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        img {
+          height: 100%;
+          cursor: pointer;
+          width: calc((100% / 6) - 5px);
+          opacity: 0.7;
+          transition: opacity 0.3s ease;
+          &:hover {
+            opacity: 1;
+          }
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .reference {
+      padding-left: 10px;
+      margin-bottom: 10px;
+      .url {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        width: fit-content;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        text-decoration: underline;
+        margin-bottom: 8px;
+        span {
+          margin-left: 5px;
+        }
+        &:hover {
+          color: var(--secondary-color);
+        }
+      }
+    }
+  }
+  &.m-size {
+    .banner-block {
+      .change-pic-icon {
+        font-size: 20px;
+        top: 40%;
+        &.pre {
+          left: 10px;
+        }
+        &.next {
+          right: 10px;
+        }
+      }
+      .banner-container {
+        width: 50vw;
+        .banner {
+          width: 100%;
+          padding: 0 5px;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          .img {
+            width: 100%;
+            height: calc(50vw * 1.5);
+          }
+        }
+      }
+    }
+    .action-btns {
+      display: none;
+    }
+    .gallery {
+      overflow-x: hidden;
+      .current-pic-container {
+        height: 180px;
+      }
+      .pics {
+        flex-wrap: wrap;
+        img {
+          width: calc(100% / 3 - 5px);
+          margin-bottom: 5px;
+        }
+      }
+    }
+    &.spyFamily {
+      .gallery {
+        .current-pic-container {
+          height: 320px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes banner-hover-anima {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

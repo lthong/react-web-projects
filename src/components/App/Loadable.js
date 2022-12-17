@@ -44,3 +44,8 @@ export const DinoGame = Loadable({
     import(/* webpackChunkName: 'DinoGame' */ '@/components/DinoGame'),
   loading: Loading,
 });
+export const AnimaSlider = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'AnimaSlider' */ '@/components/AnimaSlider'),
+  loading: Loading,
+});

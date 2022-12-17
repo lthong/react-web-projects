@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import { Route, useLocation } from 'react-router-dom';
 import * as Loadable from '@/components/App/Loadable';
@@ -10,6 +10,7 @@ const Comps = [
   // { path: routerPath.HOME, Comp: Loadable.Home, exact: true },
   { path: routerPath.MUSIC_PLAYER, Comp: Loadable.MusicPlayer },
   { path: routerPath.VEDIO_BROWSER, Comp: Loadable.VedioBrowser },
+  { path: routerPath.ANIMA_SLIDER, Comp: Loadable.AnimaSlider },
   { path: routerPath.IG_FILTER, Comp: Loadable.IGFilter },
   { path: routerPath.SNAKE_GAME, Comp: Loadable.SnakeGame },
   { path: routerPath.JIGSAW_GAME, Comp: Loadable.JigsawGame },
@@ -29,6 +30,10 @@ const App = () => {
   const onScrollDown = useCallback((isDown) => {
     setIsScrollDown(isDown);
   }, []);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pathname]);
 
   return (
     <div
