@@ -41,8 +41,7 @@ export const navs = [
     type: 'service',
     date: '2022-12',
     imgName: 'm7',
-    intro:
-      '在不使用套件的情況下，自製一個圖片輪播的功能～圖片是使用幾部喜歡的動漫做 Demo，但我不是宅宅喔 XD，',
+    intro: '在不使用套件的情況下，自製一個圖片輪播的功能～實作難度六顆心 XD，',
   },
   {
     path: pages.MUSIC_PLAYER,

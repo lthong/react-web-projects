@@ -54,9 +54,10 @@ const AnimaSlider = () => {
   const [bannerMouseMoveDiff, setBannerMouseMoveDiff] = useState(null);
   const [isBannerCarouselOpen, setIsBannerCarouselOpen] = useState(false);
   const [isbannerMouseEnter, setIsbannerMouseEnter] = useState(false);
+  // currentPicIndex：當前選擇的 gallery pic
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
   const [isFadeIn, setIsFadeIn] = useState(false);
-  // currentClickModePicIndex 當前的圖片索引位置
+  // currentClickModePicIndex：當前的圖片索引位置
   const [currentSinglePicCarouselIndex, setCurrentClickModePicIndex] =
     useState(0);
 
@@ -134,6 +135,9 @@ const AnimaSlider = () => {
             : bannerXRatio - widthRatio;
         // 設定輪播匡新的x位置
         setBannerXRatio(newBannerXRatio);
+        setCurrentClickModePicIndex(
+          Decimal.abs(newBannerXRatio).div(25).toNumber()
+        );
         document.documentElement.style.setProperty(
           bannerContainerXVar,
           `${newBannerXRatio}%`
@@ -155,14 +159,29 @@ const AnimaSlider = () => {
   }, [isBannerMoved, bannerMouseMoveDiff, bannerXRatio]);
 
   // 點擊左右切換圖片，更新滑動位置
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      bannerContainerXVar,
-      `-${currentSinglePicCarouselIndex * (isMobile ? 100 : 25)}%`
-    );
-  }, [currentSinglePicCarouselIndex, isMobile]);
+  const onPreOrNextClick = useCallback(
+    // indexUpdatedValue為 -1 表示向左，indexUpdatedValue為 +1 表示向右
+    (indexUpdatedValue) => {
+      if (
+        (indexUpdatedValue === -1 && currentSinglePicCarouselIndex !== 0) ||
+        (indexUpdatedValue === +1 &&
+          currentSinglePicCarouselIndex !==
+            (isMobile ? animaAmount - 2 : animaAmount - 4))
+      ) {
+        setCurrentClickModePicIndex((preState) => {
+          const newState = preState + indexUpdatedValue;
+          document.documentElement.style.setProperty(
+            bannerContainerXVar,
+            `-${newState * (isMobile ? 100 : 25)}%`
+          );
+          return newState;
+        });
+      }
+    },
+    [currentSinglePicCarouselIndex, isMobile]
+  );
 
-  // 設定輪播功能
+  // 設定自動輪播功能
   const setBannerCarousel = useCallback(() => {
     bannerCarouselTimer.current = setInterval(() => {
       // 滑鼠進入或未開啟輪播時不做輪播滑動
@@ -173,13 +192,14 @@ const AnimaSlider = () => {
           preState - bannerWidthRatio < bannersRightLimitRatio
             ? 0
             : preState - bannerWidthRatio;
+        setCurrentClickModePicIndex(Decimal.abs(newState).div(25).toNumber());
         document.documentElement.style.setProperty(
           bannerContainerXVar,
           `${newState}%`
         );
         return newState;
       });
-    }, 2500);
+    }, 2000);
   }, [isbannerMouseEnter, isBannerCarouselOpen]);
 
   const onBannerContainerMouseLeave = useCallback(() => {
@@ -222,9 +242,7 @@ const AnimaSlider = () => {
           })}
           onClick={(e) => {
             e.stopPropagation();
-            if (currentSinglePicCarouselIndex !== 0) {
-              setCurrentClickModePicIndex((preState) => preState - 1);
-            }
+            onPreOrNextClick(-1);
           }}
         >
           <AiOutlineLeft />
@@ -277,12 +295,7 @@ const AnimaSlider = () => {
           })}
           onClick={(e) => {
             e.stopPropagation();
-            if (
-              currentSinglePicCarouselIndex !==
-              (isMobile ? animaAmount - 2 : animaAmount - 4)
-            ) {
-              setCurrentClickModePicIndex((preState) => preState + 1);
-            }
+            onPreOrNextClick(+1);
           }}
         >
           <AiOutlineRight />
