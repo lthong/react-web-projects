@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import clsx from 'clsx';
+import Swal from 'sweetalert2';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
@@ -151,6 +152,26 @@ const Home = ({ onScrollDown }) => {
     });
   }, []);
 
+  const onIntroModalOpen = useCallback((event, pageIndex) => {
+    event.stopPropagation();
+    Swal.fire({
+      html: `<div class='intor-block'><img src=${
+        pageImgs[`intro${pageIndex}`]
+      } alt='intro-pic'/></div>`,
+      width: '85vw',
+      showCloseButton: true,
+      showConfirmButton: false,
+    });
+  }, []);
+
+  const gotoPage = useCallback(
+    (event, path) => {
+      event.stopPropagation();
+      history.push(path);
+    },
+    [history]
+  );
+
   useEffect(() => {
     bannerTextPauseTimer.current = setTimeout(() => {
       clearTimeout(bannerTextPauseTimer.current);
@@ -198,12 +219,12 @@ const Home = ({ onScrollDown }) => {
           {blockItemConfig.map(({ type, Icon }) => (
             <Block key={type} title={type} Icon={Icon}>
               {pageGroups[type]?.map(
-                ({ path, label, imgName, intro, date }) => (
+                ({ path, label, imgName, intro, date, pageIndex }) => (
                   <div
                     key={path}
                     className={clsx('item-box', { 's-size': isMobile })}
-                    onClick={() => {
-                      history.push(path);
+                    onClick={(event) => {
+                      gotoPage(event, path);
                     }}
                   >
                     <div className='left'>
@@ -214,7 +235,6 @@ const Home = ({ onScrollDown }) => {
                     </div>
                     <div className='right'>
                       <div className='title'>{label}</div>
-                      <div className='intro'>{intro}</div>
                       <div className='tags'>
                         <span className='date'>
                           <FaRegCalendarAlt />
@@ -225,6 +245,27 @@ const Home = ({ onScrollDown }) => {
                           {type}
                         </span>
                       </div>
+                      <div className='intro'>{intro}</div>
+                      {!isMobile && (
+                        <div className='btns'>
+                          <button
+                            className='ui button'
+                            onClick={(event) => {
+                              onIntroModalOpen(event, pageIndex);
+                            }}
+                          >
+                            介紹
+                          </button>
+                          <button
+                            className='ui button'
+                            onClick={(event) => {
+                              gotoPage(event, path);
+                            }}
+                          >
+                            更多
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )

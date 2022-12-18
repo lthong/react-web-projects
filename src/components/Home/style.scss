@@ -171,6 +171,7 @@
               font-size: 1rem;
               justify-content: space-between;
               flex-wrap: wrap;
+              margin: 5px 0;
               > span {
                 display: flex;
                 align-items: center;
@@ -188,6 +189,16 @@
               text-align: justify;
               min-height: 100px;
               letter-spacing: 0;
+            }
+            .btns {
+              display: flex;
+              justify-content: flex-end;
+              margin: 10px 0;
+              > button {
+                font-size: 0.9rem !important;
+                margin-left: 10px;
+                letter-spacing: 0.9px;
+              }
             }
           }
           &.s-size {
@@ -252,5 +263,15 @@
   100% {
     opacity: 0.5;
     transform: translateY(-60px);
+  }
+}
+
+.intor-block {
+  width: 1000px;
+  max-height: 80vh;
+  overflow: auto;
+  img {
+    width: 100%;
+    height: auto;
   }
 }

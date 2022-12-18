@@ -12,5 +12,22 @@ import d4 from './d4.jpg';
 import d5 from './d5.jpg';
 import d6 from './d6.jpg';
 import d7 from './d7.jpg';
+import intro7 from './intro/7.svg';
 
-export default { m1, m2, m3, m4, m5, m6, m7, d1, d2, d3, d4, d5, d6, d7 };
+export default {
+  m1,
+  m2,
+  m3,
+  m4,
+  m5,
+  m6,
+  m7,
+  d1,
+  d2,
+  d3,
+  d4,
+  d5,
+  d6,
+  d7,
+  intro7,
+};
