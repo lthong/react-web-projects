@@ -225,6 +225,7 @@ const AnimaSlider = () => {
   useEffect(() => {
     return () => {
       clearTimeout(fadeInTimer.current);
+      document.documentElement.style.setProperty(bannerContainerXVar, `0%`);
     };
   }, []);
 
