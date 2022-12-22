@@ -155,12 +155,12 @@ const Home = ({ onScrollDown }) => {
   const onIntroModalOpen = useCallback((event, pageIndex) => {
     event.stopPropagation();
     Swal.fire({
-      html: `<div class='intor-block'><img src=${
-        pageImgs[`intro${pageIndex}`]
-      } alt='intro-pic'/></div>`,
       width: '85vw',
       showCloseButton: true,
       showConfirmButton: false,
+      html: `<div class='intor-block'><img src=${
+        pageImgs[`intro${pageIndex}`]
+      } alt='intro-pic'/></div>`,
     });
   }, []);
 
@@ -248,14 +248,16 @@ const Home = ({ onScrollDown }) => {
                       <div className='intro'>{intro}</div>
                       {!isMobile && (
                         <div className='btns'>
-                          <button
-                            className='ui button'
-                            onClick={(event) => {
-                              onIntroModalOpen(event, pageIndex);
-                            }}
-                          >
-                            介紹
-                          </button>
+                          {pageImgs[`intro${pageIndex}`] && (
+                            <button
+                              className='ui button'
+                              onClick={(event) => {
+                                onIntroModalOpen(event, pageIndex);
+                              }}
+                            >
+                              介紹
+                            </button>
+                          )}
                           <button
                             className='ui button'
                             onClick={(event) => {
