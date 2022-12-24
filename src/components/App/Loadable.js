@@ -49,3 +49,8 @@ export const AnimaSlider = Loadable({
     import(/* webpackChunkName: 'AnimaSlider' */ '@/components/AnimaSlider'),
   loading: Loading,
 });
+export const MatchingGame = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'MatchingGame' */ '@/components/MatchingGame'),
+  loading: Loading,
+});

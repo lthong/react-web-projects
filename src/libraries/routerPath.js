@@ -2,6 +2,7 @@ import { AiFillHome, AiFillYoutube } from 'react-icons/ai';
 import { BsMusicNoteBeamed, BsFillCameraFill } from 'react-icons/bs';
 import { GiSnakeSpiral, GiJigsawPiece } from 'react-icons/gi';
 import { FaGamepad, FaBookOpen } from 'react-icons/fa';
+import { MdCatchingPokemon } from 'react-icons/md';
 import { fromJS } from 'immutable';
 
 const pages = {
@@ -13,6 +14,7 @@ const pages = {
   SNAKE_GAME: '/snake-game',
   JIGSAW_GAME: '/jigsaw-game',
   DINO_GAME: '/dino-game',
+  MATCHING_GAME: '/matching-game',
 };
 
 export default pages;
@@ -43,7 +45,8 @@ export const navs = [
     type: 'service',
     date: '2022-12',
     imgName: 'm7',
-    intro: '在不使用套件的情況下，自製一個圖片輪播的功能～實作難度六顆心 XD，',
+    intro:
+      '在不使用套件的情況下，自製一個圖片輪播的功能～輪播框拖曳滑動那邊做到快起笑 XD，',
   },
   {
     pageIndex: 1,
@@ -94,6 +97,16 @@ export const navs = [
     date: '2022-11',
     imgName: 'm6',
     intro: '復刻 Google 經典的恐龍遊戲，還有背景音樂喔！',
+  },
+  {
+    pageIndex: 8,
+    path: pages.MATCHING_GAME,
+    label: 'matching Game',
+    Icon: MdCatchingPokemon,
+    type: 'game',
+    date: '2022-12',
+    imgName: 'm8',
+    intro: '寶可夢的卡牌記憶遊戲，角色牌隨機出現',
   },
 ];
 

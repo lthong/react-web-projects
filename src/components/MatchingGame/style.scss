@@ -1,0 +1,97 @@
+.matching-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20px;
+  .actions {
+    font-family: 'Press Start 2P';
+    width: 320px;
+    max-width: 95%;
+    padding: 10px 0 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .score {
+      font-size: 1.2rem;
+      white-space: 1.2px;
+    }
+    > button {
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+  .cards {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 320px;
+    max-width: 95%;
+    .card {
+      width: 30%;
+      height: 120px;
+      margin-bottom: 10px;
+      background-color: transparent;
+      transition: transform 0.2s ease-in-out;
+      perspective: 1000px;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &.disabled {
+        cursor: not-allowed;
+        transform: none;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s ease;
+        transform-style: preserve-3d;
+        &.visible {
+          transform: rotateY(180deg);
+        }
+        .front,
+        .back {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          border-radius: 5px;
+          filter: drop-shadow(0 0 5px var(--primary-shadow-color));
+        }
+        .front {
+          border: 6px solid #fff;
+          background: conic-gradient(
+            #ffcc33 25%,
+            #fff3ce 25%,
+            #fff3ce 50%,
+            #ffcc33 50%,
+            #ffcc33 75%,
+            #fff3ce 75%
+          );
+          background-size: 20px 20px;
+          img {
+            width: 50%;
+          }
+        }
+        .back {
+          background-color: #f4f5f7;
+          transform: rotateY(180deg);
+          img {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
