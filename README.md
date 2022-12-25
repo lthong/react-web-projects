@@ -106,6 +106,7 @@ This project is a web demo of some React applications. Every page support the vi
   - [DnD](https://pjchender.dev/html/html-drag-and-drop/)
   - [touch-event](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events)
   - [getBoundingClientRect](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
+  - [shuffle algorithm](https://chupai.github.io/posts/2008/shuffle_algorithm/)
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 
@@ -154,6 +155,25 @@ This project is a web demo of some React applications. Every page support the vi
   - [onMouseLeave](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/mouseleave_event)
   - [CSSStyleDeclaration.setProperty()](https://developer.mozilla.org/zh-CN/docs/Web/API/CSSStyleDeclaration/setProperty)
   - [css translateX()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function/translateX)
+
+##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
+
+---
+
+#### 🎞 Matching Game 記憶卡牌遊戲<a id="08"></a>
+
+- Features
+  - 卡牌隨機排列
+  - 卡牌翻轉動畫
+  - 分數計算
+  - 遊戲重置
+- Resource
+  - [shuffle algorithm](https://chupai.github.io/posts/2008/shuffle_algorithm/)
+  - [flip box example](https://www.w3schools.com/howto/howto_css_flip_box.asp)
+  - [css perspective](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective)
+  - [css transform-style](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-style)
+  - [css backface-visibility](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backface-visibility)
+  - [css conic-gradient()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient/conic-gradient)
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 
