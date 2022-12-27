@@ -82,6 +82,13 @@ module.exports = {
       favicon: resolve(__dirname, 'public/favicon.ico'),
       publicPath: PUBLIC_PATH,
     }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      filename: '404.html',
+      template: resolve(__dirname, 'public/404.html'),
+      favicon: resolve(__dirname, 'public/favicon.ico'),
+      publicPath: PUBLIC_PATH,
+    }),
     new webpack.DefinePlugin({
       'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
       'process.env.YOUTUBE_AIP_KEY': JSON.stringify(
