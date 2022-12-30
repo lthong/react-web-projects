@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
-import { Route, useLocation } from 'react-router-dom';
+import { Route, useLocation, useHistory } from 'react-router-dom';
 import * as Loadable from '@/components/App/Loadable';
 import routerPath from '@/libraries/routerPath';
 import Menu from '@/components/Menu';
@@ -21,10 +21,11 @@ const Comps = [
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [isScrollDown, setIsScrollDown] = useState(false);
+  const history = useHistory();
+  const { pathname, search } = useLocation();
 
-  const { pathname } = useLocation();
   const pathClassname = useMemo(
-    () => `path-${pathname.substr(1) || 'home'}`,
+    () => `path-${pathname.substring(1) || 'home'}`,
     [pathname]
   );
 
@@ -35,6 +36,15 @@ const App = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    const pathParser = search?.substring(1).split('path=');
+    const isRedirectPathExisted = pathParser?.length === 2;
+    if (isRedirectPathExisted) {
+      const redirectPath = pathParser[1];
+      history.push(redirectPath);
+    }
+  }, [search]);
 
   return (
     <div
