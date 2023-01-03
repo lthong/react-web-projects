@@ -16,6 +16,7 @@ This project is a web demo of some React applications. Every page support the vi
 |05|[Jigsaw Game](#05) |[![m5](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg)](#05)|
 |06|[Dinosaur Game](#06) |[![m6](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg)](#06)|
 |07|[Animation Slider](#07) |[![m7](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg)](#07)|
+|08|[Matching Game](#07) |[![m8](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg)](#08)|
 
 ---
 
@@ -160,7 +161,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🎞 Matching Game 記憶卡牌遊戲<a id="08"></a>
+#### 🙈 Matching Game 記憶卡牌遊戲<a id="08"></a>
 
 - Features
   - 卡牌隨機排列
