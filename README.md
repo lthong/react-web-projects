@@ -7,16 +7,13 @@ This project is a web demo of some React applications. Every page support the vi
 本專案將實作許多 React Application，各頁面均支援 PC & H5 模式，另有黑白兩色系可作切換，詳細的介紹如下：
 
 [Live Demo](https://lthong.github.io/react-web-projects) 😊
-|#| Projects <a id="project-info"></a> | Preview |
-|-:|:---------|:-------------:|
-|01|[Musci Player](#01) |[![m1](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m1.jpg)](#01)|
-|02|[Vedio Browser](#02) |[![m2](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg)](#02)|
-|03|[IG Filter](#03) |[![m3](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m3.jpg)](#03)|
-|04|[Snake Game](#04) |[![m4](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m4.jpg)](#04) |
-|05|[Jigsaw Game](#05) |[![m5](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg)](#05)|
-|06|[Dinosaur Game](#06) |[![m6](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg)](#06)|
-|07|[Animation Slider](#07) |[![m7](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg)](#07)|
-|08|[Matching Game](#07) |[![m8](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg)](#08)|
+|#| Projects <a id="project-info"></a> | Preview |#| Projects | Preview |
+|-:|:---------|:-------------:|-:|:---------|:-------------:|
+|01|[Musci Player](#01) |[![m1](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m1.jpg)](#01)|02|[Vedio Browser](#02) |[![m2](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg)](#02)|
+|03|[IG Filter](#03) |[![m3](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m3.jpg)](#03)|04|[Snake Game](#04) |[![m4](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m4.jpg)](#04) |
+|05|[Jigsaw Game](#05) |[![m5](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg)](#05)|06|[Dinosaur Game](#06) |[![m6](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg)](#06)|
+|07|[Animation Slider](#07) |[![m7](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg)](#07)|08|[Matching Game](#08) |[![m8](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg)](#08)|
+|09|[Countdown](#09) |[![m9](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m9.jpg)](#09)|
 
 ---
 
@@ -175,6 +172,24 @@ This project is a web demo of some React applications. Every page support the vi
   - [css transform-style](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-style)
   - [css backface-visibility](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backface-visibility)
   - [css conic-gradient()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient/conic-gradient)
+
+##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
+
+---
+
+#### ⏲ Countdown 倒數計值器<a id="09"></a>
+
+- Features
+  - 秒數倒數
+  - 輸入驗證
+  - 開始鍵
+  - 暫停鍵
+  - 倒數動畫
+- Resource
+  - [svg circle](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/circle)
+  - [svg stroke](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke)
+  - [svg stroke-dasharray](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-dasharray)
+  - [svg stroke-dashoffset](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-dashoffset)
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 
