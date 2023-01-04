@@ -7,17 +7,23 @@ This project is a web demo of some React applications. Every page support the vi
 本專案將實作許多 React Application，各頁面均支援 PC & H5 模式，另有黑白兩色系可作切換，詳細的介紹如下：
 
 [Live Demo](https://lthong.github.io/react-web-projects) 😊
-|#| Projects <a id="project-info"></a> | Preview |#| Projects | Preview |
-|-:|:---------|:-------------:|-:|:---------|:-------------:|
-|01|[Musci Player](#01) |[![m1](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m1.jpg)](#01)|02|[Vedio Browser](#02) |[![m2](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg)](#02)|
-|03|[IG Filter](#03) |[![m3](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m3.jpg)](#03)|04|[Snake Game](#04) |[![m4](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m4.jpg)](#04) |
-|05|[Jigsaw Game](#05) |[![m5](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg)](#05)|06|[Dinosaur Game](#06) |[![m6](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg)](#06)|
-|07|[Animation Slider](#07) |[![m7](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg)](#07)|08|[Matching Game](#08) |[![m8](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg)](#08)|
-|09|[Countdown](#09) |[![m9](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m9.jpg)](#09)|
+|#| Projects <a id="project-info"></a> |
+|-:|:---------|
+|01|[Musci Player (音樂播放器)](#01) |
+|02|[Vedio Browser (影片搜尋瀏覽)](#02) |
+|03|[IG Filter (IG 濾鏡)](#03) |
+|04|[Snake Game (貪食蛇)](#04) |
+|05|[Jigsaw Game (拼圖遊戲)](#05) |
+|06|[Dinosaur Game (恐龍遊戲)](#06) |
+|07|[Animation Slider (圖片輪播器)](#07)
+|08|[Matching Game (記憶卡牌遊戲)](#08) |
+|09|[Countdown (倒數計值器)](#09) |
 
 ---
 
-#### 🎸 Musci Player 音樂播放器 <a id="01"></a>
+#### 🎸 Musci Player (音樂播放器) <a id="01"></a>
+
+![m1](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m1.jpg)
 
 - Features
   - 選曲播放
@@ -33,7 +39,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 📺 Vedio Browser 影片瀏覽<a id="02"></a>
+#### 📺 Vedio Browser (影片搜尋瀏覽)<a id="02"></a>
+
+![m2](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg)
 
 - Features
   - 關鍵字搜尋
@@ -50,7 +58,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 📷 IG Filter IG 濾鏡<a id="03"></a>
+#### 📷 IG Filter (IG 濾鏡)<a id="03"></a>
+
+![m3](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m3.jpg)
 
 - Features
   - 濾鏡效果瀏覽
@@ -68,7 +78,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🐍 Snake Game 貪食蛇<a id="04"></a>
+#### 🐍 Snake Game (貪食蛇)<a id="04"></a>
+
+![m4](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m4.jpg)
 
 - Features
   - 邊界碰撞偵測
@@ -88,7 +100,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🧩 Jigsaw Game 拼圖遊戲<a id="05"></a>
+#### 🧩 Jigsaw Game (拼圖遊戲)<a id="05"></a>
+
+![m5](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg)
 
 - Features
   - 題目隨機生成
@@ -110,7 +124,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🦖 Dinosaur Game 恐龍遊戲<a id="06"></a>
+#### 🦖 Dinosaur Game (恐龍遊戲)<a id="06"></a>
+
+![m6](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg)
 
 - Features
   - 動畫執行/暫停
@@ -136,7 +152,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🎞 Animation Slider 動畫圖輪播<a id="07"></a>
+#### 🎞 Animation Slider (圖片輪播器)<a id="07"></a>
+
+![m7](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg)
 
 - Features
   - 輪播拖曳偵測
@@ -158,7 +176,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🙈 Matching Game 記憶卡牌遊戲<a id="08"></a>
+#### 🙈 Matching Game (記憶卡牌遊戲)<a id="08"></a>
+
+![m8](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg)
 
 - Features
   - 卡牌隨機排列
@@ -177,7 +197,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### ⏲ Countdown 倒數計值器<a id="09"></a>
+#### ⏲ Countdown (倒數計值器)<a id="09"></a>
+
+![m9](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m9.jpg)
 
 - Features
   - 秒數倒數
