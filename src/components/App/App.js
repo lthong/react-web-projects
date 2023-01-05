@@ -16,6 +16,7 @@ const Comps = [
   { path: routerPath.JIGSAW_GAME, Comp: Loadable.JigsawGame },
   { path: routerPath.DINO_GAME, Comp: Loadable.DinoGame },
   { path: routerPath.MATCHING_GAME, Comp: Loadable.MatchingGame },
+  { path: routerPath.COUNTDOWN, Comp: Loadable.Countdown },
 ];
 
 const App = () => {

@@ -54,3 +54,8 @@ export const MatchingGame = Loadable({
     import(/* webpackChunkName: 'MatchingGame' */ '@/components/MatchingGame'),
   loading: Loading,
 });
+export const Countdown = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'Countdown' */ '@/components/Countdown'),
+  loading: Loading,
+});
