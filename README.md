@@ -9,7 +9,7 @@ This project is a web demo of some React applications. Every page support the vi
 [Live Demo](https://lthong.github.io/react-web-projects) 😊
 |#| Projects <a id="project-info"></a> |
 |-:|:---------|
-|01|[Musci Player (音樂播放器)](#01) |
+|01|[Music Player (音樂播放器)](#01) |
 |02|[Vedio Browser (影片搜尋瀏覽)](#02) |
 |03|[IG Filter (IG 濾鏡)](#03) |
 |04|[Snake Game (貪食蛇)](#04) |
@@ -21,9 +21,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🎸 Musci Player (音樂播放器) <a id="01"></a>
+#### 🎸 Music Player (音樂播放器) <a id="01"></a>
 
-![m1](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m1.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m1.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 選曲播放
@@ -41,7 +41,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 📺 Vedio Browser (影片搜尋瀏覽)<a id="02"></a>
 
-![m2](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 關鍵字搜尋
@@ -60,7 +60,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 📷 IG Filter (IG 濾鏡)<a id="03"></a>
 
-![m3](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m3.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m3.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 濾鏡效果瀏覽
@@ -80,7 +80,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 🐍 Snake Game (貪食蛇)<a id="04"></a>
 
-![m4](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m4.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m4.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 邊界碰撞偵測
@@ -102,7 +102,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 🧩 Jigsaw Game (拼圖遊戲)<a id="05"></a>
 
-![m5](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 題目隨機生成
@@ -126,7 +126,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 🦖 Dinosaur Game (恐龍遊戲)<a id="06"></a>
 
-![m6](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 動畫執行/暫停
@@ -154,7 +154,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 🎞 Animation Slider (圖片輪播器)<a id="07"></a>
 
-![m7](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 輪播拖曳偵測
@@ -178,7 +178,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 🙈 Matching Game (記憶卡牌遊戲)<a id="08"></a>
 
-![m8](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 卡牌隨機排列
@@ -199,7 +199,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### ⏲ Countdown (倒數計值器)<a id="09"></a>
 
-![m9](https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m9.jpg)
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m9.jpg' width='150px' style='margin: 8px 0' />
 
 - Features
   - 秒數倒數
