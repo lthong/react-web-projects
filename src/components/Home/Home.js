@@ -56,7 +56,7 @@ const Block = ({ Icon, title, children }) => {
   );
 };
 
-const Card = ({ imgName, label, path }) => {
+const Card = ({ imgName, label, subLabel, path }) => {
   const history = useHistory();
 
   return (
@@ -69,6 +69,9 @@ const Card = ({ imgName, label, path }) => {
       <img src={pageImgs[imgName]} alt='page-img' />
       <div className='label'>
         <span>{label}</span>
+      </div>
+      <div className='label'>
+        <span>{subLabel}</span>
       </div>
     </div>
   );
@@ -209,17 +212,22 @@ const Home = ({ onScrollDown }) => {
               modules={[Autoplay]}
               autoplay={{ delay: 2000, disableOnInteraction: false }}
             >
-              {pageConfig?.map(({ path, label, imgName }, i) => (
+              {pageConfig?.map(({ path, label, subLabel, imgName }) => (
                 <SwiperSlide key={path}>
-                  <Card imgName={imgName} label={label} path={path} />
+                  <Card
+                    imgName={imgName}
+                    label={label}
+                    subLabel={subLabel}
+                    path={path}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
           </Block>
-          {blockItemConfig.map(({ type, Icon }) => (
-            <Block key={type} title={type} Icon={Icon}>
+          {blockItemConfig.map(({ type, Icon: CategoryIcon }) => (
+            <Block key={type} title={type} Icon={CategoryIcon}>
               {pageGroups[type]?.map(
-                ({ path, label, imgName, intro, date, pageIndex }) => (
+                ({ path, Icon, subLabel, imgName, intro, date, pageIndex }) => (
                   <div
                     key={path}
                     className={clsx('item-box', { 's-size': isMobile })}
@@ -234,14 +242,17 @@ const Home = ({ onScrollDown }) => {
                       />
                     </div>
                     <div className='right'>
-                      <div className='title'>{label}</div>
+                      <div className='title'>
+                        {<Icon />}
+                        {subLabel}
+                      </div>
                       <div className='tags'>
                         <span className='date'>
                           <FaRegCalendarAlt />
                           {date}
                         </span>
                         <span className='type'>
-                          <Icon />
+                          <CategoryIcon />
                           {type}
                         </span>
                       </div>

@@ -91,7 +91,7 @@ const Menu = ({ isDarkTheme, setIsDarkTheme, isScrollDown }) => {
         </div>
       </div>
       <div className='navs' id={NAVS_ID}>
-        {navs.map(({ path, label, Icon }) => {
+        {navs.map(({ path, subLabel, Icon }) => {
           const active = location.pathname === path;
           return (
             <div
@@ -103,7 +103,7 @@ const Menu = ({ isDarkTheme, setIsDarkTheme, isScrollDown }) => {
               }}
             >
               <Icon size={20} className='nav-icon' />
-              {label}
+              {subLabel}
             </div>
           );
         })}
