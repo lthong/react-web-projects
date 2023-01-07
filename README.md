@@ -7,7 +7,7 @@ This project is a web demo of some React applications. Every page support the vi
 本專案將實作許多 React Application，各頁面均支援 PC & H5 模式，另有黑白兩色系可作切換，詳細的介紹如下：
 
 [Live Demo](https://lthong.github.io/react-web-projects) 😊
-|#| Projects <a id="project-info"></a> |
+|#| Project <a id="project-info"></a> |
 |-:|:---------|
 |01|[Music Player (音樂播放器)](#01) |
 |02|[Vedio Browser (影片搜尋瀏覽)](#02) |
