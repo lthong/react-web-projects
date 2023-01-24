@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FaSun, FaMoon, FaReact } from 'react-icons/fa';
-import pages, { navs } from '@/libraries/routerPath';
+import pages, { pageGroups, pageTypes } from '@/libraries/routerPath';
 import { homepage } from '../../../package.json';
 
 const NAVS_ID = 'navs';
@@ -29,7 +29,8 @@ const Menu = ({ isDarkTheme, setIsDarkTheme, isScrollDown }) => {
     <div
       className={clsx('menu', { 'navs-open': isMenuOpen })}
       onClick={(e) => {
-        if (isMenuOpen && e.target.id !== NAVS_ID) {
+        if (isMenuOpen) {
+          e.stopPropagation();
           onMenuClick();
         }
       }}
@@ -90,23 +91,38 @@ const Menu = ({ isDarkTheme, setIsDarkTheme, isScrollDown }) => {
           />
         </div>
       </div>
-      <div className='navs' id={NAVS_ID}>
-        {navs.map(({ path, subLabel, Icon }) => {
-          const active = location.pathname === path;
-          return (
-            <div
-              key={path}
-              className={clsx('item', { active })}
-              onClick={(e) => {
-                e.stopPropagation();
-                onNavClick(path);
-              }}
-            >
-              <Icon size={20} className='nav-icon' />
-              {subLabel}
+      <div
+        className='navs'
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        {pageTypes.map(({ type, Icon }) => (
+          <div key={type} className='category'>
+            <div className='title'>
+              <Icon size={16} />
+              <span>{type}</span>
             </div>
-          );
-        })}
+            <div className='content-box'>
+              {pageGroups[type].map(({ path, subLabel, Icon }) => {
+                const active = location.pathname === path;
+                return (
+                  <div
+                    key={path}
+                    className={clsx('item', { active })}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onNavClick(path);
+                    }}
+                  >
+                    <Icon size={20} className='nav-icon' />
+                    {subLabel}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
