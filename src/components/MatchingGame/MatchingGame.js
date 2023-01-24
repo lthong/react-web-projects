@@ -63,8 +63,8 @@ const MatchingGame = () => {
       const isMatch = firstCard.imgId === secondCard.imgId;
       if (isMatch) {
         setScore((preState) => {
-          const newScore = preState + 1;
-          if (newScore === cardLength) {
+          const newScore = preState + 10;
+          if (newScore === cardLength * 10) {
             Swal.fire({
               icon: 'success',
               title: 'You Win!!',

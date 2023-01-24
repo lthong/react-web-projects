@@ -19,7 +19,7 @@ const useDevice = (props = {}) => {
     return () => {
       window.removeEventListener('resize', onResize);
     };
-  }, [resizeCallback]);
+  }, [resizeCallback, widthThreshold]);
 
   return { isMobile };
 };
