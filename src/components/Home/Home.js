@@ -6,21 +6,12 @@ import { Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import { useHistory } from 'react-router-dom';
 import pageImgs from './assets/imgs';
-import { pageConfig, pageGroups } from '@/libraries/routerPath';
+import { pageConfig, pageGroups, pageTypes } from '@/libraries/routerPath';
 import useDevice from '@/hooks/useDevice';
-import {
-  FaStar,
-  FaFolderPlus,
-  FaTools,
-  FaRegCalendarAlt,
-} from 'react-icons/fa';
-import { RiGameFill, RiArrowDownSLine } from 'react-icons/ri';
+import { FaStar, FaRegCalendarAlt } from 'react-icons/fa';
+import { RiArrowDownSLine } from 'react-icons/ri';
+const year = new Date().getFullYear();
 
-const blockItemConfig = [
-  { type: 'service', Icon: FaFolderPlus },
-  { type: 'game', Icon: RiGameFill },
-  { type: 'tool', Icon: FaTools },
-];
 const bannerTextStrs = [
   'Welcome',
   'Hello World',
@@ -88,7 +79,7 @@ const Home = ({ onScrollDown }) => {
   const resizeCallback = useCallback(() => {
     setSlidesPerView(getCardWidthRatio());
   }, []);
-  const { isMobile } = useDevice({ resizeCallback, widthThreshold: 600 });
+  const { isMobile } = useDevice({ resizeCallback, widthThreshold: 700 });
 
   useEffect(() => {
     const onScroll = () => {
@@ -224,7 +215,7 @@ const Home = ({ onScrollDown }) => {
               ))}
             </Swiper>
           </Block>
-          {blockItemConfig.map(({ type, Icon: CategoryIcon }) => (
+          {pageTypes.map(({ type, Icon: CategoryIcon }) => (
             <Block key={type} title={type} Icon={CategoryIcon}>
               {pageGroups[type]?.map(
                 ({ path, Icon, subLabel, imgName, intro, date, pageIndex }) => (
@@ -288,7 +279,7 @@ const Home = ({ onScrollDown }) => {
         </div>
       </div>
       <div className='copyright'>
-        Copyright © 2022 Karen Hong. All rights reserved.
+        {`Copyright © ${year} Karen Hong. All rights reserved.`}
       </div>
     </div>
   );
