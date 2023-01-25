@@ -13,17 +13,20 @@ This project is a web demo of some React applications. Every page support the vi
 |02|[Vedio Browser (影片搜尋瀏覽)](#02) |
 |03|[IG Filter (IG 濾鏡)](#03) |
 |04|[Snake Game (貪食蛇)](#04) |
-|05|[Jigsaw Game (拼圖遊戲)](#05) |
-|06|[Dinosaur Game (恐龍遊戲)](#06) |
+|05|[Jigsaw Game (拼圖)](#05) |
+|06|[Dinosaur Game (Google 恐龍)](#06) |
 |07|[Animation Slider (圖片輪播器)](#07)
-|08|[Matching Game (記憶卡牌遊戲)](#08) |
+|08|[Matching Game (記憶卡牌)](#08) |
 |09|[Countdown (倒數計值器)](#09) |
+|10|[Drawing (畫畫板)](#10) |
 
 ---
 
 #### 🎸 Music Player (音樂播放器) <a id="01"></a>
 
+<a href='https://lthong.github.io/react-web-projects/music-player' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m1.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 選曲播放
@@ -41,7 +44,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 📺 Vedio Browser (影片搜尋瀏覽)<a id="02"></a>
 
+<a href='https://lthong.github.io/react-web-projects/vedio-browser' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 關鍵字搜尋
@@ -60,7 +65,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 📷 IG Filter (IG 濾鏡)<a id="03"></a>
 
+<a href='https://lthong.github.io/react-web-projects/ig-filter' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m3.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 濾鏡效果瀏覽
@@ -80,7 +87,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 🐍 Snake Game (貪食蛇)<a id="04"></a>
 
+<a href='https://lthong.github.io/react-web-projects/snake-game' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m4.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 邊界碰撞偵測
@@ -100,9 +109,11 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🧩 Jigsaw Game (拼圖遊戲)<a id="05"></a>
+#### 🧩 Jigsaw Game (拼圖)<a id="05"></a>
 
+<a href='https://lthong.github.io/react-web-projects/jigsaw-game' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m5.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 題目隨機生成
@@ -124,9 +135,11 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🦖 Dinosaur Game (恐龍遊戲)<a id="06"></a>
+#### 🦖 Dinosaur Game (Google 恐龍)<a id="06"></a>
 
+<a href='https://lthong.github.io/react-web-projects/dino-game' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 動畫執行/暫停
@@ -154,7 +167,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### 🎞 Animation Slider (圖片輪播器)<a id="07"></a>
 
+<a href='https://lthong.github.io/react-web-projects/anima-slider' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m7.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 輪播拖曳偵測
@@ -176,9 +191,11 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🙈 Matching Game (記憶卡牌遊戲)<a id="08"></a>
+#### 🙈 Matching Game (記憶卡牌)<a id="08"></a>
 
+<a href='https://lthong.github.io/react-web-projects/matching-game' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m8.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 卡牌隨機排列
@@ -199,7 +216,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 #### ⏲ Countdown (倒數計值器)<a id="09"></a>
 
+<a href='https://lthong.github.io/react-web-projects/countdown' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m9.jpg' width='150px' style='margin: 8px 0' />
+</a>
 
 - Features
   - 秒數倒數
@@ -212,6 +231,30 @@ This project is a web demo of some React applications. Every page support the vi
   - [svg stroke](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke)
   - [svg stroke-dasharray](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-dasharray)
   - [svg stroke-dashoffset](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-dashoffset)
+
+##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
+
+---
+
+#### ⏲ Drawing (畫畫板)<a id="10"></a>
+
+<a href='https://lthong.github.io/react-web-projects/drawing' target='_blank' >
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m10.jpg' width='150px' style='margin: 8px 0' />
+</a>
+
+- Features
+  - 畫布繪畫
+  - 自選顏色
+  - 筆刷大小
+  - 清除畫布
+  - 作品儲存
+- Resource
+  - [canvas lineTo](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineTo)
+  - [canvas clearRect](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect)
+  - [TouchEvent targetTouches](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/targetTouches)
+  - [TouchList](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchList)
+  - [Touch](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch)
+  - [user-scalable](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Viewport_meta_tag)
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 
