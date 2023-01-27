@@ -8,6 +8,7 @@ import m7 from './screenShot/m7.jpg';
 import m8 from './screenShot/m8.jpg';
 import m9 from './screenShot/m9.jpg';
 import m10 from './screenShot/m10.jpg';
+import m11 from './screenShot/m11.jpg';
 import d1 from './screenShot/d1.jpg';
 import d2 from './screenShot/d2.jpg';
 import d3 from './screenShot/d3.jpg';
@@ -31,6 +32,7 @@ export default {
   m8,
   m9,
   m10,
+  m11,
   d1,
   d2,
   d3,
