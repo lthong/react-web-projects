@@ -19,6 +19,7 @@ This project is a web demo of some React applications. Every page support the vi
 |08|[Matching Game (記憶卡牌)](#08) |
 |09|[Countdown (倒數計值器)](#09) |
 |10|[Drawing (畫畫板)](#10) |
+|10|[Pacman Game (小精靈)](#11) |
 
 ---
 
@@ -255,6 +256,29 @@ This project is a web demo of some React applications. Every page support the vi
   - [TouchList](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchList)
   - [Touch](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch)
   - [user-scalable](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Viewport_meta_tag)
+
+##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
+
+---
+
+#### 👀 Pacman Game (小精靈)<a id="11"></a>
+
+<a href='https://lthong.github.io/react-web-projects/pacman-game' target='_blank' >
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m11.jpg' width='150px' style='margin: 8px 0' />
+</a>
+
+- Features
+  - 地圖繪製
+  - 小精靈移動
+  - 鬼自動移動
+  - 金幣邏輯
+  - 碰撞偵測
+  - 分數計算
+- Resource
+  - [canvas clearRect](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect)
+  - [canvas arc](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arc)
+  - [for...of](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of)
+  - [example](https://www.youtube.com/watch?v=5IMXpp3rohQ)
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 
