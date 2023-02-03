@@ -1,9 +1,20 @@
-import { AiFillHome, AiFillYoutube } from 'react-icons/ai';
+import {
+  AiFillHome,
+  AiFillYoutube,
+  AiOutlineClockCircle,
+} from 'react-icons/ai';
 import { BsMusicNoteBeamed, BsFillCameraFill } from 'react-icons/bs';
 import { GiSnakeSpiral, GiJigsawPiece } from 'react-icons/gi';
-import { FaGamepad, FaBookOpen } from 'react-icons/fa';
+import {
+  FaGamepad,
+  FaBookOpen,
+  FaPaintBrush,
+  FaFolderPlus,
+  FaTools,
+} from 'react-icons/fa';
 import { MdCatchingPokemon } from 'react-icons/md';
 import { fromJS } from 'immutable';
+import { RiGameFill } from 'react-icons/ri';
 
 const pages = {
   HOME: '/',
@@ -15,6 +26,9 @@ const pages = {
   JIGSAW_GAME: '/jigsaw-game',
   DINO_GAME: '/dino-game',
   MATCHING_GAME: '/matching-game',
+  COUNTDOWN: '/countdown',
+  DRAWING: '/drawing',
+  PACMAN_GAME: '/pacman-game',
 };
 
 export default pages;
@@ -23,24 +37,15 @@ export const navs = [
   {
     path: pages.HOME,
     label: 'Home',
+    subLabel: '首頁',
     Icon: AiFillHome,
     type: 'page',
-  },
-  {
-    pageIndex: 2,
-    path: pages.VEDIO_BROWSER,
-    label: 'Vedio Browser',
-    Icon: AiFillYoutube,
-    type: 'service',
-    date: '2022-07',
-    imgName: 'm2',
-    intro:
-      '簡易版 Youtube，有支援無限滾動喔！不過因為 API 有每日請求上限，當作一個 demo 就好啦 XD',
   },
   {
     pageIndex: 7,
     path: pages.ANIMA_SLIDER,
     label: 'Animation Slider',
+    subLabel: '圖片輪播器',
     Icon: FaBookOpen,
     type: 'service',
     date: '2022-12',
@@ -49,9 +54,22 @@ export const navs = [
       '在不使用套件的情況下，自製一個圖片輪播的功能～輪播框拖曳滑動那邊做到快起笑 XD，',
   },
   {
+    pageIndex: 2,
+    path: pages.VEDIO_BROWSER,
+    label: 'Vedio Browser',
+    subLabel: '影片搜尋瀏覽',
+    Icon: AiFillYoutube,
+    type: 'service',
+    date: '2022-07',
+    imgName: 'm2',
+    intro:
+      '簡易版 Youtube，有支援無限滾動喔！不過因為 API 有每日請求上限，當作一個 demo 就好啦 XD',
+  },
+  {
     pageIndex: 1,
     path: pages.MUSIC_PLAYER,
     label: 'Music Player',
+    subLabel: '音樂播放器',
     Icon: BsMusicNoteBeamed,
     type: 'service',
     date: '2022-06',
@@ -59,29 +77,32 @@ export const navs = [
     intro: '小小的音樂播放器，支援切換曲目，即時顯示目前播放的音軌位置及時間',
   },
   {
-    pageIndex: 3,
-    path: pages.IG_FILTER,
-    label: 'IG Filter',
-    Icon: BsFillCameraFill,
-    type: 'tool',
-    date: '2022-07',
-    imgName: 'm3',
-    intro: '簡易的 IG 濾鏡，可以自己上傳檔案，並支援下載儲存',
+    pageIndex: 11,
+    path: pages.PACMAN_GAME,
+    label: 'PacManGame',
+    subLabel: '小精靈',
+    Icon: FaGamepad,
+    type: 'game',
+    date: '2023-01',
+    imgName: 'm11',
+    intro: '經典的小精靈遊戲，吃金幣可以得分！碰到敵人會結束遊戲喔！',
   },
   {
     pageIndex: 6,
     path: pages.DINO_GAME,
     label: 'Dinosaur Game',
+    subLabel: 'Google 恐龍',
     Icon: FaGamepad,
     type: 'game',
-    date: '2022-11',
+    date: '2022-12',
     imgName: 'm6',
     intro: '復刻 Google 經典的恐龍遊戲，還有背景音樂喔！',
   },
   {
     pageIndex: 8,
     path: pages.MATCHING_GAME,
-    label: 'matching Game',
+    label: 'Matching Game',
+    subLabel: '記憶卡牌',
     Icon: MdCatchingPokemon,
     type: 'game',
     date: '2022-12',
@@ -89,9 +110,21 @@ export const navs = [
     intro: '寶可夢的卡牌記憶遊戲，角色牌隨機出現',
   },
   {
+    pageIndex: 4,
+    path: pages.SNAKE_GAME,
+    label: 'Snake Game',
+    subLabel: '貪食蛇',
+    Icon: GiSnakeSpiral,
+    type: 'game',
+    date: '2022-09',
+    imgName: 'm4',
+    intro: '經典的貪吃蛇遊戲，小心不要碰到牆壁與蛇身喔！',
+  },
+  {
     pageIndex: 5,
     path: pages.JIGSAW_GAME,
     label: 'Jigsaw Game',
+    subLabel: '拼圖',
     Icon: GiJigsawPiece,
     type: 'game',
     date: '2022-09',
@@ -99,14 +132,38 @@ export const navs = [
     intro: '要不要玩拼圖～支援桌機與手機的拖拉模式，實作難度五顆心 XD',
   },
   {
-    pageIndex: 4,
-    path: pages.SNAKE_GAME,
-    label: 'Snake Game',
-    Icon: GiSnakeSpiral,
-    type: 'game',
-    date: '2022-09',
-    imgName: 'm4',
-    intro: '經典的貪吃蛇遊戲，小心不要碰到牆壁與蛇身喔！',
+    pageIndex: 9,
+    path: pages.COUNTDOWN,
+    label: 'Countdown',
+    subLabel: '倒數計值器',
+    Icon: AiOutlineClockCircle,
+    type: 'tool',
+    date: '2023-01',
+    imgName: 'm9',
+    intro:
+      '倒數計值器，可自行輸入秒數，使用開始鍵與暫停鍵進行操作，倒數時附有動畫特效',
+  },
+  {
+    pageIndex: 10,
+    path: pages.DRAWING,
+    label: 'Drawing',
+    subLabel: '畫畫板',
+    Icon: FaPaintBrush,
+    type: 'tool',
+    date: '2023-01',
+    imgName: 'm10',
+    intro: '簡易畫畫板，可更換筆刷顏色、筆刷大小，完成後還可以下載存成圖片喔！',
+  },
+  {
+    pageIndex: 3,
+    path: pages.IG_FILTER,
+    label: 'IG Filter',
+    subLabel: 'IG 濾鏡',
+    Icon: BsFillCameraFill,
+    type: 'tool',
+    date: '2022-07',
+    imgName: 'm3',
+    intro: '簡易的 IG 濾鏡，可以自己上傳檔案，並支援下載儲存',
   },
 ];
 
@@ -114,3 +171,8 @@ export const pageConfig = navs.filter(({ path }) => path !== pages.HOME);
 export const pageGroups = fromJS(pageConfig)
   .groupBy((item) => item.get('type'))
   .toJS();
+export const pageTypes = [
+  { type: 'service', Icon: FaFolderPlus },
+  { type: 'game', Icon: RiGameFill },
+  { type: 'tool', Icon: FaTools },
+];

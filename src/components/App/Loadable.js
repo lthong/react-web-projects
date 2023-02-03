@@ -59,3 +59,13 @@ export const Countdown = Loadable({
     import(/* webpackChunkName: 'Countdown' */ '@/components/Countdown'),
   loading: Loading,
 });
+export const Drawing = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'Drawing' */ '@/components/Drawing'),
+  loading: Loading,
+});
+export const PacManGame = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'PacManGame' */ '@/components/PacManGame'),
+  loading: Loading,
+});

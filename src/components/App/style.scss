@@ -57,7 +57,9 @@ html {
   }
   &.path-snake-game,
   &.path-dino-game,
-  &.path-jigsaw-game {
+  &.path-jigsaw-game,
+  &.path-pacman-game,
+  &.path-drawing {
     overflow-y: hidden;
     touch-action: pan-x;
   }
