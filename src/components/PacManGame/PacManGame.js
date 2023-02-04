@@ -211,7 +211,6 @@ const PacManGame = () => {
       // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of
       for (const rowIndex of map.keys()) {
         const row = map[rowIndex];
-        let isTouch = false;
         for (const colIndex of row.keys()) {
           const col = row[colIndex];
           const candyPositionX = boundarySize * colIndex + boundarySize / 2;
@@ -229,12 +228,8 @@ const PacManGame = () => {
               `${rowIndex}-${colIndex}`,
             ];
             setScore((preState) => preState + 10);
-            isTouch = true;
-            break;
+            return;
           }
-        }
-        if (isTouch) {
-          break;
         }
       }
       if (touchingCandies.current.length === candyAmount) {
