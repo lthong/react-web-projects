@@ -1,0 +1,41 @@
+.pacman-game {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  .tool-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px auto;
+    width: 50%;
+    .score {
+      font-size: 1.2rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    > button {
+      text-transform: uppercase;
+    }
+  }
+  canvas {
+    background-color: rgb(26, 26, 26);
+    margin: auto;
+  }
+  .direction-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    width: 50%;
+    button {
+      width: 40px;
+      margin: 0 10px;
+      &.down {
+        order: 4;
+        display: flex;
+      }
+    }
+  }
+}
