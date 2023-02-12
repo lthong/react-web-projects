@@ -1,0 +1,119 @@
+.photo-selector {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .photo-block {
+    height: 300px;
+    overflow-y: auto;
+    > div {
+      height: 100%;
+    }
+    img {
+      height: auto;
+      border-radius: 2px;
+      border: 5px solid white;
+      box-shadow: 3px 3px 10px rgba(120, 120, 120, 0.8);
+    }
+    .main-photo {
+      width: 80%;
+      max-width: 400px;
+      max-height: 300px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .photo-select {
+      width: 18%;
+      margin-left: 2%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 20;
+      img {
+        cursor: pointer;
+        width: 130px;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      .upload {
+        height: 32%;
+        width: 130px;
+        padding: 1px;
+        .upload-btn {
+          width: 100%;
+          height: 100%;
+          border: 2px dotted white;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+        .file-input {
+          display: none;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 530px) {
+    .photo-block {
+      flex-direction: column;
+      height: auto;
+      .main-photo {
+        width: 100%;
+      }
+      .photo-select {
+        width: 100%;
+        min-width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        margin: 10px 0;
+        > div {
+          width: 28%;
+          img {
+            width: 100%;
+          }
+        }
+        .upload {
+          width: 28%;
+          height: auto;
+          .upload-btn {
+            min-height: 70px;
+          }
+        }
+      }
+    }
+  }
+  .action-block {
+    margin-bottom: 10px;
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+      .download-icon {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
