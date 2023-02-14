@@ -2,9 +2,15 @@ import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { bg1, bg2 } from './assets';
 import { FiDownload, FiUpload } from 'react-icons/fi';
+import { RiArrowGoBackFill } from 'react-icons/ri';
 import 'swiper/swiper-bundle.min.css';
 
-const PhotoSelector = ({ photoClasses, children }) => {
+const PhotoSelector = ({
+  photoClasses,
+  mainPhotoCustomStyle = {},
+  onReset,
+  children,
+}) => {
   const [currentPhoto, setCurrentPhoto] = useState(bg1);
 
   const onDownload = useCallback(() => {
@@ -44,6 +50,7 @@ const PhotoSelector = ({ photoClasses, children }) => {
             [photoClasses]: !!photoClasses,
           })}
           id='filter-style'
+          style={mainPhotoCustomStyle}
         >
           <img id='main-photo' src={currentPhoto} alt='main-photo' />
         </figure>
@@ -82,14 +89,16 @@ const PhotoSelector = ({ photoClasses, children }) => {
       </div>
       {children({ currentPhoto })}
       <div className='action-block'>
-        <div className='download-btn'>
-          <FiDownload
-            className='download-icon'
-            size={30}
-            onClick={onDownload}
-          />
+        <div className='btn'>
+          <FiDownload className='icon' size={30} onClick={onDownload} />
           <span>Download</span>
         </div>
+        {onReset && (
+          <div className='btn'>
+            <RiArrowGoBackFill className='icon' size={30} onClick={onReset} />
+            <span>Reset</span>
+          </div>
+        )}
       </div>
     </div>
   );

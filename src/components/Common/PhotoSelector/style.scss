@@ -76,7 +76,8 @@
       flex-direction: column;
       height: auto;
       .main-photo {
-        width: 100%;
+        overflow: hidden;
+        width: 80%;
       }
       .photo-select {
         width: 100%;
@@ -102,16 +103,17 @@
   }
   .action-block {
     margin-bottom: 10px;
-    .download-btn {
+    .btn {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      margin: 0 10px;
       &:hover {
         opacity: 0.8;
         cursor: pointer;
       }
-      .download-icon {
+      .icon {
         margin-bottom: 5px;
       }
     }
