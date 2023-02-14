@@ -1,0 +1,1 @@
+.pokedex{display:flex;justify-content:center;flex-grow:1;position:relative}.pokedex:after{content:"";position:absolute;right:18px;top:7px;width:30px;height:40px;background-color:#464646;-webkit-user-select:none;-ms-user-select:none;user-select:none}.pokedex iframe{width:100%;height:100%}
