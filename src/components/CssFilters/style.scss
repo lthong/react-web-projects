@@ -1,0 +1,36 @@
+.css-filters {
+  #main-photo {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    box-shadow: none;
+  }
+  .filter-block {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 20px;
+    .data-box {
+      min-width: 20%;
+      flex: 1 1;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      .info {
+        font-size: 1.2rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+    }
+    &.m-size {
+      margin: 5px 0;
+      .data-box {
+        padding: 5px;
+        min-width: 50%;
+      }
+    }
+  }
+}
