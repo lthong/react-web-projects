@@ -14,12 +14,13 @@ This project is a web demo of some React applications. Every page support the vi
 |03|[IG Filter (IG 濾鏡)](#03) |
 |04|[Snake Game (貪食蛇)](#04) |
 |05|[Jigsaw Game (拼圖)](#05) |
-|06|[Dinosaur Game (Google 恐龍)](#06) |
+|06|[Dinosaur Game (Google 恐龍遊戲)](#06) |
 |07|[Animation Slider (圖片輪播器)](#07)
 |08|[Matching Game (記憶卡牌)](#08) |
 |09|[Countdown (倒數計值器)](#09) |
 |10|[Drawing (畫畫板)](#10) |
-|10|[Pacman Game (小精靈)](#11) |
+|11|[Pacman Game (小精靈)](#11) |
+|12|[CSS Filters (CSS 濾鏡)](#12) |
 
 ---
 
@@ -136,7 +137,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🦖 Dinosaur Game (Google 恐龍)<a id="06"></a>
+#### 🦖 Dinosaur Game (Google 恐龍遊戲)<a id="06"></a>
 
 <a href='https://lthong.github.io/react-web-projects/dino-game' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m6.jpg' width='150px' style='margin: 8px 0' />
@@ -279,6 +280,32 @@ This project is a web demo of some React applications. Every page support the vi
   - [canvas arc](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arc)
   - [for...of](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of)
   - [example](https://www.youtube.com/watch?v=5IMXpp3rohQ)
+
+##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
+
+---
+
+#### 🌫 CSS Filters (CSS 濾鏡)<a id="12"></a>
+
+<a href='https://lthong.github.io/react-web-projects/css-filters' target='_blank' >
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m12.jpg' width='150px' style='margin: 8px 0' />
+</a>
+
+- Features
+  - 自訂圖片濾鏡效果
+  - grayscale (灰階)
+  - sepia (懷舊)
+  - saturate (飽和)
+  - hue-rotate (色相旋轉)
+  - invert (負片)
+  - opacity (不透明)
+  - brightness (亮度)
+  - contrast (對比)
+  - blur (模糊)
+  - drop-shadow (下拉陰影)
+- Resource
+  - [css filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
+  - [css filter intro](http://blog.shihshih.com/css-filter/)
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 
