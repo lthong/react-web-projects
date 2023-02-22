@@ -5,16 +5,16 @@
   position: relative;
   // hide the pokedex github icon, because the setting of X-Frame-Options is 'DENY' that will prevent to link to github, so hide the button
   // https://blog.darkthread.net/blog/iframe-clickjacking/
-  &::after {
-    content: '';
-    position: absolute;
-    right: 18px;
-    top: 7px;
-    width: 30px;
-    height: 40px;
-    background-color: #464646;
-    user-select: none;
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   right: 18px;
+  //   top: 7px;
+  //   width: 30px;
+  //   height: 40px;
+  //   background-color: #464646;
+  //   user-select: none;
+  // }
   iframe {
     width: 100%;
     height: 100%;
