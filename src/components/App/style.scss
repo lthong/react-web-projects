@@ -68,4 +68,10 @@ html {
       padding-top: 0;
     }
   }
+  &.path-pokedex {
+    > .content {
+      display: flex;
+      align-items: stretch;
+    }
+  }
 }
