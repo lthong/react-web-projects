@@ -1,19 +1,20 @@
+import { fromJS } from 'immutable';
 import {
   AiFillHome,
   AiFillYoutube,
   AiOutlineClockCircle,
 } from 'react-icons/ai';
 import { BsMusicNoteBeamed, BsFillCameraFill } from 'react-icons/bs';
-import { GiSnakeSpiral, GiJigsawPiece } from 'react-icons/gi';
+import { GiSnakeSpiral, GiJigsawPiece, GiPokerHand } from 'react-icons/gi';
 import {
   FaGamepad,
   FaBookOpen,
   FaPaintBrush,
   FaFolderPlus,
   FaTools,
+  FaPaintRoller,
 } from 'react-icons/fa';
 import { MdCatchingPokemon } from 'react-icons/md';
-import { fromJS } from 'immutable';
 import { RiGameFill } from 'react-icons/ri';
 
 const pages = {
@@ -29,6 +30,8 @@ const pages = {
   COUNTDOWN: '/countdown',
   DRAWING: '/drawing',
   PACMAN_GAME: '/pacman-game',
+  CSS_FILTERS: '/css-filters',
+  POKEDEX: '/pokedex',
 };
 
 export default pages;
@@ -77,11 +80,23 @@ export const navs = [
     intro: '小小的音樂播放器，支援切換曲目，即時顯示目前播放的音軌位置及時間',
   },
   {
+    pageIndex: 13,
+    path: pages.POKEDEX,
+    label: 'Pokedex',
+    subLabel: '寶可夢圖鑑',
+    Icon: MdCatchingPokemon,
+    type: 'service',
+    date: '2022-06',
+    imgName: 'm13',
+    intro:
+      '實作寶可夢圖鑑，可查詢寶可夢資訊，並支援中英兩種語言，還可以將喜歡的寶可夢加入最愛喔！',
+  },
+  {
     pageIndex: 11,
     path: pages.PACMAN_GAME,
     label: 'PacManGame',
     subLabel: '小精靈',
-    Icon: FaGamepad,
+    Icon: RiGameFill,
     type: 'game',
     date: '2023-01',
     imgName: 'm11',
@@ -103,7 +118,7 @@ export const navs = [
     path: pages.MATCHING_GAME,
     label: 'Matching Game',
     subLabel: '記憶卡牌',
-    Icon: MdCatchingPokemon,
+    Icon: GiPokerHand,
     type: 'game',
     date: '2022-12',
     imgName: 'm8',
@@ -130,6 +145,18 @@ export const navs = [
     date: '2022-09',
     imgName: 'm5',
     intro: '要不要玩拼圖～支援桌機與手機的拖拉模式，實作難度五顆心 XD',
+  },
+  {
+    pageIndex: 12,
+    path: pages.CSS_FILTERS,
+    label: 'CSS Filters',
+    subLabel: 'CSS 濾鏡',
+    Icon: FaPaintRoller,
+    type: 'tool',
+    date: '2023-02',
+    imgName: 'm12',
+    intro:
+      '自訂圖片濾鏡效果，並支援下載儲存，範圍包含：灰階, 懷舊, 飽和, 色相旋轉, 負片, 不透明, 亮度, 對比, 模糊, 下拉陰影',
   },
   {
     pageIndex: 9,

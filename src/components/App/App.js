@@ -19,6 +19,8 @@ const Comps = [
   { path: routerPath.COUNTDOWN, Comp: Loadable.Countdown },
   { path: routerPath.DRAWING, Comp: Loadable.Drawing },
   { path: routerPath.PACMAN_GAME, Comp: Loadable.PacManGame },
+  { path: routerPath.CSS_FILTERS, Comp: Loadable.CssFilters },
+  { path: routerPath.POKEDEX, Comp: Loadable.Pokedex },
 ];
 
 const App = () => {

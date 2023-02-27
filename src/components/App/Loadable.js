@@ -69,3 +69,13 @@ export const PacManGame = Loadable({
     import(/* webpackChunkName: 'PacManGame' */ '@/components/PacManGame'),
   loading: Loading,
 });
+export const CssFilters = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'CssFilters' */ '@/components/CssFilters'),
+  loading: Loading,
+});
+export const Pokedex = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'Pokedex' */ '@/components/Pokedex'),
+  loading: Loading,
+});
