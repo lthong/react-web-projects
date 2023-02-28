@@ -21,6 +21,7 @@ This project is a web demo of some React applications. Every page support the vi
 |10|[Drawing (畫畫板)](#10) |
 |11|[Pacman Game (小精靈)](#11) |
 |12|[CSS Filters (CSS 濾鏡)](#12) |
+|13|[Pokedex (寶可夢圖鑑)](#13) |
 
 ---
 
@@ -306,6 +307,23 @@ This project is a web demo of some React applications. Every page support the vi
 - Resource
   - [css filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
   - [css filter intro](http://blog.shihshih.com/css-filter/)
+
+##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
+
+---
+
+#### 🌫 Pokedex (寶可夢圖鑑)<a id="13"></a>
+
+<a href='https://lthong.github.io/react-web-projects/pokede' target='_blank' >
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m13.jpg' width='150px' style='margin: 8px 0' />
+</a>
+
+- Features
+  - 列表查詢
+  - 屬性分類
+  - 加入最愛
+  - 背景音樂
+  - 多國語系
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 
