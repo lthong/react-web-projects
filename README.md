@@ -312,7 +312,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 🌫 Pokedex (寶可夢圖鑑)<a id="13"></a>
+#### 📖 Pokedex (寶可夢圖鑑)<a id="13"></a>
 
 <a href='https://lthong.github.io/react-web-projects/pokede' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m13.jpg' width='150px' style='margin: 8px 0' />
