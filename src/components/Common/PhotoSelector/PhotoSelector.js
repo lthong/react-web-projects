@@ -25,7 +25,7 @@ const PhotoSelector = ({
     // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter
     ctx.filter = window.getComputedStyle(filterStyle).filter;
     ctx.drawImage(mainPhoto, 0, 0, mainPhoto.width, mainPhoto.height);
-    link.download = 'ig-filter.png';
+    link.download = 'filter-output.png';
     link.href = canvas.toDataURL();
     link.click();
   }, []);
