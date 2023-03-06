@@ -381,6 +381,9 @@ const PacManGame = () => {
 
   useEffect(() => {
     resetGame();
+    return () => {
+      clearInterval(mapUpdatedTimerId.current);
+    };
   }, []);
 
   const onKeyDown = useCallback((e) => {
