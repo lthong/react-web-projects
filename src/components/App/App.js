@@ -21,6 +21,7 @@ const Comps = [
   { path: routerPath.PACMAN_GAME, Comp: Loadable.PacManGame },
   { path: routerPath.CSS_FILTERS, Comp: Loadable.CssFilters },
   { path: routerPath.POKEDEX, Comp: Loadable.Pokedex },
+  { path: routerPath.TIC_TAC_TOE_GAME, Comp: Loadable.TicTacToeGame },
 ];
 
 const App = () => {

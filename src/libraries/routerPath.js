@@ -5,7 +5,12 @@ import {
   AiOutlineClockCircle,
 } from 'react-icons/ai';
 import { BsMusicNoteBeamed, BsFillCameraFill } from 'react-icons/bs';
-import { GiSnakeSpiral, GiJigsawPiece, GiPokerHand } from 'react-icons/gi';
+import {
+  GiSnakeSpiral,
+  GiJigsawPiece,
+  GiPokerHand,
+  GiTicTacToe,
+} from 'react-icons/gi';
 import {
   FaGamepad,
   FaBookOpen,
@@ -32,6 +37,7 @@ const pages = {
   PACMAN_GAME: '/pacman-game',
   CSS_FILTERS: '/css-filters',
   POKEDEX: '/pokedex',
+  TIC_TAC_TOE_GAME: '/tic-tac-toe-game',
 };
 
 export default pages;
@@ -54,7 +60,7 @@ export const navs = [
     date: '2022-12',
     imgName: 'm7',
     intro:
-      '在不使用套件的情況下，自製一個圖片輪播的功能～輪播框拖曳滑動那邊做到快起笑 XD，',
+      '在不使用套件的情況下，自製一個圖片輪播的功能，PC版的輪播框支援拖曳滑動',
   },
   {
     pageIndex: 2,
@@ -92,9 +98,20 @@ export const navs = [
       '實作寶可夢圖鑑，可查詢寶可夢資訊，並支援中英兩種語言，還可以將喜歡的寶可夢加入最愛喔！',
   },
   {
+    pageIndex: 14,
+    path: pages.TIC_TAC_TOE_GAME,
+    label: 'Tic Tac Toe Game',
+    subLabel: '圈圈叉叉',
+    Icon: GiTicTacToe,
+    type: 'game',
+    date: '2023-03',
+    imgName: 'm14',
+    intro: '經典的圈圈叉叉遊戲，玩的過程還可以反悔棋步喔',
+  },
+  {
     pageIndex: 11,
     path: pages.PACMAN_GAME,
-    label: 'PacManGame',
+    label: 'PacMan Game',
     subLabel: '小精靈',
     Icon: RiGameFill,
     type: 'game',

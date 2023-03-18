@@ -17,6 +17,7 @@ const winnnerLines = [
 const TicTacToeGame = () => {
   const [gameHistory, setGameHistory] = useState([initBoard]);
   const [step, setStep] = useState(0);
+  const [winnerCells, setWinnerCells] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
   const currentBoard = useMemo(() => gameHistory[step], [gameHistory, step]);
   const cellLabel = useMemo(() => (step % 2 === 0 ? 'O' : 'X'), [step]);
@@ -38,20 +39,22 @@ const TicTacToeGame = () => {
 
   useEffect(() => {
     // check winner
-    let winnerStr = '';
-    const isWinnerExisted = winnnerLines.some((line) => {
-      winnerStr = line.map((index) => currentBoard[index]).join('');
-      const result = ['OOO', 'XXX'].includes(winnerStr);
+    let winner = '';
+    const newWinnerCells = winnnerLines.find((line) => {
+      const buffer = line.map((index) => currentBoard[index]).join('');
+      const result = ['OOO', 'XXX'].includes(buffer);
+      winner = buffer.charAt(0);
       return result;
     });
 
-    if (isWinnerExisted) {
+    if (newWinnerCells?.length > 0) {
       Swal.fire({
         icon: 'success',
-        title: `${winnerStr.charAt(0)} is winner!`,
+        title: `${winner} is winner!`,
         text: 'Press Restart To Play Again',
       });
       setIsGameOver(true);
+      setWinnerCells(newWinnerCells);
     }
   }, [currentBoard]);
 
@@ -59,6 +62,7 @@ const TicTacToeGame = () => {
     setGameHistory([initBoard]);
     setStep(0);
     setIsGameOver(false);
+    setWinnerCells([]);
   }, []);
 
   return (
@@ -70,7 +74,10 @@ const TicTacToeGame = () => {
         {currentBoard.map((label, i) => (
           <div
             key={`cell-${i}`}
-            className={clsx('cell', { disabled: !!label || isGameOver })}
+            className={clsx('cell', {
+              disabled: !!label || isGameOver,
+              active: winnerCells.includes(i),
+            })}
             onClick={() => {
               !label && !isGameOver && onCellClick(i);
             }}
@@ -83,6 +90,7 @@ const TicTacToeGame = () => {
         <div className='steps'>
           {gameHistory.map((_, i) => (
             <button
+              key={`step-${i}`}
               className={clsx('ui button', {
                 primary: step !== i,
                 green: step === i,
