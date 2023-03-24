@@ -22,6 +22,7 @@ This project is a web demo of some React applications. Every page support the vi
 |11|[Pacman Game (小精靈)](#11) |
 |12|[CSS Filters (CSS 濾鏡)](#12) |
 |13|[Pokedex (寶可夢圖鑑)](#13) |
+|14|[Tic Tac Toe Game (圈圈叉叉)](#14) |
 
 ---
 
@@ -324,6 +325,21 @@ This project is a web demo of some React applications. Every page support the vi
   - 加入最愛
   - 背景音樂
   - 多國語系
+
+##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
+
+---
+
+#### 📖 Tic Tac Toe Game (圈圈叉叉)<a id="14"></a>
+
+<a href='https://lthong.github.io/react-web-projects/pokede' target='_blank' >
+<img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m14.jpg' width='150px' style='margin: 8px 0' />
+</a>
+
+- Features
+  - 遊戲邏輯
+  - 步驟記錄
+  - 輸贏判斷
 
 ##### <div style='text-align: right'>[⬆ TOP](#project-info)</div>
 

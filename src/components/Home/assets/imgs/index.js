@@ -11,6 +11,7 @@ import m10 from './screenShot/m10.jpg';
 import m11 from './screenShot/m11.jpg';
 import m12 from './screenShot/m12.jpg';
 import m13 from './screenShot/m13.jpg';
+import m14 from './screenShot/m14.jpg';
 import intro7 from './intro/7.svg';
 
 export default {
@@ -27,5 +28,6 @@ export default {
   m11,
   m12,
   m13,
+  m14,
   intro7,
 };
