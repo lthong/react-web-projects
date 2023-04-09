@@ -81,6 +81,13 @@ export const Pokedex = Loadable({
 });
 export const TicTacToeGame = Loadable({
   loader: () =>
-    import(/* webpackChunkName: 'TicTacToeGame' */ '@/components/TicTacToeGame'),
+    import(
+      /* webpackChunkName: 'TicTacToeGame' */ '@/components/TicTacToeGame'
+    ),
+  loading: Loading,
+});
+export const ToDoList = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: 'ToDoList' */ '@/components/ToDoList'),
   loading: Loading,
 });
