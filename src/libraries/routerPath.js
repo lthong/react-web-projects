@@ -20,7 +20,7 @@ import {
   FaPaintRoller,
 } from 'react-icons/fa';
 import { MdCatchingPokemon } from 'react-icons/md';
-import { RiGameFill } from 'react-icons/ri';
+import { RiGameFill, RiTodoLine } from 'react-icons/ri';
 
 const pages = {
   HOME: '/',
@@ -38,6 +38,7 @@ const pages = {
   CSS_FILTERS: '/css-filters',
   POKEDEX: '/pokedex',
   TIC_TAC_TOE_GAME: '/tic-tac-toe-game',
+  TO_DO_LIST: '/to-do-list',
 };
 
 export default pages;
@@ -163,6 +164,17 @@ export const navs = [
     imgName: 'm5',
     intro: '要不要玩拼圖～支援桌機與手機的拖拉模式，實作難度五顆心 XD',
   },
+  // {
+  //   pageIndex: 15,
+  //   path: pages.TO_DO_LIST,
+  //   label: 'To Do List',
+  //   subLabel: '待辦清單',
+  //   Icon: RiTodoLine,
+  //   type: 'tool',
+  //   date: '2023-03',
+  //   imgName: 'm15',
+  //   intro: '簡易版待辦清單，支援新增/修改/刪除',
+  // },
   {
     pageIndex: 12,
     path: pages.CSS_FILTERS,

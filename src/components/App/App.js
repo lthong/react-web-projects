@@ -22,6 +22,7 @@ const Comps = [
   { path: routerPath.CSS_FILTERS, Comp: Loadable.CssFilters },
   { path: routerPath.POKEDEX, Comp: Loadable.Pokedex },
   { path: routerPath.TIC_TAC_TOE_GAME, Comp: Loadable.TicTacToeGame },
+  { path: routerPath.TO_DO_LIST, Comp: Loadable.ToDoList },
 ];
 
 const App = () => {
