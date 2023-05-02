@@ -9,7 +9,7 @@ import 'semantic-ui-css/semantic.min.css';
 const Comps = [
   // { path: routerPath.HOME, Comp: Loadable.Home, exact: true },
   { path: routerPath.MUSIC_PLAYER, Comp: Loadable.MusicPlayer },
-  { path: routerPath.VEDIO_BROWSER, Comp: Loadable.VedioBrowser },
+  { path: routerPath.VIDEO_BROWSER, Comp: Loadable.VideoBrowser },
   { path: routerPath.ANIMA_SLIDER, Comp: Loadable.AnimaSlider },
   { path: routerPath.IG_FILTER, Comp: Loadable.IGFilter },
   { path: routerPath.SNAKE_GAME, Comp: Loadable.SnakeGame },

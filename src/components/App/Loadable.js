@@ -19,9 +19,9 @@ export const MusicPlayer = Loadable({
     import(/* webpackChunkName: 'MusicPlayer' */ '@/components/MusicPlayer'),
   loading: Loading,
 });
-export const VedioBrowser = Loadable({
+export const VideoBrowser = Loadable({
   loader: () =>
-    import(/* webpackChunkName: 'VedioBrowser' */ '@/components/VedioBrowser'),
+    import(/* webpackChunkName: 'VideoBrowser' */ '@/components/VideoBrowser'),
   loading: Loading,
 });
 export const IGFilter = Loadable({

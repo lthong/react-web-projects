@@ -10,7 +10,7 @@ This project is a web demo of some React applications. Every page support the vi
 |#| Project <a id="project-info"></a> |
 |-:|:---------|
 |01|[Music Player (音樂播放器)](#01) |
-|02|[Vedio Browser (影片搜尋瀏覽)](#02) |
+|02|[Video Browser (影片搜尋瀏覽)](#02) |
 |03|[IG Filter (IG 濾鏡)](#03) |
 |04|[Snake Game (貪食蛇)](#04) |
 |05|[Jigsaw Game (拼圖)](#05) |
@@ -46,9 +46,9 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 📺 Vedio Browser (影片搜尋瀏覽)<a id="02"></a>
+#### 📺 Video Browser (影片搜尋瀏覽)<a id="02"></a>
 
-<a href='https://lthong.github.io/react-web-projects/vedio-browser' target='_blank' >
+<a href='https://lthong.github.io/react-web-projects/video-browser' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m2.jpg' width='150px' style='margin: 8px 0' />
 </a>
 
@@ -330,7 +330,7 @@ This project is a web demo of some React applications. Every page support the vi
 
 ---
 
-#### 📖 Tic Tac Toe Game (圈圈叉叉)<a id="14"></a>
+#### 🍡 Tic Tac Toe Game (圈圈叉叉)<a id="14"></a>
 
 <a href='https://lthong.github.io/react-web-projects/pokede' target='_blank' >
 <img alt='' src='https://raw.githubusercontent.com/lthong/react-web-projects/master/src/components/Home/assets/imgs/screenShot/m14.jpg' width='150px' style='margin: 8px 0' />

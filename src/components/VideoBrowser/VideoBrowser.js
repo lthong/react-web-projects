@@ -14,18 +14,18 @@ const quickSearchKeywords = [
   'switch遊戲',
 ];
 
-const VedioBrowser = () => {
+const VideoBrowser = () => {
   const timerRef = useRef(null);
   const searchRef = useRef(null);
   const moreDataObserverRef = useRef(null);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [vedioLoading, setVedioLoading] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(false);
   const [isAPIFailed, setIsAPIFailed] = useState(false);
   const [searchValue, setSearchValue] = useState('搖曳露營');
   const [dataSearchValue, setDataSearchValue] = useState(searchValue);
   const [data, setData] = useState([]);
   const [nextPageToken, setNextPageToken] = useState(null);
-  const [currentVedio, setCurrentVedio] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState(null);
 
   const onSearchValueChange = useCallback((e) => {
     setSearchValue(e.target.value);
@@ -93,12 +93,12 @@ const VedioBrowser = () => {
     [onSubmit]
   );
 
-  const getVedioRef = useCallback(
+  const getVideoRef = useCallback(
     (node) => {
       if (node) {
-        const isLastVedio =
-          node.getAttribute('data-vedio-index') === String(data.length - 1);
-        if (isLastVedio) {
+        const isLastVideo =
+          node.getAttribute('data-video-index') === String(data.length - 1);
+        if (isLastVideo) {
           moreDataObserverRef.current?.disconnect();
           moreDataObserverRef.current = new IntersectionObserver(
             (entry) => {
@@ -128,7 +128,7 @@ const VedioBrowser = () => {
   }, []);
 
   return (
-    <div className='vedio-browser'>
+    <div className='video-browser'>
       <div className='search-bar'>
         <div className='ui action input left icon fluid'>
           <i className='search icon' />
@@ -171,16 +171,16 @@ const VedioBrowser = () => {
           ))}
         </div>
       </div>
-      <div className='vedio-items'>
+      <div className='video-items'>
         {data?.map((item, index) => (
           <div
-            ref={getVedioRef}
-            data-vedio-index={index}
+            ref={getVideoRef}
+            data-video-index={index}
             className='item'
-            key={`vedio-${index}`}
+            key={`video-${index}`}
             onClick={() => {
-              setCurrentVedio(item);
-              setVedioLoading(true);
+              setCurrentVideo(item);
+              setVideoLoading(true);
             }}
           >
             <img
@@ -193,31 +193,31 @@ const VedioBrowser = () => {
         ))}
       </div>
       <Loader />
-      {currentVedio && (
+      {currentVideo && (
         <div
-          className='vedio-modal'
+          className='video-modal'
           onClick={(e) => {
-            if (e.target.id !== 'vedio-player') {
-              setCurrentVedio(null);
+            if (e.target.id !== 'video-player') {
+              setCurrentVideo(null);
             }
           }}
         >
-          <div className='vedio-player' id='vedio-player'>
+          <div className='video-player' id='video-player'>
             <i
               className='times circle icon closed'
               onClick={() => {
-                setCurrentVedio(null);
+                setCurrentVideo(null);
               }}
             />
-            {vedioLoading && <Loader />}
-            {currentVedio?.id?.videoId && (
+            {videoLoading && <Loader />}
+            {currentVideo?.id?.videoId && (
               <ReactPlayer
                 width='100%'
                 height='100%'
-                style={{ display: vedioLoading ? 'none' : 'block' }}
-                url={`https://www.youtube.com/embed/${currentVedio?.id?.videoId}`}
+                style={{ display: videoLoading ? 'none' : 'block' }}
+                url={`https://www.youtube.com/embed/${currentVideo?.id?.videoId}`}
                 onReady={() => {
-                  setVedioLoading(false);
+                  setVideoLoading(false);
                 }}
                 controls
               />
@@ -229,4 +229,4 @@ const VedioBrowser = () => {
   );
 };
 
-export default VedioBrowser;
+export default VideoBrowser;

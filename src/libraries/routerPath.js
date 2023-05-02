@@ -25,7 +25,7 @@ import { RiGameFill, RiTodoLine } from 'react-icons/ri';
 const pages = {
   HOME: '/',
   MUSIC_PLAYER: '/music-player',
-  VEDIO_BROWSER: '/vedio-browser',
+  VIDEO_BROWSER: '/video-browser',
   ANIMA_SLIDER: '/anima-slider',
   IG_FILTER: '/ig-filter',
   SNAKE_GAME: '/snake-game',
@@ -65,15 +65,15 @@ export const navs = [
   },
   {
     pageIndex: 2,
-    path: pages.VEDIO_BROWSER,
-    label: 'Vedio Browser',
+    path: pages.VIDEO_BROWSER,
+    label: 'Video Browser',
     subLabel: '影片搜尋瀏覽',
     Icon: AiFillYoutube,
     type: 'service',
     date: '2022-07',
     imgName: 'm2',
     intro:
-      '簡易版 Youtube，有支援無限滾動喔！不過因為 API 有每日請求上限，當作一個 demo 就好啦 XD',
+      '簡易版 Youtube，有支援無限滾動喔！不過因為 API 有每日請求上限，當作一個 demo 就好 XD',
   },
   {
     pageIndex: 1,
